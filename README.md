@@ -13,7 +13,7 @@ If you are looking for:
 
 this repo is built for exactly that workflow.
 
-![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-112-10b981?style=classic)
+![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-114-10b981?style=classic)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
@@ -250,9 +250,11 @@ If you want high-signal examples first, start with:
 - [LG](design-md/lg/DESIGN.md)
 - [Lenovo](design-md/lenovo/DESIGN.md)
 - [NVIDIA](design-md/nvidia/DESIGN.md)
+- [OnePlus](design-md/oneplus/DESIGN.md)
 - [Qualcomm](design-md/qualcomm/DESIGN.md)
 - [Samsung](design-md/samsung/DESIGN.md)
 - [Sony](design-md/sony/DESIGN.md)
+- [Xiaomi](design-md/xiaomi/DESIGN.md)
 
 ---
 
