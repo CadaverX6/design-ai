@@ -1,29 +1,29 @@
 # Grafana Design System
 
-> Observability-platform design with dark dashboards, strong signal color, and highly structured reusable UI. Grafana’s Saga design system emphasizes accessibility, flexibility, coherence, and predictable patterns for dense monitoring interfaces.
+> Observability-platform design with dark dashboards, strong signal color, and reusable interface logic. Grafana’s Saga system emphasizes accessibility, flexibility, coherence, and patterns that scale across dense monitoring products.
 
 ---
 
 ## 1. Visual Theme & Atmosphere
 
 ### Overall Aesthetic
-Grafana feels like **operational signal made usable**. The design has to support dense metrics, dashboards, forms, alerts, and plugin experiences without losing clarity or coherence.
+Grafana is about **operational signal made usable**. The design needs to support dashboards, logs, traces, alerts, and configuration views without losing clarity or becoming visually chaotic.
 
 ### Mood & Feeling
-- **Technical**: the product should feel built for engineers and operators
-- **Signal-rich**: visual hierarchy must help users spot what matters quickly
-- **Coherent**: reusable patterns are essential across dashboards and plugins
-- **Accessible**: Saga explicitly bakes accessibility into the system
-- **Flexible**: components need to work across many configurations
+- **Technical**: built for engineers and operators
+- **Signal-rich**: hierarchy must make important values pop quickly
+- **Coherent**: reusable patterns matter across many plugins and products
+- **Accessible**: Saga explicitly includes accessibility as a core principle
+- **Flexible**: components need to adapt to many contexts
 
 ### Design Density
-**Medium-high density**. Grafana surfaces often carry charts, filters, controls, and lists, but structure and component consistency keep them understandable.
+**Medium-high density**. Grafana screens frequently carry charts, filters, tabs, lists, and metrics, so the structure must stay disciplined.
 
 ### Visual Character
-- Dark theme as a strong product-default mood
-- Orange brand energy used as a highlight, not a flood
-- Tight, data-friendly typography and spacing
-- Strong modular components for lists, forms, grids, and navigation
+- Dark theme as a dominant product mood
+- Orange used as a strong but selective brand cue
+- Data-dense panels and compact controls
+- Clear use of semantic status colors for health and severity
 
 ---
 
@@ -35,32 +35,32 @@ Grafana feels like **operational signal made usable**. The design has to support
 |-------|-----|------|
 | `--grafana-orange` | `#F05A28` | Signature brand accent |
 | `--grafana-orange-dark` | `#D44A1A` | Hover / stronger emphasis |
-| `--grafana-orange-soft` | `#FFE8DE` | Soft highlight surface |
+| `--grafana-orange-soft` | `#FFE8DE` | Soft brand surface |
 
 ### Dark Theme Foundation
 
 | Token | Hex | Role |
 |-------|-----|------|
-| `--dark-1` | `#111217` | Primary background |
+| `--dark-1` | `#111217` | Main background |
 | `--dark-2` | `#181B1F` | Secondary surface |
 | `--dark-3` | `#1F242A` | Panel and card surface |
 | `--dark-border` | `#2F3840` | Border and divider |
 | `--text-light` | `#F4F5F8` | Primary text on dark |
-| `--text-muted` | `#B6BDC6` | Secondary text on dark |
+| `--text-muted` | `#B6BDC6` | Secondary text |
 
-### Signal and Semantic Colors
+### Semantic / Signal Colors
 
 | Token | Hex | Role |
 |-------|-----|------|
-| `--blue` | `#5794F2` | Info, link, chart support |
-| `--green` | `#73BF69` | Success / healthy state |
+| `--blue` | `#5794F2` | Links and chart support |
+| `--green` | `#73BF69` | Healthy / success state |
 | `--yellow` | `#FADE2A` | Warning / degraded state |
 | `--red` | `#E24D42` | Error / critical state |
 
 ### Color Usage Rules
-- Let dark surfaces and chart colors do most of the visual work.
-- Use orange mainly for brand emphasis and select actions.
-- Keep semantic colors sharp and data-meaningful.
+- Let charts and semantic colors communicate state.
+- Use orange as a brand marker and selective action signal.
+- Keep dark surfaces consistent so data remains readable.
 
 ---
 
@@ -69,7 +69,7 @@ Grafana feels like **operational signal made usable**. The design has to support
 ### Font Stack
 
 ```css
-/* Grafana-style dashboard sans */
+/* Saga-style product typography */
 --font-sans: Inter, 'Helvetica Neue', Arial, sans-serif;
 --font-mono: 'Roboto Mono', 'SF Mono', Menlo, monospace;
 ```
@@ -78,21 +78,21 @@ Grafana feels like **operational signal made usable**. The design has to support
 
 | Element | Size | Weight | Line Height | Letter Spacing | Usage |
 |---------|------|--------|-------------|----------------|-------|
-| Page Title | 32px | 700 | 1.15 | -0.015em | Dashboard or page title |
+| Page Title | 32px | 700 | 1.15 | -0.015em | Dashboard or route title |
 | Section Title | 24px | 600 | 1.2 | -0.01em | Section header |
 | Card Title | 18px | 600 | 1.3 | 0 | Panel title |
 | Body | 14px | 400 | 1.5 | 0 | Standard UI text |
 | Small Body | 12px | 400 | 1.45 | 0 | Dense metadata |
-| Label | 12px | 500 | 1.3 | 0.01em | Controls and buttons |
-| Code | 12px | 400 | 1.45 | 0 | Query and metric values |
+| Label | 12px | 500 | 1.3 | 0.01em | Buttons and controls |
+| Code | 12px | 400 | 1.45 | 0 | Query, metric, and technical values |
 
 ### Typography Philosophy
-Grafana typography should feel **compact, readable, and operational**. The system must support dashboards, forms, alerts, and plugin UIs without strain.
+Grafana typography should feel **compact, readable, and operational**. The goal is to make dense data work feel manageable.
 
 ### Practical Rules
-- Keep panel titles short.
-- Use typographic contrast to distinguish key metrics from supporting labels.
-- Reserve mono styles for queries, IDs, and technical values.
+- Keep panel titles short and literal.
+- Use type hierarchy to distinguish key metrics from supporting labels.
+- Reserve monospace for query, code, and technical identifiers.
 
 ---
 
@@ -141,9 +141,9 @@ Grafana typography should feel **compact, readable, and operational**. The syste
 }
 ```
 
-### Panels and Dashboard Surfaces
+### Dashboard Panels
 
-#### Dashboard Panel
+#### Panel
 ```css
 .panel {
   background: #1F242A;
@@ -168,12 +168,12 @@ Grafana typography should feel **compact, readable, and operational**. The syste
 ## 5. Layout Principles
 
 ### Layout Rules
-Saga encourages **reusable templates and patterns** for common page types like lists, tables, dashboards, and forms.
+Saga emphasizes **reusable templates** for common page types such as forms, dashboards, objects, and lists.
 
 | Token | Value | Usage |
 |-------|-------|-------|
 | `--space-1` | `4px` | Fine alignment |
-| `--space-2` | `8px` | Tight spacing |
+| `--space-2` | `8px` | Tight grouping |
 | `--space-4` | `16px` | Core spacing |
 | `--space-5` | `24px` | Section spacing |
 | `button-sm` | `24px` | Small button height |
@@ -181,10 +181,10 @@ Saga encourages **reusable templates and patterns** for common page types like l
 | `button-lg` | `48px` | Large button height |
 
 ### Layout Guidance
-- Default to reusable page templates before inventing custom layouts.
-- Use clear panel and navigation hierarchy in dashboards.
-- Keep forms organized for clarity and ease of use.
-- Let grid and stack primitives structure content cleanly.
+- Reuse dashboard and form templates before inventing new structures.
+- Keep panel groupings explicit and easy to scan.
+- Use stack and grid primitives to maintain order across varied data content.
+- Match action hierarchy to severity and frequency.
 
 ---
 
@@ -195,9 +195,9 @@ Saga encourages **reusable templates and patterns** for common page types like l
 | Level | Treatment | Use |
 |-------|-----------|-----|
 | Base dark | dark application background | Main shell |
-| Panel | bordered dark surface | Dashboard or form unit |
-| Metric card | inset dark surface | Highlighted data |
-| Overlay | elevated dark surface | Modal or expanded tool |
+| Panel | bordered dark card | Dashboard or form unit |
+| Metric surface | inset dark card | Focused metric block |
+| Overlay | elevated dark surface | Modal or expanded view |
 
 ### Shadow System
 
@@ -212,39 +212,39 @@ Saga encourages **reusable templates and patterns** for common page types like l
 ```
 
 ### Depth Rules
-- Use borders and background separation before dramatic shadow.
-- Keep overlays clearly elevated.
-- Maintain visual discipline so dashboards don’t turn noisy.
+- Use contrast, borders, and spacing before stronger shadow.
+- Keep overlays clearly elevated and focused.
+- Avoid introducing unnecessary visual noise in data-heavy contexts.
 
 ---
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use orange as a strong but selective brand cue.
+- Use orange as a selective brand cue.
 - Keep dashboards and forms highly structured.
-- Reuse Saga patterns and templates.
-- Use color and hierarchy to emphasize task-at-hand.
-- Match UI friction to action severity.
+- Reuse Saga templates and patterns.
+- Use semantic colors to communicate health and severity clearly.
+- Maintain accessibility in dense product surfaces.
 
 ### Don't
-- Overcrowd dashboards with too many equal-priority highlights.
-- Use arbitrary card styles from screen to screen.
-- Turn every action into a bright orange button.
-- Sacrifice accessibility in dense views.
+- Use orange on every major control.
+- Overcrowd dashboards with too many equal-priority panels.
+- Introduce arbitrary component variations across similar screens.
+- Let data-rich views lose hierarchy.
 
 ---
 
 ## 8. Responsive Behavior
 
 ### Responsive Rules
-- Let panel grids collapse cleanly into stacked layouts.
-- Preserve readable chart titles, filters, and actions on small screens.
-- Use larger buttons only when emphasis or touch contexts demand them.
-- Keep lists and objects scannable even when column layouts collapse.
+- Collapse panel grids into stacks before readability suffers.
+- Preserve readable chart titles, filters, and actions on smaller screens.
+- Use larger button sizes only when emphasis or touch contexts require it.
+- Keep lists and form objects clear when columns collapse.
 
 ### Mobile Character
-Grafana mobile layouts should still feel operational and coherent. Simplification is fine, but the information architecture and signal clarity must remain strong.
+Grafana mobile views should still feel operational and coherent. Simplification is expected, but the information architecture and signal clarity must survive.
 
 ---
 
@@ -254,11 +254,11 @@ Grafana mobile layouts should still feel operational and coherent. Simplificatio
 - **Mood**: technical, signal-rich, coherent
 - **Primary accent**: Grafana orange `#F05A28`
 - **Core surfaces**: dark dashboards with bordered panels
-- **Typography**: compact Inter-style UI sans
-- **Layout**: reusable templates, grids, stacked panel logic
+- **Typography**: compact Inter-style UI text
+- **Layout**: reusable dashboard, form, and object templates
 
 ### Prompt Snippet
 
 ```text
-Design this interface in the style of Grafana’s Saga design system. Use dark dashboard surfaces, Grafana orange (#F05A28) as a selective brand accent, highly structured panels, compact readable typography, and reusable page templates. The result should feel operational, coherent, and accessible in dense monitoring contexts.
+Design this interface in the style of Grafana’s Saga design system. Use dark dashboard surfaces, Grafana orange (#F05A28) as a selective brand accent, compact readable typography, and highly reusable page templates for panels, forms, and objects. The result should feel operational, accessible, and coherent in dense monitoring contexts.
 ```
