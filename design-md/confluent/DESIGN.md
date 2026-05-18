@@ -1,30 +1,29 @@
 # Confluent Design System
 
-> Data-streaming platform design with bright coral energy, cloud-native confidence, and modular enterprise storytelling. Confluent’s current site uses strong accent color, dark product surfaces, and concise technical narratives to make real-time data infrastructure feel approachable and urgent.
+> Data-streaming platform design with bright coral energy, dark product framing, and concise technical storytelling. Confluent’s current site balances cloud-native momentum with enterprise readability.
 
 ---
 
 ## 1. Visual Theme & Atmosphere
 
 ### Overall Aesthetic
-Confluent expresses **real-time data momentum**. The site should feel fast, modern, and technically capable while keeping cloud and AI narratives understandable for both practitioners and buyers.
+Confluent communicates **real-time data infrastructure with urgency and clarity**. The system should feel technically serious, but also modular and easy to navigate across many use cases and product pathways.
 
 ### Mood & Feeling
-- **Innovative**: streaming, AI, and cloud-native ideas should feel current
-- **Credible**: the platform must still read as enterprise-grade
-- **Energetic**: bright accent color and punchy layouts create motion
-- **Modular**: platform capabilities are grouped into clear use-case bands
-- **Technical**: screenshots and diagrams should feel real, not abstract fluff
+- **Innovative**: streaming and AI ideas should feel current
+- **Credible**: the platform must read as enterprise-grade
+- **Energetic**: bright accent color creates forward motion
+- **Modular**: capability breadth should feel grouped, not sprawling
+- **Technical**: product frames and proof need to feel real
 
 ### Design Density
-**Medium density**. Confluent pages often cover multiple use cases and outcomes, but they maintain readability through strong sectioning, concise copy, and repeated CTA patterns.
+**Medium density**. Confluent pages cover many capabilities, but they keep readability through strong sectioning and repeated module patterns.
 
 ### Visual Character
-- Bright coral-red accent over white and dark frames
-- Product screenshots and capability modules
-- Strong call-to-action rhythm
-- Clean enterprise typography with short headlines
-- Balanced technical and business storytelling
+- Coral-red accent as the strongest brand cue
+- White content surfaces balanced by dark technical frames
+- Short technical headlines and capability cards
+- Clear CTA rhythm for demos, trials, and product exploration
 
 ---
 
@@ -36,7 +35,7 @@ Confluent expresses **real-time data momentum**. The site should feel fast, mode
 |-------|-----|------|
 | `--confluent-coral` | `#FF5F46` | Primary accent and CTA emphasis |
 | `--confluent-coral-dark` | `#E84A32` | Hover / active state |
-| `--confluent-coral-soft` | `#FFE7E1` | Light brand surface |
+| `--confluent-coral-soft` | `#FFE7E1` | Soft highlighted surface |
 
 ### Neutral and Dark Surfaces
 
@@ -47,21 +46,21 @@ Confluent expresses **real-time data momentum**. The site should feel fast, mode
 | `--ink-muted` | `#64748B` | Secondary text |
 | `--surface-page` | `#F8FAFC` | Page background |
 | `--surface-card` | `#FFFFFF` | Card surface |
-| `--surface-dark` | `#0F172A` | Product / technical showcase frame |
+| `--surface-dark` | `#0F172A` | Product / technical frame |
 | `--border-default` | `#E2E8F0` | Border and divider |
 
 ### Supportive Colors
 
 | Token | Hex | Role |
 |-------|-----|------|
-| `--blue` | `#3B82F6` | Informational highlight |
-| `--green` | `#16A34A` | Success / positive outcome |
-| `--yellow` | `#EAB308` | Caution / attention |
+| `--blue` | `#3B82F6` | Informational emphasis |
+| `--green` | `#16A34A` | Success / positive state |
+| `--yellow` | `#EAB308` | Caution state |
 
 ### Color Usage Rules
 - Use coral as the clearest brand and action signal.
-- Keep most page structure neutral and readable.
-- Use dark product frames to reinforce technical depth.
+- Let neutral surfaces carry most layout structure.
+- Use dark product frames to signal technical depth and demo realism.
 
 ---
 
@@ -80,21 +79,21 @@ Confluent expresses **real-time data momentum**. The site should feel fast, mode
 | Element | Size | Weight | Line Height | Letter Spacing | Usage |
 |---------|------|--------|-------------|----------------|-------|
 | Hero Display | 56px | 700 | 1.04 | -0.02em | Main hero headline |
-| Page Title | 40px | 700 | 1.1 | -0.015em | Major section title |
-| Section Title | 28px | 600 | 1.15 | -0.01em | Use-case heading |
-| Card Title | 20px | 600 | 1.25 | 0 | Card or feature title |
+| Page Title | 40px | 700 | 1.1 | -0.015em | Major title |
+| Section Title | 28px | 600 | 1.15 | -0.01em | Capability heading |
+| Card Title | 20px | 600 | 1.25 | 0 | Feature card |
 | Body | 16px | 400 | 1.6 | 0 | Standard content |
-| Small Body | 14px | 400 | 1.5 | 0 | Secondary content |
-| Label | 14px | 600 | 1.3 | 0.01em | Buttons and utility labels |
-| Code | 13px | 400 | 1.5 | 0 | Technical values |
+| Small Body | 14px | 400 | 1.5 | 0 | Supporting copy |
+| Label | 14px | 600 | 1.3 | 0.01em | Buttons and controls |
+| Code | 13px | 400 | 1.5 | 0 | Technical examples |
 
 ### Typography Philosophy
-Confluent typography should feel **current, technical, and concise**. The hierarchy needs to support both platform breadth and fast-scanning product decisions.
+Confluent typography should feel **current, technical, and concise**. The hierarchy needs to help users scan platform breadth without fatigue.
 
 ### Practical Rules
-- Keep headlines short and momentum-driven.
-- Use modular body copy chunks instead of long explanations.
-- Use mono styles for technical examples and code-adjacent content.
+- Keep headlines short and momentum-oriented.
+- Use modular body copy chunks rather than long essays.
+- Use mono for technical snippets and code-adjacent values.
 
 ---
 
@@ -186,10 +185,10 @@ Confluent typography should feel **current, technical, and concise**. The hierar
 | `--space-10` | `64px` | Large rhythm |
 
 ### Layout Rules
-- Structure the platform story into clear use-case modules.
-- Repeat CTA patterns for product, demo, and free-start actions.
-- Use screenshots and proof blocks to support technical credibility.
-- Keep the page scannable despite breadth.
+- Break the platform story into clear capability and use-case bands.
+- Repeat CTA patterns for demo, trial, and product exploration.
+- Use product screenshots and proof blocks to reinforce credibility.
+- Keep the experience scannable even when broad.
 
 ---
 
@@ -199,9 +198,9 @@ Confluent typography should feel **current, technical, and concise**. The hierar
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Light base | light neutral page field | Overview and narrative |
+| Light base | light neutral page field | Narrative and overview |
 | Feature card | white bounded module | Capability grouping |
-| Dark frame | dark product surface | Technical / demo focus |
+| Dark frame | dark technical surface | Product and demo focus |
 | Overlay | elevated light surface | Form or modal |
 
 ### Shadow System
@@ -217,39 +216,39 @@ Confluent typography should feel **current, technical, and concise**. The hierar
 ```
 
 ### Depth Rules
-- Use white cards and dark frames deliberately.
-- Let screenshots and product UI add technical richness.
-- Keep the main layout airy, even when the product story is broad.
+- Use white cards and dark frames intentionally.
+- Let screenshots and real UI add technical richness.
+- Keep the main layout airy and uncluttered.
 
 ---
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use coral as the clear action and brand cue.
-- Keep platform storytelling modular.
-- Use dark frames to anchor technical credibility.
-- Preserve clear CTA hierarchy.
-- Make technical breadth feel manageable.
+- Use coral as the main action and brand cue.
+- Keep platform breadth modular.
+- Use dark frames to anchor technical storytelling.
+- Preserve clear CTA hierarchy and visual rhythm.
+- Make technical concepts feel manageable.
 
 ### Don't
-- Flood the page with too many bright accents.
-- Turn technical sections into vague AI glow art.
-- Overload individual cards with too much copy.
-- Let screenshots feel disconnected from the surrounding design.
+- Flood the interface with bright accents.
+- Turn product narratives into vague AI visual effects.
+- Overload single cards with too much text.
+- Let screenshots feel detached from surrounding layout.
 
 ---
 
 ## 8. Responsive Behavior
 
 ### Responsive Rules
-- Stack feature cards and dark product frames cleanly on mobile.
-- Keep core demo and free-start CTAs visible early.
-- Simplify dense proof sections before shrinking type too far.
-- Preserve strong card and section boundaries at every width.
+- Stack feature cards and product frames cleanly on smaller screens.
+- Keep demo and trial actions visible early in the flow.
+- Simplify proof density before shrinking type too far.
+- Preserve strong card and section boundaries on mobile.
 
 ### Mobile Character
-Confluent mobile layouts should still feel energetic and technical. The coral accent and modular product narrative need to remain clear even when the page becomes more vertical.
+Confluent mobile should still feel energetic and technical. The coral-led hierarchy and modular product story should remain strong even when vertically stacked.
 
 ---
 
@@ -258,12 +257,12 @@ Confluent mobile layouts should still feel energetic and technical. The coral ac
 ### Quick Reference
 - **Mood**: innovative, technical, modular
 - **Primary accent**: coral `#FF5F46`
-- **Base structure**: light neutral field with dark product frames
-- **Typography**: modern concise enterprise sans
-- **Components**: pill CTAs, capability cards, dark showcase panels
+- **Core structure**: light neutral base with dark product frames
+- **Typography**: concise modern enterprise sans
+- **Components**: pill CTAs, feature cards, dark showcases
 
 ### Prompt Snippet
 
 ```text
-Design this interface in the style of Confluent’s current data streaming platform website. Use coral-red (#FF5F46) for primary emphasis, clean neutral page structure, dark technical product frames, and concise modern typography. The result should feel energetic, cloud-native, and credible without becoming noisy or overdecorated.
+Design this interface in the style of Confluent’s current data streaming platform website. Use coral-red (#FF5F46) for primary emphasis, clean neutral surfaces, dark product showcase frames, and concise modern typography. The result should feel energetic, cloud-native, and technically credible without becoming noisy.
 ```
