@@ -1,42 +1,42 @@
 # Okta Design System
 
-> Identity-platform design with clear blue emphasis, accessible structure, and enterprise focus. Okta’s Odyssey system is built to create consistent, efficient, and accessible interfaces across products and sites.
+> Identity-platform design with clear blue actions, neutral enterprise surfaces, and accessibility-first structure. Okta’s Odyssey system aims for consistency, efficiency, and trust across authentication, admin, and security workflows.
 
 ---
 
 ## 1. Visual Theme & Atmosphere
 
 ### Overall Aesthetic
-Okta expresses **trust through clarity**. The interface is straightforward, methodical, and accessibility-first. It should feel secure and efficient without becoming cold or bureaucratic.
+Okta expresses **security through clarity**. The system feels modern but restrained, emphasizing readability, reliable interaction, and low-friction task completion. The UI should never distract from the seriousness of identity and access work.
 
 ### Mood & Feeling
-- **Trusted**: identity software must feel dependable and mature
-- **Clear**: hierarchy and actions should be unmistakable
-- **Accessible**: design decisions prioritize usability across contexts
-- **Systematic**: components and patterns should repeat predictably
-- **Modern**: the experience should feel current but restrained
+- **Trusted**: stable, credible, and predictable
+- **Accessible**: built with explicit usability goals
+- **Enterprise-clear**: practical hierarchy and strong layout logic
+- **Modern**: current, but not trend-driven
+- **Calm under complexity**: dense settings and flows still feel manageable
 
 ### Design Density
-**Medium density**. Okta surfaces often include settings, forms, and identity workflows, but Odyssey keeps them readable through strong structure and clear components.
+**Medium density**. Okta apps often contain forms, security settings, policies, and org configuration, but Odyssey keeps them readable with spacing discipline and repeatable panels.
 
 ### Visual Character
-- Signature Okta blue as the primary action color
-- Light neutral surfaces with dark readable text
-- Rounded but not playful controls
-- Strong emphasis on accessibility and consistency
-- Minimal ornamental treatment
+- Blue-led interactive color model
+- White and cool-neutral structural surfaces
+- Rounded but not playful component geometry
+- Clear validation and state treatment
+- Strong emphasis on consistency across flows
 
 ---
 
 ## 2. Color Palette & Roles
 
-### Core Colors
+### Core Interaction Colors
 
 | Token | Hex | Role |
 |-------|-----|------|
-| `--okta-blue` | `#1662DD` | Primary action and interactive emphasis |
-| `--okta-blue-hover` | `#0F4FBF` | Hover / active state |
-| `--okta-blue-soft` | `#EAF2FF` | Light highlighted surface |
+| `--okta-blue` | `#1662DD` | Primary action, active state, selected nav |
+| `--okta-blue-hover` | `#0F4FBF` | Hover / pressed state |
+| `--okta-blue-soft` | `#EAF2FF` | Selection backgrounds, soft callouts |
 
 ### Neutral Foundation
 
@@ -44,24 +44,25 @@ Okta expresses **trust through clarity**. The interface is straightforward, meth
 |-------|-----|------|
 | `--ink-strong` | `#0F172A` | Primary text |
 | `--ink-default` | `#334155` | Body text |
-| `--ink-muted` | `#64748B` | Secondary text |
-| `--surface-page` | `#F8FAFC` | Main page background |
-| `--surface-card` | `#FFFFFF` | Card and panel surface |
-| `--border-default` | `#DCE3EA` | Standard border |
+| `--ink-muted` | `#64748B` | Secondary text, metadata |
+| `--surface-page` | `#F8FAFC` | Page background |
+| `--surface-card` | `#FFFFFF` | Card and form surface |
+| `--border-default` | `#DCE3EA` | Default border |
+| `--border-strong` | `#C6D1DC` | Higher-emphasis border |
 
 ### Semantic Colors
 
 | Token | Hex | Role |
 |-------|-----|------|
-| `--success` | `#15803D` | Success / verified |
+| `--success` | `#15803D` | Success / verified state |
 | `--warning` | `#D97706` | Warning / caution |
 | `--danger` | `#DC2626` | Error / destructive |
-| `--info` | `#1662DD` | Informational state |
+| `--info` | `#1662DD` | Info and guidance |
 
 ### Color Usage Rules
-- Use blue for primary interaction and selected states.
-- Keep the base UI mostly neutral and high-contrast.
-- Use semantic colors only for actual state meaning.
+- Use blue consistently for primary interaction.
+- Use neutrals to hold most of the interface structure.
+- Semantic colors should only appear when state meaning is explicit.
 
 ---
 
@@ -70,7 +71,7 @@ Okta expresses **trust through clarity**. The interface is straightforward, meth
 ### Font Stack
 
 ```css
-/* Odyssey-style product sans */
+/* Odyssey-style UI typography */
 --font-sans: Inter, 'Helvetica Neue', Arial, sans-serif;
 --font-mono: 'SF Mono', 'Roboto Mono', Menlo, monospace;
 ```
@@ -79,21 +80,22 @@ Okta expresses **trust through clarity**. The interface is straightforward, meth
 
 | Element | Size | Weight | Line Height | Letter Spacing | Usage |
 |---------|------|--------|-------------|----------------|-------|
-| Page Title | 32px | 700 | 1.15 | -0.015em | App-level heading |
+| Page Title | 32px | 700 | 1.15 | -0.015em | App or page title |
 | Section Title | 24px | 600 | 1.2 | -0.01em | Section heading |
 | Card Title | 18px | 600 | 1.3 | 0 | Card / form title |
-| Body | 16px | 400 | 1.55 | 0 | Standard content |
-| Small Body | 14px | 400 | 1.5 | 0 | Dense UI copy |
-| Label | 14px | 600 | 1.3 | 0.01em | Buttons and form labels |
+| Body | 16px | 400 | 1.55 | 0 | Main content |
+| Small Body | 14px | 400 | 1.5 | 0 | Supporting copy |
+| Label | 14px | 600 | 1.3 | 0.01em | Buttons and fields |
 | Caption | 12px | 500 | 1.4 | 0.01em | Helper and metadata |
+| Code | 13px | 400 | 1.45 | 0 | IDs, tokens, technical values |
 
 ### Typography Philosophy
-Okta typography should feel **practical, confident, and readable**. It exists to support identity workflows, not to dominate them.
+Okta typography should feel **safe, practical, and easy to scan**. It supports sign-in, policy, and account-management flows where users need confidence and orientation more than style.
 
 ### Practical Rules
-- Keep headings short and functional.
-- Use labels that clearly describe the user action.
-- Preserve strong contrast and spacing in forms.
+- Keep labels short and explicit.
+- Use typographic hierarchy to make multi-step flows obvious.
+- Preserve generous line height in explanatory security content.
 
 ---
 
@@ -117,6 +119,11 @@ Okta typography should feel **practical, confident, and readable**. It exists to
   background: #0F4FBF;
   border-color: #0F4FBF;
 }
+
+.button-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(22, 98, 221, 0.14);
+}
 ```
 
 #### Secondary Button
@@ -127,6 +134,21 @@ Okta typography should feel **practical, confident, and readable**. It exists to
   min-height: 40px;
   padding: 0 16px;
   border: 1px solid #DCE3EA;
+  border-radius: 8px;
+}
+
+.button-secondary:hover {
+  background: #F8FAFC;
+}
+```
+
+#### Danger Button
+```css
+.button-danger {
+  background: #DC2626;
+  color: #FFFFFF;
+  min-height: 40px;
+  padding: 0 16px;
   border-radius: 8px;
 }
 ```
@@ -151,11 +173,31 @@ Okta typography should feel **practical, confident, and readable**. It exists to
   border-color: #1662DD;
   box-shadow: 0 0 0 3px rgba(22, 98, 221, 0.14);
 }
+
+.input::placeholder {
+  color: #64748B;
+}
+```
+
+#### Auth Input Group
+```css
+.input-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #0F172A;
+  font: 600 14px/1.3 Inter, sans-serif;
+}
+
+.input-help {
+  margin-top: 8px;
+  color: #64748B;
+  font: 400 12px/1.4 Inter, sans-serif;
+}
 ```
 
 ### Cards and Identity Panels
 
-#### Card
+#### Standard Card
 ```css
 .card {
   background: #FFFFFF;
@@ -185,15 +227,15 @@ Okta typography should feel **practical, confident, and readable**. It exists to
 |-------|-------|-------|
 | `--space-2` | `8px` | Tight spacing |
 | `--space-4` | `16px` | Core spacing |
-| `--space-5` | `24px` | Panel spacing |
+| `--space-5` | `24px` | Card spacing |
 | `--space-6` | `32px` | Section spacing |
 | `--space-8` | `48px` | Major grouping |
 
 ### Layout Rules
-- Keep authentication and settings flows direct and low-friction.
-- Group account, org, and security content into clear panels.
-- Preserve a visible primary action without crowding the interface.
-- Favor repeatable form and card layouts over bespoke compositions.
+- Group identity tasks into clear panels and progressive steps.
+- Keep the primary action visually obvious at every stage.
+- Use repeated settings and policy layouts to reduce learning cost.
+- Preserve stable left-aligned flow in admin-heavy screens.
 
 ---
 
@@ -203,10 +245,10 @@ Okta typography should feel **practical, confident, and readable**. It exists to
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Base | light neutral page background | Main canvas |
-| Card | white bounded panel | Default grouping |
-| Auth panel | elevated white surface | Focused sign-in or setup flow |
-| Overlay | stronger elevated surface | Dialog or drawer |
+| Base | light neutral page background | Main app canvas |
+| Card | white bounded surface | Grouped content |
+| Auth Panel | elevated white panel | Login, setup, onboarding |
+| Overlay | stronger elevated panel | Dialog, confirmation, drawer |
 
 ### Shadow System
 
@@ -221,9 +263,9 @@ Okta typography should feel **practical, confident, and readable**. It exists to
 ```
 
 ### Depth Rules
-- Use subtle depth to reinforce workflow focus.
-- Keep cards restrained and clean.
-- Let dialogs and auth flows stand out without becoming glossy.
+- Use subtle depth to guide focus, not to decorate.
+- Keep cards quiet and dialogs clearly elevated.
+- Never let shadows compete with important validation or action states.
 
 ---
 
@@ -231,42 +273,41 @@ Okta typography should feel **practical, confident, and readable**. It exists to
 
 ### Do
 - Use blue consistently for primary interaction.
-- Keep identity flows clear and accessible.
-- Reuse Odyssey patterns wherever possible.
-- Favor clarity and trust over branding theatrics.
-- Make form validation states obvious.
+- Keep security and identity flows explicit and reassuring.
+- Reuse Odyssey patterns across similar screens.
+- Make validation and state changes easy to understand.
 
 ### Don't
-- Overuse accent colors.
-- Hide important actions in dense settings layouts.
-- Let auth UI feel playful or experimental.
-- Break consistency between similar workflow screens.
+- Overdecorate auth or admin flows.
+- Split similar settings screens into unrelated visual patterns.
+- Use semantic colors casually.
+- Hide the primary action inside dense control clusters.
 
 ---
 
 ## 8. Responsive Behavior
 
 ### Responsive Rules
-- Stack account and security panels early on smaller screens.
-- Keep buttons and form controls touch-friendly.
-- Preserve a simple single-column auth flow on mobile.
-- Keep validation and helper text visible without crowding.
+- Collapse multi-panel settings layouts into simple vertical stacks.
+- Keep auth flows single-column and touch-friendly.
+- Preserve helper and validation text near the input it explains.
+- Maintain clear CTA hierarchy even when buttons wrap.
 
 ### Mobile Character
-Okta mobile interfaces should still feel safe and direct. The experience should simplify without losing its strong action hierarchy or accessibility.
+Okta mobile should still feel secure, calm, and efficient. The UI may simplify, but trust and action clarity should remain the dominant experience.
 
 ---
 
 ## 9. Agent Prompt Guide
 
 ### Quick Reference
-- **Mood**: trusted, clear, accessible
+- **Mood**: trusted, accessible, enterprise-clear
 - **Primary accent**: Okta blue `#1662DD`
-- **Layout**: panel-driven identity workflows
-- **Components**: rounded enterprise controls, clear auth panels, restrained cards
+- **Layout**: card-driven identity and security workflows
+- **Components**: rounded enterprise controls, auth panels, high-clarity validation
 
 ### Prompt Snippet
 
 ```text
-Design this interface in the style of Okta’s Odyssey design system. Use a bright blue primary action color (#1662DD), highly readable neutral surfaces, accessible form patterns, and panel-based identity workflows. The result should feel secure, consistent, and efficient rather than flashy or overly decorative.
+Design this interface in the style of Okta’s Odyssey design system. Use Okta blue (#1662DD) for primary interaction, neutral enterprise surfaces, accessible form and validation patterns, and clear card-based identity workflows. The result should feel secure, modern, and highly consistent rather than decorative.
 ```
