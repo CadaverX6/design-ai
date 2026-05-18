@@ -1,65 +1,64 @@
 # HashiCorp Design System
 
-> Infrastructure-cloud branding with elegant black-and-white fundamentals, custom typography, and portfolio gradients derived from product colors. HashiCorp’s current brand feels refined, technical, and visually confident without losing enterprise clarity.
+> Infrastructure-cloud branding with elegant black-and-white fundamentals, bespoke typography, and portfolio gradients derived from product colors. HashiCorp’s current brand feels technical, premium, and visually confident without losing clarity.
 
 ---
 
 ## 1. Visual Theme & Atmosphere
 
 ### Overall Aesthetic
-HashiCorp expresses **infrastructure sophistication**. The brand is minimal at its core, using black and white as the foundation, then layering product-derived gradients and precise typography to create high-end technical storytelling.
+HashiCorp expresses **infrastructure sophistication**. The system starts from black and white, then layers in carefully derived gradients and product color references. It should feel refined, technical, and composed.
 
 ### Mood & Feeling
-- **Elegant**: the brand should feel premium and composed
-- **Technical**: infrastructure and security remain central
-- **Confident**: the visuals should feel decisive, not busy
-- **Modern**: gradients and typography give it current energy
-- **Systematic**: product colors are used with restraint and intention
+- **Elegant**: the brand should feel premium and deliberate
+- **Technical**: infrastructure credibility is central
+- **Modern**: gradients and type give the system present-day energy
+- **Confident**: layouts should feel decisive, not crowded
+- **Systematic**: product-derived color should be used with intent
 
 ### Design Density
-**Medium density**. HashiCorp pages often explain portfolio-level ideas, but the system gives those ideas strong visual framing and breathing room.
+**Medium density**. HashiCorp pages explain complex portfolio and platform ideas, but the layouts keep those ideas spacious and digestible.
 
 ### Visual Character
-- Black and white as the fundamental palette
-- Brand gradients used for headlines, strokes, glows, and patterns
-- Bespoke type for titles paired with simpler body text
-- Clean product storytelling modules
-- High contrast and strong spacing
+- Black and white as foundational brand colors
+- Product-based gradients for highlight moments
+- Strong typography-driven hierarchy
+- Spacious modular storytelling
+- Minimal chrome and sharp contrast
 
 ---
 
 ## 2. Color Palette & Roles
 
-### Spot Colors
+### Foundational Colors
 
 | Token | Hex | Role |
 |-------|-----|------|
-| `--hashi-black` | `#000000` | Primary contrast and text |
-| `--hashi-white` | `#FFFFFF` | Layout foundation |
+| `--hashi-black` | `#000000` | Primary text and contrast |
+| `--hashi-white` | `#FFFFFF` | Layout base and negative space |
 
-### Brand Gradient Support
+### Product-Derived Brand Support
 
 | Token | Hex | Role |
 |-------|-----|------|
-| `--terraform-purple` | `#844FBA` | Product-derived portfolio reference |
-| `--vault-red` | `#E4572E` | Security accent reference |
+| `--terraform-purple` | `#844FBA` | Portfolio highlight reference |
+| `--vault-red` | `#E4572E` | Security/product accent reference |
 | `--consul-blue` | `#1F6FEB` | Network/infrastructure accent reference |
-| `--nomad-green` | `#6CBF84` | Workload / orchestration accent reference |
-| `--brand-gradient` | `linear-gradient(90deg, #844FBA 0%, #1F6FEB 50%, #6CBF84 100%)` | Brand-agnostic headline / glow treatment |
+| `--nomad-green` | `#6CBF84` | Orchestration/product accent reference |
+| `--brand-gradient` | `linear-gradient(90deg, #844FBA 0%, #1F6FEB 50%, #6CBF84 100%)` | Headline and spotlight treatment |
 
-### Neutral Support
+### Supporting Neutrals
 
 | Token | Hex | Role |
 |-------|-----|------|
 | `--gray-100` | `#F5F5F5` | Light section fill |
 | `--gray-400` | `#7A7A7A` | Secondary text |
-| `--gray-700` | `#333333` | Dense secondary text |
+| `--gray-700` | `#333333` | Dense secondary foreground |
 
 ### Color Usage Rules
-- White is generally the foundation.
-- Black is used for intentional contrast.
-- Product colors and gradients highlight featured content and actions, not every surface.
-- Keep the palette refined and simplified even when using multi-color gradients.
+- Start from black and white for most layout decisions.
+- Use gradients and product colors as emphasis, not background noise.
+- Keep the interface refined even when multi-color moments appear.
 
 ---
 
@@ -78,21 +77,22 @@ HashiCorp expresses **infrastructure sophistication**. The brand is minimal at i
 
 | Element | Size | Weight | Line Height | Letter Spacing | Usage |
 |---------|------|--------|-------------|----------------|-------|
-| Hero Display | 56px | 600 | 1.04 | -0.02em | Brand and portfolio hero |
+| Hero Display | 56px | 600 | 1.04 | -0.02em | Hero and portfolio statement |
 | Page Title | 40px | 600 | 1.1 | -0.015em | Major title |
 | Section Title | 28px | 600 | 1.15 | -0.01em | Section heading |
 | Card Title | 20px | 600 | 1.25 | 0 | Product or feature card |
 | Body | 16px | 400 | 1.6 | 0 | Main content |
-| Small Body | 14px | 400 | 1.5 | 0 | Secondary content |
-| Label | 14px | 600 | 1.3 | 0.01em | Buttons and controls |
+| Small Body | 14px | 400 | 1.5 | 0 | Supporting text |
+| Label | 14px | 600 | 1.3 | 0.01em | Buttons and labels |
+| Code | 13px | 400 | 1.5 | 0 | Technical or CLI values |
 
 ### Typography Philosophy
-HashiCorp Sans adds **warmth, sparkle, and movement** to titles, while Metro Sans keeps body content straightforward and durable.
+HashiCorp Sans adds **warmth and movement** to headings while Metro Sans keeps body content stable and practical. The pairing should feel premium, not ornamental.
 
 ### Practical Rules
-- Use sentence case for headlines and body copy.
-- Reserve HashiCorp Sans for headlines, subheads, and titles.
-- Use Metro Sans for body copy and long descriptions.
+- Use HashiCorp Sans on titles and subheads.
+- Use Metro Sans for body copy and functional UI text.
+- Keep sentence case throughout.
 
 ---
 
@@ -153,7 +153,7 @@ HashiCorp Sans adds **warmth, sparkle, and movement** to titles, while Metro San
 }
 ```
 
-### Cards and Portfolio Modules
+### Cards and Spotlight Modules
 
 #### Card
 ```css
@@ -187,13 +187,13 @@ HashiCorp Sans adds **warmth, sparkle, and movement** to titles, while Metro San
 | `--space-5` | `24px` | Card spacing |
 | `--space-6` | `32px` | Section spacing |
 | `--space-8` | `48px` | Major grouping |
-| `--space-10` | `64px` | Large layout rhythm |
+| `--space-10` | `64px` | Large brand rhythm |
 
 ### Layout Rules
-- Use white as the base of most layouts.
-- Apply gradients as focused brand moments.
-- Keep infrastructure and security concepts framed in clean modular sections.
-- Let headlines and product stories breathe.
+- Use white as the dominant layout field.
+- Reserve gradients for spotlights and highlight moments.
+- Break infrastructure narratives into clear modules and product paths.
+- Let typography and spacing do most of the brand work.
 
 ---
 
@@ -203,10 +203,10 @@ HashiCorp Sans adds **warmth, sparkle, and movement** to titles, while Metro San
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| White base | clean layout foundation | Main content field |
-| Light card | white with subtle border | Product or feature grouping |
-| Gradient panel | refined branded surface | Hero or spotlight module |
-| Overlay | elevated clean surface | Modal or high-focus flow |
+| White base | clean page field | Main content structure |
+| Card | light bounded module | Product and feature grouping |
+| Gradient panel | branded spotlight surface | Hero or portfolio moment |
+| Overlay | elevated clean surface | Dialog or focused interaction |
 
 ### Shadow System
 
@@ -221,39 +221,39 @@ HashiCorp Sans adds **warmth, sparkle, and movement** to titles, while Metro San
 ```
 
 ### Depth Rules
-- Keep depth elegant and understated.
-- Let contrast and gradient treatment drive visual interest.
-- Avoid over-layering within already strong brand sections.
+- Let contrast and gradient treatment drive most hierarchy.
+- Keep depth subtle and refined.
+- Avoid stacking too many branded effects in one view.
 
 ---
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Start with black and white.
-- Use gradients for featured content and actions.
-- Use HashiCorp Sans for titles and Metro Sans for body copy.
-- Keep enterprise messaging clean and premium.
-- Preserve strong white space and contrast.
+- Start with black and white as the baseline.
+- Use product-derived gradients as special moments.
+- Apply HashiCorp Sans to titles and Metro Sans to body copy.
+- Preserve spacious, premium composition.
+- Keep technical messaging sharp and modular.
 
 ### Don't
-- Use product colors as a general-purpose UI rainbow.
-- Crowd a section with too many branded effects.
-- Dilute the brand with generic SaaS styling.
-- Let gradients replace hierarchy or structure.
+- Turn every surface into a gradient.
+- Use product colors as random UI accents.
+- Crowd a page with too many visual treatments.
+- Drift into generic SaaS blue-on-white styling.
 
 ---
 
 ## 8. Responsive Behavior
 
 ### Responsive Rules
-- Keep headlines and gradients impactful on smaller screens by simplifying compositions.
-- Stack modular product content cleanly.
-- Preserve CTA clarity and spacing in portfolio sections.
-- Maintain strong reading measures even in technical explainer blocks.
+- Preserve headline impact with simplified stacked layouts.
+- Keep modular sections distinct on smaller screens.
+- Maintain clean CTA spacing in portfolio and product bands.
+- Let gradients simplify rather than dominate on mobile.
 
 ### Mobile Character
-HashiCorp mobile should still feel elegant and technically assured. The contrast and gradient moments can simplify, but the refined brand tone should remain obvious.
+HashiCorp mobile should still feel elegant and technically assured. The refined contrast and selective gradient treatment should remain intact even when layouts compress.
 
 ---
 
@@ -261,13 +261,13 @@ HashiCorp mobile should still feel elegant and technically assured. The contrast
 
 ### Quick Reference
 - **Mood**: elegant, technical, premium
-- **Core palette**: black, white, refined product-derived gradients
+- **Core palette**: black, white, selective product-derived gradients
 - **Typography**: HashiCorp Sans + Metro Sans
-- **Layout**: clean white base with modular spotlight sections
-- **Components**: pill buttons, clean cards, gradient highlight panels
+- **Layout**: modular white-base storytelling with spotlight panels
+- **Components**: pill buttons, clean cards, gradient moments
 
 ### Prompt Snippet
 
 ```text
-Design this interface in the style of HashiCorp’s current brand system. Use black and white as the base, refine the visual hierarchy with product-derived gradients, apply HashiCorp Sans to titles and Metro Sans to body copy, and keep the layout spacious and modular. The result should feel elegant, technical, and infrastructure-grade rather than generic SaaS.
+Design this interface in the style of HashiCorp’s current brand system. Use black and white as the foundation, reserve product-derived gradients for featured moments, apply HashiCorp Sans to titles and Metro Sans to body copy, and keep the overall composition spacious and premium. The result should feel elegant, technical, and infrastructure-grade.
 ```
