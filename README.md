@@ -13,7 +13,7 @@ If you are looking for:
 
 this repo is built for exactly that workflow.
 
-![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-116-10b981?style=classic)
+![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-150-10b981?style=classic)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
@@ -257,6 +257,50 @@ If you want high-signal examples first, start with:
 - [Samsung](design-md/samsung/DESIGN.md)
 - [Sony](design-md/sony/DESIGN.md)
 - [Xiaomi](design-md/xiaomi/DESIGN.md)
+
+### Enterprise, Cloud & Infrastructure
+
+- [Arm](design-md/arm/DESIGN.md)
+- [Cisco](design-md/cisco/DESIGN.md)
+- [Confluent](design-md/confluent/DESIGN.md)
+- [CrowdStrike](design-md/crowdstrike/DESIGN.md)
+- [Databricks](design-md/databricks/DESIGN.md)
+- [Elastic](design-md/elastic/DESIGN.md)
+- [Grafana](design-md/grafana/DESIGN.md)
+- [HashiCorp](design-md/hashicorp/DESIGN.md)
+- [IBM](design-md/ibm/DESIGN.md)
+- [MongoDB](design-md/mongodb/DESIGN.md)
+- [Nokia](design-md/nokia/DESIGN.md)
+- [Okta](design-md/okta/DESIGN.md)
+- [Palantir](design-md/palantir/DESIGN.md)
+- [Red Hat](design-md/redhat/DESIGN.md)
+- [SAP](design-md/sap/DESIGN.md)
+- [ServiceNow](design-md/servicenow/DESIGN.md)
+- [Snowflake](design-md/snowflake/DESIGN.md)
+- [Supabase](design-md/supabase/DESIGN.md)
+- [VMware](design-md/vmware/DESIGN.md)
+
+### Business, Operations & Workplace Software
+
+- [ADP](design-md/adp/DESIGN.md)
+- [Intuit](design-md/intuit/DESIGN.md)
+- [Qualtrics](design-md/qualtrics/DESIGN.md)
+- [Workday](design-md/workday/DESIGN.md)
+- [Xero](design-md/xero/DESIGN.md)
+- [Zendesk](design-md/zendesk/DESIGN.md)
+
+### More Brands & Platforms
+
+- [Autodesk](design-md/autodesk/DESIGN.md)
+- [Bloomberg](design-md/bloomberg/DESIGN.md)
+- [Canva](design-md/canva/DESIGN.md)
+- [Mozilla](design-md/mozilla/DESIGN.md)
+- [Pinterest](design-md/pinterest/DESIGN.md)
+- [Squarespace](design-md/squarespace/DESIGN.md)
+- [Tesla](design-md/tesla/DESIGN.md)
+- [Twilio](design-md/twilio/DESIGN.md)
+- [Unity](design-md/unity/DESIGN.md)
+- [Wix](design-md/wix/DESIGN.md)
 
 ---
 
