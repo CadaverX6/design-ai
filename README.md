@@ -13,7 +13,7 @@ If you are looking for:
 
 this repo is built for exactly that workflow.
 
-![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-150-10b981?style=classic)
+![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-156-10b981?style=classic)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
@@ -178,6 +178,7 @@ If you want high-signal examples first, start with:
 - [Box](design-md/box/DESIGN.md)
 - [ClickUp](design-md/clickup/DESIGN.md)
 - [Cloudflare](design-md/cloudflare/DESIGN.md)
+- [Airtable](design-md/airtable/DESIGN.md)
 - [Datadog](design-md/datadog/DESIGN.md)
 - [DigitalOcean](design-md/digitalocean/DESIGN.md)
 - [Docker](design-md/docker/DESIGN.md)
@@ -196,6 +197,7 @@ If you want high-signal examples first, start with:
 - [Netlify](design-md/netlify/DESIGN.md)
 - [Notion](design-md/notion/DESIGN.md)
 - [Oracle](design-md/oracle/DESIGN.md)
+- [Postman](design-md/postman/DESIGN.md)
 - [Robinhood](design-md/robinhood/DESIGN.md)
 - [Salesforce](design-md/salesforce/DESIGN.md)
 - [Vercel](design-md/vercel/DESIGN.md)
@@ -220,6 +222,7 @@ If you want high-signal examples first, start with:
 - [Stripe](design-md/stripe/DESIGN.md)
 - [PayPal](design-md/paypal/DESIGN.md)
 - [Coinbase](design-md/coinbase/DESIGN.md)
+- [Plaid](design-md/plaid/DESIGN.md)
 - [Revolut](design-md/revolut/DESIGN.md)
 - [MetaMask](design-md/metamask/DESIGN.md)
 - [SoFi](design-md/sofi/DESIGN.md)
@@ -266,13 +269,16 @@ If you want high-signal examples first, start with:
 - [CrowdStrike](design-md/crowdstrike/DESIGN.md)
 - [Databricks](design-md/databricks/DESIGN.md)
 - [Elastic](design-md/elastic/DESIGN.md)
+- [GoDaddy](design-md/godaddy/DESIGN.md)
 - [Grafana](design-md/grafana/DESIGN.md)
 - [HashiCorp](design-md/hashicorp/DESIGN.md)
 - [IBM](design-md/ibm/DESIGN.md)
+- [Nutanix](design-md/nutanix/DESIGN.md)
 - [MongoDB](design-md/mongodb/DESIGN.md)
 - [Nokia](design-md/nokia/DESIGN.md)
 - [Okta](design-md/okta/DESIGN.md)
 - [Palantir](design-md/palantir/DESIGN.md)
+- [Palo Alto Networks](design-md/paloaltonetworks/DESIGN.md)
 - [Red Hat](design-md/redhat/DESIGN.md)
 - [SAP](design-md/sap/DESIGN.md)
 - [ServiceNow](design-md/servicenow/DESIGN.md)
