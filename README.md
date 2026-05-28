@@ -13,7 +13,7 @@ If you are looking for:
 
 this repo is built for exactly that workflow.
 
-![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-156-10b981?style=classic)
+![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-168-10b981?style=classic)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
@@ -174,6 +174,7 @@ If you want high-signal examples first, start with:
 ### Developer Tools, Productivity & SaaS
 
 - [1Password](design-md/1password/DESIGN.md)
+- [Algolia](design-md/algolia/DESIGN.md)
 - [Atlassian](design-md/atlassian/DESIGN.md)
 - [Box](design-md/box/DESIGN.md)
 - [ClickUp](design-md/clickup/DESIGN.md)
@@ -198,8 +199,10 @@ If you want high-signal examples first, start with:
 - [Notion](design-md/notion/DESIGN.md)
 - [Oracle](design-md/oracle/DESIGN.md)
 - [Postman](design-md/postman/DESIGN.md)
+- [Replit](design-md/replit/DESIGN.md)
 - [Robinhood](design-md/robinhood/DESIGN.md)
 - [Salesforce](design-md/salesforce/DESIGN.md)
+- [Sentry](design-md/sentry/DESIGN.md)
 - [Vercel](design-md/vercel/DESIGN.md)
 - [Slack](design-md/slack/DESIGN.md)
 - [Dropbox](design-md/dropbox/DESIGN.md)
@@ -233,6 +236,13 @@ If you want high-signal examples first, start with:
 
 - [OpenAI](design-md/openai/DESIGN.md)
 - [Anthropic](design-md/anthropic/DESIGN.md)
+- [Character.AI](design-md/characterai/DESIGN.md)
+- [Cohere](design-md/cohere/DESIGN.md)
+- [ElevenLabs](design-md/elevenlabs/DESIGN.md)
+- [Hugging Face](design-md/huggingface/DESIGN.md)
+- [Mistral](design-md/mistral/DESIGN.md)
+- [Perplexity](design-md/perplexity/DESIGN.md)
+- [Runway](design-md/runway/DESIGN.md)
 
 ### Education & Learning
 
@@ -265,6 +275,7 @@ If you want high-signal examples first, start with:
 
 - [Arm](design-md/arm/DESIGN.md)
 - [Cisco](design-md/cisco/DESIGN.md)
+- [Cloudinary](design-md/cloudinary/DESIGN.md)
 - [Confluent](design-md/confluent/DESIGN.md)
 - [CrowdStrike](design-md/crowdstrike/DESIGN.md)
 - [Databricks](design-md/databricks/DESIGN.md)
@@ -279,6 +290,7 @@ If you want high-signal examples first, start with:
 - [Okta](design-md/okta/DESIGN.md)
 - [Palantir](design-md/palantir/DESIGN.md)
 - [Palo Alto Networks](design-md/paloaltonetworks/DESIGN.md)
+- [Redis](design-md/redis/DESIGN.md)
 - [Red Hat](design-md/redhat/DESIGN.md)
 - [SAP](design-md/sap/DESIGN.md)
 - [ServiceNow](design-md/servicenow/DESIGN.md)
