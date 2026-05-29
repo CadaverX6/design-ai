@@ -13,7 +13,7 @@ If you are looking for:
 
 this repo is built for exactly that workflow.
 
-![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-168-10b981?style=classic)
+![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-170-10b981?style=classic)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
@@ -124,6 +124,7 @@ If you want high-signal examples first, start with:
 - [Discord](design-md/discord/DESIGN.md)
 - [LinkedIn](design-md/linkedin/DESIGN.md)
 - [Snapchat](design-md/snapchat/DESIGN.md)
+- [Telegram](design-md/telegram/DESIGN.md)
 - [Threads](design-md/threads/DESIGN.md)
 - [Mastodon](design-md/mastodon/DESIGN.md)
 
@@ -248,6 +249,7 @@ If you want high-signal examples first, start with:
 
 - [Coursera](design-md/coursera/DESIGN.md)
 - [Duolingo](design-md/duolingo/DESIGN.md)
+- [Kaggle](design-md/kaggle/DESIGN.md)
 - [Udemy](design-md/udemy/DESIGN.md)
 
 ### Consumer Technology
