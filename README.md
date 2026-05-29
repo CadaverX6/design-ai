@@ -13,7 +13,7 @@ If you are looking for:
 
 this repo is built for exactly that workflow.
 
-![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-170-10b981?style=classic)
+![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-172-10b981?style=classic)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
@@ -123,6 +123,7 @@ If you want high-signal examples first, start with:
 - [Reddit](design-md/reddit/DESIGN.md)
 - [Discord](design-md/discord/DESIGN.md)
 - [LinkedIn](design-md/linkedin/DESIGN.md)
+- [Meta](design-md/meta/DESIGN.md)
 - [Snapchat](design-md/snapchat/DESIGN.md)
 - [Telegram](design-md/telegram/DESIGN.md)
 - [Threads](design-md/threads/DESIGN.md)
@@ -150,6 +151,7 @@ If you want high-signal examples first, start with:
 - [Walmart](design-md/walmart/DESIGN.md)
 - [Instacart](design-md/instacart/DESIGN.md)
 - [DoorDash](design-md/doordash/DESIGN.md)
+- [Lyft](design-md/lyft/DESIGN.md)
 - [Starbucks](design-md/starbucks/DESIGN.md)
 - [Uber](design-md/uber/DESIGN.md)
 - [Airbnb](design-md/airbnb/DESIGN.md)
