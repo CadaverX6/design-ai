@@ -13,7 +13,7 @@ If you are looking for:
 
 this repo is built for exactly that workflow.
 
-![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-172-10b981?style=classic)
+![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-174-10b981?style=classic)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
@@ -305,8 +305,10 @@ If you want high-signal examples first, start with:
 ### Business, Operations & Workplace Software
 
 - [ADP](design-md/adp/DESIGN.md)
+- [Calendly](design-md/calendly/DESIGN.md)
 - [Intuit](design-md/intuit/DESIGN.md)
 - [Qualtrics](design-md/qualtrics/DESIGN.md)
+- [Typeform](design-md/typeform/DESIGN.md)
 - [Workday](design-md/workday/DESIGN.md)
 - [Xero](design-md/xero/DESIGN.md)
 - [Zendesk](design-md/zendesk/DESIGN.md)
