@@ -13,7 +13,7 @@ If you are looking for:
 
 this repo is built for exactly that workflow.
 
-![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-174-10b981?style=classic)
+![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-178-10b981?style=classic)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
@@ -260,6 +260,7 @@ If you want high-signal examples first, start with:
 - [Acer](design-md/acer/DESIGN.md)
 - [Apple](design-md/apple/DESIGN.md)
 - [ASUS](design-md/asus/DESIGN.md)
+- [Brave](design-md/brave/DESIGN.md)
 - [Dell](design-md/dell/DESIGN.md)
 - [Google](design-md/google/DESIGN.md)
 - [HP](design-md/hp/DESIGN.md)
@@ -269,11 +270,14 @@ If you want high-signal examples first, start with:
 - [Lenovo](design-md/lenovo/DESIGN.md)
 - [NVIDIA](design-md/nvidia/DESIGN.md)
 - [OnePlus](design-md/oneplus/DESIGN.md)
+- [Opera](design-md/opera/DESIGN.md)
+- [Proton](design-md/proton/DESIGN.md)
 - [Qualcomm](design-md/qualcomm/DESIGN.md)
 - [realme](design-md/realme/DESIGN.md)
 - [Samsung](design-md/samsung/DESIGN.md)
 - [Sony](design-md/sony/DESIGN.md)
 - [Xiaomi](design-md/xiaomi/DESIGN.md)
+- [Zen Browser](design-md/zenbrowser/DESIGN.md)
 
 ### Enterprise, Cloud & Infrastructure
 
