@@ -13,7 +13,7 @@ If you are looking for:
 
 this repo is built for exactly that workflow.
 
-![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-178-10b981?style=classic)
+![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-183-10b981?style=classic)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
@@ -181,6 +181,7 @@ If you want high-signal examples first, start with:
 - [Atlassian](design-md/atlassian/DESIGN.md)
 - [Box](design-md/box/DESIGN.md)
 - [ClickUp](design-md/clickup/DESIGN.md)
+- [Clerk](design-md/clerk/DESIGN.md)
 - [Cloudflare](design-md/cloudflare/DESIGN.md)
 - [Airtable](design-md/airtable/DESIGN.md)
 - [Datadog](design-md/datadog/DESIGN.md)
@@ -202,6 +203,7 @@ If you want high-signal examples first, start with:
 - [Notion](design-md/notion/DESIGN.md)
 - [Oracle](design-md/oracle/DESIGN.md)
 - [Postman](design-md/postman/DESIGN.md)
+- [Railway](design-md/railway/DESIGN.md)
 - [Replit](design-md/replit/DESIGN.md)
 - [Robinhood](design-md/robinhood/DESIGN.md)
 - [Salesforce](design-md/salesforce/DESIGN.md)
@@ -212,6 +214,7 @@ If you want high-signal examples first, start with:
 - [Mailchimp](design-md/mailchimp/DESIGN.md)
 - [Asana](design-md/asana/DESIGN.md)
 - [Square](design-md/square/DESIGN.md)
+- [Tailscale](design-md/tailscale/DESIGN.md)
 - [Trello](design-md/trello/DESIGN.md)
 - [Webflow](design-md/webflow/DESIGN.md)
 - [Zapier](design-md/zapier/DESIGN.md)
@@ -294,10 +297,12 @@ If you want high-signal examples first, start with:
 - [IBM](design-md/ibm/DESIGN.md)
 - [Nutanix](design-md/nutanix/DESIGN.md)
 - [MongoDB](design-md/mongodb/DESIGN.md)
+- [Neon](design-md/neon/DESIGN.md)
 - [Nokia](design-md/nokia/DESIGN.md)
 - [Okta](design-md/okta/DESIGN.md)
 - [Palantir](design-md/palantir/DESIGN.md)
 - [Palo Alto Networks](design-md/paloaltonetworks/DESIGN.md)
+- [PlanetScale](design-md/planetscale/DESIGN.md)
 - [Redis](design-md/redis/DESIGN.md)
 - [Red Hat](design-md/redhat/DESIGN.md)
 - [SAP](design-md/sap/DESIGN.md)
