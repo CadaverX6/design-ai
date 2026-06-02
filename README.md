@@ -13,7 +13,7 @@ If you are looking for:
 
 this repo is built for exactly that workflow.
 
-![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-183-10b981?style=classic)
+![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-209-10b981?style=classic)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
@@ -120,6 +120,7 @@ If you want high-signal examples first, start with:
 
 - [X](design-md/x/DESIGN.md)
 - [TikTok](design-md/tiktok/DESIGN.md)
+- [ByteDance](design-md/bytedance/DESIGN.md)
 - [Reddit](design-md/reddit/DESIGN.md)
 - [Discord](design-md/discord/DESIGN.md)
 - [LinkedIn](design-md/linkedin/DESIGN.md)
@@ -179,14 +180,21 @@ If you want high-signal examples first, start with:
 - [1Password](design-md/1password/DESIGN.md)
 - [Algolia](design-md/algolia/DESIGN.md)
 - [Atlassian](design-md/atlassian/DESIGN.md)
+- [Bitwarden](design-md/bitwarden/DESIGN.md)
 - [Box](design-md/box/DESIGN.md)
+- [Buffer](design-md/buffer/DESIGN.md)
 - [ClickUp](design-md/clickup/DESIGN.md)
 - [Clerk](design-md/clerk/DESIGN.md)
 - [Cloudflare](design-md/cloudflare/DESIGN.md)
+- [Coda](design-md/coda/DESIGN.md)
+- [Contentful](design-md/contentful/DESIGN.md)
 - [Airtable](design-md/airtable/DESIGN.md)
 - [Datadog](design-md/datadog/DESIGN.md)
+- [Deno](design-md/deno/DESIGN.md)
 - [DigitalOcean](design-md/digitalocean/DESIGN.md)
 - [Docker](design-md/docker/DESIGN.md)
+- [Doppler](design-md/doppler/DESIGN.md)
+- [Fastly](design-md/fastly/DESIGN.md)
 - [Figma](design-md/figma/DESIGN.md)
 - [Framer](design-md/framer/DESIGN.md)
 - [GitHub](design-md/github/DESIGN.md)
@@ -194,6 +202,7 @@ If you want high-signal examples first, start with:
 - [Grammarly](design-md/grammarly/DESIGN.md)
 - [HubSpot](design-md/hubspot/DESIGN.md)
 - [Intercom](design-md/intercom/DESIGN.md)
+- [LaunchDarkly](design-md/launchdarkly/DESIGN.md)
 - [Linear](design-md/linear/DESIGN.md)
 - [Loom](design-md/loom/DESIGN.md)
 - [Miro](design-md/miro/DESIGN.md)
@@ -202,11 +211,14 @@ If you want high-signal examples first, start with:
 - [Netlify](design-md/netlify/DESIGN.md)
 - [Notion](design-md/notion/DESIGN.md)
 - [Oracle](design-md/oracle/DESIGN.md)
+- [PagerDuty](design-md/pagerduty/DESIGN.md)
 - [Postman](design-md/postman/DESIGN.md)
 - [Railway](design-md/railway/DESIGN.md)
 - [Replit](design-md/replit/DESIGN.md)
+- [Retool](design-md/retool/DESIGN.md)
 - [Robinhood](design-md/robinhood/DESIGN.md)
 - [Salesforce](design-md/salesforce/DESIGN.md)
+- [Segment](design-md/segment/DESIGN.md)
 - [Sentry](design-md/sentry/DESIGN.md)
 - [Vercel](design-md/vercel/DESIGN.md)
 - [Slack](design-md/slack/DESIGN.md)
@@ -224,7 +236,11 @@ If you want high-signal examples first, start with:
 ### Finance, Payments & Crypto
 
 - [Affirm](design-md/affirm/DESIGN.md)
+- [Betterment](design-md/betterment/DESIGN.md)
 - [Brex](design-md/brex/DESIGN.md)
+- [Capital One](design-md/capitalone/DESIGN.md)
+- [Carta](design-md/carta/DESIGN.md)
+- [Chime](design-md/chime/DESIGN.md)
 - [Klarna](design-md/klarna/DESIGN.md)
 - [Monzo](design-md/monzo/DESIGN.md)
 - [N26](design-md/n26/DESIGN.md)
@@ -242,8 +258,10 @@ If you want high-signal examples first, start with:
 
 - [OpenAI](design-md/openai/DESIGN.md)
 - [Anthropic](design-md/anthropic/DESIGN.md)
+- [AssemblyAI](design-md/assemblyai/DESIGN.md)
 - [Character.AI](design-md/characterai/DESIGN.md)
 - [Cohere](design-md/cohere/DESIGN.md)
+- [DeepMind](design-md/deepmind/DESIGN.md)
 - [ElevenLabs](design-md/elevenlabs/DESIGN.md)
 - [Hugging Face](design-md/huggingface/DESIGN.md)
 - [Mistral](design-md/mistral/DESIGN.md)
@@ -284,12 +302,14 @@ If you want high-signal examples first, start with:
 
 ### Enterprise, Cloud & Infrastructure
 
+- [Aiven](design-md/aiven/DESIGN.md)
 - [Arm](design-md/arm/DESIGN.md)
 - [Cisco](design-md/cisco/DESIGN.md)
 - [Cloudinary](design-md/cloudinary/DESIGN.md)
 - [Confluent](design-md/confluent/DESIGN.md)
 - [CrowdStrike](design-md/crowdstrike/DESIGN.md)
 - [Databricks](design-md/databricks/DESIGN.md)
+- [Drata](design-md/drata/DESIGN.md)
 - [Elastic](design-md/elastic/DESIGN.md)
 - [GoDaddy](design-md/godaddy/DESIGN.md)
 - [Grafana](design-md/grafana/DESIGN.md)
@@ -314,9 +334,15 @@ If you want high-signal examples first, start with:
 ### Business, Operations & Workplace Software
 
 - [ADP](design-md/adp/DESIGN.md)
+- [Amplitude](design-md/amplitude/DESIGN.md)
+- [AppLovin](design-md/applovin/DESIGN.md)
 - [Calendly](design-md/calendly/DESIGN.md)
+- [Deel](design-md/deel/DESIGN.md)
+- [Drift](design-md/drift/DESIGN.md)
 - [Intuit](design-md/intuit/DESIGN.md)
+- [Mixpanel](design-md/mixpanel/DESIGN.md)
 - [Qualtrics](design-md/qualtrics/DESIGN.md)
+- [Rippling](design-md/rippling/DESIGN.md)
 - [Typeform](design-md/typeform/DESIGN.md)
 - [Workday](design-md/workday/DESIGN.md)
 - [Xero](design-md/xero/DESIGN.md)
