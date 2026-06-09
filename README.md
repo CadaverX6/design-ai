@@ -13,7 +13,7 @@ If you are looking for:
 
 this repo is built for exactly that workflow.
 
-![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-209-10b981?style=classic)
+![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-214-10b981?style=classic)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
@@ -185,6 +185,7 @@ If you want high-signal examples first, start with:
 - [Buffer](design-md/buffer/DESIGN.md)
 - [ClickUp](design-md/clickup/DESIGN.md)
 - [Clerk](design-md/clerk/DESIGN.md)
+- [CircleCI](design-md/circleci/DESIGN.md)
 - [Cloudflare](design-md/cloudflare/DESIGN.md)
 - [Coda](design-md/coda/DESIGN.md)
 - [Contentful](design-md/contentful/DESIGN.md)
@@ -199,9 +200,11 @@ If you want high-signal examples first, start with:
 - [Framer](design-md/framer/DESIGN.md)
 - [GitHub](design-md/github/DESIGN.md)
 - [GitLab](design-md/gitlab/DESIGN.md)
+- [Heroku](design-md/heroku/DESIGN.md)
 - [Grammarly](design-md/grammarly/DESIGN.md)
 - [HubSpot](design-md/hubspot/DESIGN.md)
 - [Intercom](design-md/intercom/DESIGN.md)
+- [JetBrains](design-md/jetbrains/DESIGN.md)
 - [LaunchDarkly](design-md/launchdarkly/DESIGN.md)
 - [Linear](design-md/linear/DESIGN.md)
 - [Loom](design-md/loom/DESIGN.md)
@@ -220,6 +223,8 @@ If you want high-signal examples first, start with:
 - [Salesforce](design-md/salesforce/DESIGN.md)
 - [Segment](design-md/segment/DESIGN.md)
 - [Sentry](design-md/sentry/DESIGN.md)
+- [Snyk](design-md/snyk/DESIGN.md)
+- [Sonar](design-md/sonar/DESIGN.md)
 - [Vercel](design-md/vercel/DESIGN.md)
 - [Slack](design-md/slack/DESIGN.md)
 - [Dropbox](design-md/dropbox/DESIGN.md)
