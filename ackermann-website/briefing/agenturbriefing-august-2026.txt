@@ -1,0 +1,453 @@
+===== PAGE 1 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+WEBSITEKONZEPT
+Ackermann Gebäudetechnik
+GmbH & Co. KG
+Finales Agenturbriefing für Konzeption, Design und Umsetzung der 
+Unternehmenswebsite
+Ausführender Fachbetrieb für Sanitär-, Heizungs-, 
+Lüftungs- und Klimatechnik.
+Technische Gebäudeausrüstung für Wohnungsbau, Gewerbe und öffentliche 
+Auftraggeber.
+Stand: August 2026
+Gestaltungsprinzip: weiß als Grundfläche, schwarze Typografie, Ackermann-Rot ausschließlich als gezielter Akzent.
+===== PAGE 2 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+0. Kurzfassung für die Agentur
+Die Website ist eine digitale Visitenkarte und fachliche Unternehmensdarstellung - 
+kein klassischer Vertriebsauftritt.
+Die Website soll nicht verkaufen, sondern einordnen und belegen: Wer 
+sind wir? Was führen wir aus? Welche Projekte haben wir bereits 
+umgesetzt? Wie arbeiten wir?
+Ein Besucher kennt den Namen Ackermann möglicherweise bereits aus einem Projekt, einer 
+Ausschreibung, einer Empfehlung oder aus dem Markt. Die Website soll ihm innerhalb weniger Minuten 
+die Sicherheit geben, dass die Ackermann Gebäudetechnik GmbH & Co. KG ein ausführender 
+Fachbetrieb für anspruchsvolles Projektgeschäft der technischen Gebäudeausrüstung ist.
+• Keine klassischen Werbeversprechen, keine austauschbaren Qualitätsfloskeln und kein künstlicher 
+Verkaufsdruck.
+• Referenzen und reale technische Projekte sind der wichtigste Beleg für Leistungsfähigkeit und 
+Erfahrung.
+• Der Betrieb soll sachlich, stabil, strukturiert und technisch kompetent wirken - eher wie ein 
+Projektunternehmen als wie eine typische Handwerker-Website.
+• Das Arbeitsverständnis basiert auf Organisation, reproduzierbaren Abläufen, schneller Abstimmung 
+und sauberer Ausführung.
+• Die Website darf technisch und hochwertig wirken, soll aber nie elitär oder selbstinszenierend 
+auftreten.
+1. Projektziel und Positionierung
+Die Website der Ackermann Gebäudetechnik GmbH & Co. KG dient als fachliche 
+Unternehmenspräsentation für Planer, Bauherren, Generalunternehmer, Wohnungswirtschaft, 
+gewerbliche und öffentliche Auftraggeber sowie Bewerber.
+Die zentrale Positionierung lautet: Wir sind ein ausführender Fachbetrieb im Projektgeschäft. Werk- und 
+Montageplanung, technische Ausarbeitung, Bauleitung und Koordination gehören zur professionellen 
+Ausführung, die Website darf uns jedoch nicht als Planungsbüro darstellen.
+Gewünschter Eindruck: eine "langweilig gute" ausführende Firma - 
+stabil, wiederholbar, organisiert. Projekte sollen nicht von Zufall oder 
+Improvisation abhängen, sondern nach belastbaren Abläufen 
+===== PAGE 3 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+abgewickelt werden.
+Der Begriff "langweilig" ist ausdrücklich positiv gemeint: konstante Projektabwicklung, verlässliche 
+Wiederholbarkeit und ein Betrieb, der auch bei technisch anspruchsvollen Aufgaben nicht hektisch oder 
+beliebig wirkt.
+2. Zielgruppen
+Planer / TGA-Ingenieure Schnell erkennen, welche Gewerke und Projektgrößen umgesetzt 
+werden, wie technisch gearbeitet wird und welche Referenzen 
+vorhanden sind.
+Bauherren / öffentliche 
+Auftraggeber
+Einordnen können, ob Erfahrung mit Neubau, Bestand, laufendem 
+Betrieb und organisatorisch anspruchsvollen Projekten vorhanden ist.
+Generalunternehmer Erkennen, dass Ausführung, Bauleitung, Werk- und Montageplanung 
+sowie Koordination professionell zusammengeführt werden.
+Wohnungswirtschaft Referenzen im bewohnten Bestand, Fernwärme, Heizzentralen, 
+Warmwasserbereitung und Sanierungslogistik nachvollziehen können.
+Bewerber Verstehen, dass das Unternehmen wächst und Menschen sucht, die 
+Verantwortung übernehmen, lernen und mit dem Unternehmen 
+mitwachsen wollen.
+===== PAGE 4 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+3. Informationsarchitektur und Navigation
+Die Navigation soll bewusst schlank bleiben. Leistungen wie Sanitär, Heizung, Lüftung und Kälte werden 
+auf der Startseite erklärt und benötigen keine eigenen Unterseiten. Stationsbau erhält wegen der 
+technischen Tiefe eine eigene Seite.
+Startseite  ·  Referenzen  ·  Stationsbau  ·  Arbeiten bei uns  ·  Kontakt
+Eine eigenständige Unternehmensseite ist derzeit nicht notwendig. Das Unternehmens- und 
+Arbeitsverständnis wird auf der Startseite integriert. Eine spätere Unternehmensseite ist nur sinnvoll, 
+wenn zusätzliche echte Inhalte vorhanden sind, z. B. Personen und Funktionen, Werkstatt, Fertigung 
+oder konkrete Einblicke in die Organisation.
+4. Startseite - finale Dramaturgie
+Die Startseite soll schnell verständlich sein und ohne Umwege in die Projektwelt führen. Der Besucher 
+soll zuerst einordnen können, wer wir sind, und anschließend unmittelbar reale Referenzen sehen.
+4.1 Erster sichtbarer Bereich / Hero
+Ackermann Gebäudetechnik GmbH & Co. KG
+Ausführender Fachbetrieb für Sanitär-, Heizungs-, Lüftungs- und 
+Klimatechnik.
+Technische Gebäudeausrüstung für Wohnungsbau, Gewerbe und 
+öffentliche Auftraggeber.
+Kein klassischer Call-to-Action. Keine Aufforderung wie „Vertrauen Sie uns Ihr Projekt an“. Die 
+Einordnung soll sachlich bleiben. Optional kann unter dem Hero ein dezenter Textlink „Referenzen 
+ansehen“ stehen, nicht als werbliche Schaltfläche.
+Bildlich kein klassisches großes Handwerker-Hero mit Monteur, Werkzeug oder Stockfoto. Empfohlen 
+sind viel Weißraum und eine reduzierte technische Grafik, idealerweise eine echte 3D-CAD-Konstruktion 
+aus dem Unternehmen. Die realen Projektfotos beginnen direkt im Referenzbereich.
+4.2 Ausgewählte Referenzen - direkt nach dem Hero
+Die Referenzen sind der wichtigste Beleg der Website. Auf der Startseite werden drei starke Projekte 
+gezeigt, die unterschiedliche Bereiche des Projektgeschäfts abdecken.
+1. Wohnanlagen 
+Solothurner / Züricher 
+Top-Referenz für Wohnungswirtschaft und Sanierung im bewohnten 
+Bestand. Neun Heizzentralen innerhalb einer Sommerpause; Heizung 
+===== PAGE 5 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+Straße, München und Sanitär; eigene Fernwärmeübergabestationen und 
+Frischwassermodule.
+2. Gartencenter 
+Seebauer, München
+Top-Referenz für Gewerbebau. Sanitär, Heizung und Kälte; 
+Wärmepumpentechnik für Heizen und Kühlen sowie Sanitär- und 
+Entwässerungstechnik.
+3. Grammstraße 8 Top-Referenz für Premium-/Luxuswohnungsbau. Auf der Startseite als 
+drittes Schwergewicht positionieren; technische Detailbeschreibung 
+wird nach Vorlage der endgültigen Projektdaten ergänzt.
+Darstellung je Projekt: großes echtes Foto, Projektname, Gewerke, ein kurzer sachlicher Teaser. Keine 
+langen technischen Daten auf der Startseite.
+4.3 Leistungsübersicht
+Die Leistungsdarstellung soll beschreiben, was tatsächlich ausgeführt wird - ohne Qualitätsversprechen. 
+Die Gewerke bleiben kompakt auf der Startseite; nur Stationsbau führt auf eine eigene Unterseite.
+Sanitär
+Ausführung sanitärtechnischer Anlagen für Neubau und Bestand. Das umfasst 
+Trinkwasserinstallationen, Entwässerungssysteme, Warmwasserbereitung sowie Sanierungen im 
+laufenden Betrieb. Je nach Anforderung werden Frischwassermodule, Abscheider- und Hebeanlagen, 
+Wasseraufbereitung und weitere Sonderlösungen integriert.
+Leistungsbegriffe: Trinkwasserinstallationen · Entwässerung · Warmwasserbereitung · Frischwassersysteme · Abscheider- und 
+Hebeanlagen · Wasseraufbereitung und Kalkschutz · Sanitäreinrichtungen · Trinkwasserhygiene
+Heizung
+Ausführung von Heizungsanlagen für Wohnungsbau, Gewerbe und öffentliche Gebäude. Dazu gehören 
+neue Heizzentralen ebenso wie die Modernisierung bestehender Anlagen. Je nach Projekt kommen 
+Wärmepumpen, Fernwärme, Pelletanlagen oder andere Wärmeerzeuger zum Einsatz; Wärmeverteilung, 
+Hydraulik, Druckhaltung, Entgasung und fachgerechte Dämmung werden als Gesamtsystem betrachtet.
+Leistungsbegriffe: Wärmepumpenanlagen · Fernwärmeanlagen · Heizungszentralen · Wärmeverteilung einschließlich 
+fachgerechter Dämmung · Fußbodenheizung und Heizflächen · Anlagenhydraulik und Speichertechnik · Druckhaltung und 
+Entgasung · hydraulischer Abgleich · Anlagenoptimierung und Regelungstechnik
+Lüftung
+Errichtung und Modernisierung von Lüftungsanlagen für Wohngebäude, Gewerbe und öffentliche 
+Einrichtungen. Entscheidend ist eine sauber einregulierte Anlage mit den richtigen Luftmengen, die zum 
+Gebäude und zur Nutzung passt.
+Leistungsbegriffe: zentrale und dezentrale Lüftungsanlagen · Wohnraumlüftung · Sanitärraumentlüftung · Zu- und Abluftsysteme · 
+Luftleitungsnetze einschließlich fachgerechter Dämmung · Wärmerückgewinnung · Schall- und Brandschutzkomponenten · 
+Einregulierung und Inbetriebnahme
+===== PAGE 6 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+Kälte
+Ausführung kältetechnischer Anlagen als Bestandteil der Gebäudetechnik. Je nach Projekt werden 
+Systeme zur Kühlung von Räumen oder technischen Bereichen umgesetzt und mit Heizungs- und 
+Lüftungsanlagen abgestimmt. Der Bereich soll sachlich dargestellt werden und nur soweit vertieft 
+werden, wie belastbare Referenzen und Bildmaterial vorhanden sind.
+Stationsbau
+Eigene Konstruktion und Fertigung von Fernwärmeübergabestationen, Frischwassermodulen sowie 
+projektbezogenen Solar- und Hydraulikstationen. Dieser Bereich erhält als einziger Leistungsbereich 
+eine eigene technische Unterseite.
+Link: Stationsbau entdecken →
+===== PAGE 7 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+4.4 Arbeits- und Projektverständnis
+Technik funktioniert dann am besten, wenn Planung, Organisation und 
+Ausführung von Anfang an zusammengedacht werden.
+Technische Projekte funktionieren aus unserer Sicht dann am besten, wenn Informationen, 
+Entscheidungen und Verantwortlichkeiten früh zusammengeführt werden. Deshalb betrachten wir nicht 
+nur die einzelne Montageleistung, sondern den gesamten Ablauf eines Projekts.
+Von der technischen Ausarbeitung über Werk- und Montageplanung, Bauleitung und Ausführung bis zur 
+Inbetriebnahme und anschließenden Wartung bleiben die technischen Zusammenhänge in einer Hand.
+Gerade bei Sanierungen im Bestand ist eine saubere Vorbereitung entscheidend. Laufender 
+Gebäudebetrieb, kurze Versorgungsunterbrechungen, beengte Einbausituationen und Schnittstellen zu 
+anderen Gewerken müssen frühzeitig erkannt und organisiert werden.
+Auch nach Abschluss des Projekts bleiben wir für unsere Vertragspartner Ansprechpartner - mit 
+regelmäßiger Wartung und bei Bedarf mit unserem 24-Stunden-Notdienst.
+Technische Ausarbeitung → Werk- und Montageplanung → Bauleitung 
+→ Ausführung → Inbetriebnahme → Wartung / Notdienst
+4.5 Unternehmensverständnis
+Projektgeschäft ist Teamarbeit. Technische Gebäudeausrüstung entsteht dort, wo Erfahrung, Planung, 
+Organisation, Bauleitung, Montage und unterschiedliche Fachkompetenzen zuverlässig 
+zusammenspielen.
+Wir verstehen uns als technischer Umsetzungspartner und bringen unsere Erfahrung konstruktiv in die 
+Zusammenarbeit mit Planung und Bauherrschaft ein. Wenn wir Verbesserungspotenzial erkennen, 
+sprechen wir es offen an und suchen gemeinsam nach einer sinnvollen Lösung.
+Auch mit Fehlern gehen wir transparent um. Entscheidend ist nicht, dass in komplexen Projekten 
+niemals etwas schiefläuft, sondern dass Probleme erkannt, Verantwortung übernommen und Lösungen 
+konsequent umgesetzt werden. Erkenntnisse sollen in die eigenen Abläufe zurückfließen.
+Unsere Prozesse entwickeln wir kontinuierlich weiter. Ziel ist keine Selbstdarstellung als „perfekt“, 
+sondern ein Betrieb, der technisch, organisatorisch und wirtschaftlich jeden Tag ein Stück besser wird.
+4.6 Kontaktabschluss auf der Startseite
+Sachlich und direkt. Keine Lead-Maske, kein Kontaktformular und kein aggressiver CTA.
+Unternehmen Ackermann Gebäudetechnik GmbH & Co. KG
+===== PAGE 8 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+Adresse Lechnerstraße 2, 82067 Ebenhausen
+Telefon 08178 9982 600
+E-Mail info@ackermann-gebaeudetechnik.de
+Unterlagen Leistungsverzeichnisse, Pläne und Projektunterlagen können direkt 
+per E-Mail zugesendet werden.
+Desktop: Telefonnummer und E-Mail direkt klickbar. Mobil: kleine funktionale Schaltflächen „Anrufen“ und „E-Mail“.
+===== PAGE 9 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+5. Stationsbau - eigene technische Unterseite
+Die Stationsbau-Seite darf deutlich technischer sein als die übrige Website. Zielgruppe sind 
+insbesondere Planer, Wohnungswirtschaft und Auftraggeber, die eine technisch belastbare Station 
+benötigen. Die Seite soll zeigen, dass Konstruktion, Fertigung, Montage und Inbetriebnahme 
+miteinander verbunden sind.
+5.1 Einstieg
+Technik funktioniert dann am besten, wenn Planung, Organisation und 
+Ausführung von Anfang an zusammengedacht werden.
+Die Ackermann Gebäudetechnik GmbH & Co. KG entwickelt und fertigt eigene 
+Fernwärmeübergabestationen, Frischwassermodule sowie Solar- und Hydraulikstationen. Die Station 
+wird als Teil des gesamten Gebäudesystems betrachtet - von den technischen Grundlagen über 
+Auslegung und Konstruktion bis zur Fertigung, Montage, Einregulierung und späteren Wartung.
+5.2 Die richtige Auslegung beginnt mit den richtigen Grundlagen
+Ob eine Anlage später zuverlässig und energieeffizient funktioniert, entscheidet sich bereits bei der 
+technischen Auslegung. Grundlage sind belastbare Informationen über die tatsächlichen Anforderungen 
+des Gebäudes. Im Bestand können dazu Verbrauchswerte, vorhandene Anlagendaten, 
+Betriebszustände und die tatsächliche Nutzung gehören. Im Neubau bilden die ermittelten Leistungs- 
+und Nutzungsanforderungen die Grundlage.
+Auch eine hochwertig gefertigte Anlage kann ihre Aufgabe nicht optimal erfüllen, wenn einzelne 
+Komponenten aufgrund unzutreffender oder unvollständiger Grundlagen falsch dimensioniert wurden.
+5.3 Konstruktion in 3D
+Die Stationen werden mit branchenspezifischer 3D-CAD-Software konstruiert. Gerade im Bestand gibt 
+der vorhandene Heizraum die Rahmenbedingungen vor. Bereits in der Konstruktion werden 
+Einbringwege, vorhandene Rohrleitungen, Wand-, Decken- und Bodensituationen, unterschiedliche 
+Aufstellhöhen, Platzverhältnisse sowie die notwendige Zugänglichkeit zu allen Komponenten 
+berücksichtigt.
+Ebenso wichtig sind Wartungsfreundlichkeit und die Möglichkeit, die erforderlichen Dämmstandards 
+fachgerecht umzusetzen. Konflikte sollen konstruktiv gelöst werden, bevor sie erst auf der Baustelle 
+sichtbar werden.
+5.4 Eigene Fertigung
+Nach der Konstruktion werden die Stationen im eigenen Betrieb gefertigt. Konstruktion, Fertigung und 
+spätere Montage bleiben eng miteinander verbunden. Die Fertigung erfolgt nach definiertem Baumuster 
+mit CE-Kennzeichnung, durch entsprechend geprüfte Schweißer und mit der dazugehörigen technischen 
+Dokumentation.
+===== PAGE 10 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+Die Station wird nicht extern gefertigt und anschließend lediglich angeliefert: Wir konstruieren sie selbst, 
+fertigen sie bei uns und bauen sie anschließend mit dem eigenen Team vor Ort auf.
+Konstruktion → Fertigung → Qualitätskontrolle → Dokumentation → 
+Montage → Einregulierung → Inbetriebnahme
+5.5 Sonderlösungen und hydraulische Baugruppen
+Neben Fernwärmeübergabestationen und Frischwassermodulen werden projektbezogene Solar- und 
+Hydraulikstationen, Heizkreisverteiler, Pufferspeicher und Ladegruppen gefertigt. Entscheidend ist nicht 
+das einzelne Bauteil, sondern die Funktion, die die Anlage später im Gebäude zuverlässig erfüllen muss.
+5.6 Einregulierung, Inbetriebnahme und Wartung
+Eine Anlage ist erst dann fertig, wenn sie im Betrieb funktioniert. Bei Einregulierung und Inbetriebnahme 
+wird das Zusammenspiel von Hydraulik, Regelung und Komponenten geprüft und auf den vorgesehenen 
+Betrieb abgestimmt. Der Anspruch ist eine Anlage, die zuverlässig, energieeffizient und wirtschaftlich 
+funktioniert.
+Auch nach der Inbetriebnahme bleibt die technische Betreuung möglich. Regelmäßige Wartung, 
+Fehlersuche und Optimierung werden durch die vorhandene Konstruktion und Dokumentation 
+unterstützt. Für Vertragspartner steht zusätzlich der 24-Stunden-Notdienst zur Verfügung.
+5.7 Stationsbau in der Praxis
+Auf dieser Unterseite werden nur reine Fertigungs-/Lieferreferenzen gezeigt - keine Projekte, bei denen 
+wir gleichzeitig als ausführender Installateur tätig waren. Drei Referenzen sind ausreichend. Eine 
+Stückzahl aller bislang gelieferten Stationen wird bewusst nicht genannt.
+Neubau Wohnanlage 
+München · ca. 200 WE
+Geliefert: Fernwärmeübergabestation, zwei Frischwassermodule und 
+Heizkreisverteiler. Fernwärmeübergabestation 650 kW.
+Wohnanlage München · 
+155 WE
+Geliefert: Fernwärmeübergabestation und Frischwassersystem. 
+Fernwärmeübergabestation 370 kW.
+Wohnanlage München · 
+152 WE
+Geliefert: Fernwärmeübergabestation und Frischwassersystem. 
+Fernwärmeübergabestation 550 kW; Trinkwassererwärmung 350 kW. 
+Keine Darstellung als Eckausführung.
+Einleitender Satz ohne Stückzahl: Die Ackermann Gebäudetechnik GmbH & Co. KG fertigt und liefert 
+projektbezogene Fernwärmeübergabestationen, Frischwassersysteme und hydraulische Baugruppen für 
+unterschiedliche Auftraggeber und Einbausituationen.
+===== PAGE 11 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+6. Referenzen - Übersicht und Projektseiten
+Die Referenzen werden nicht nach Gewerk, sondern nach Projektumfeld sortiert. So versteht der 
+Besucher schneller, in welchen Gebäudetypen und Projektstrukturen Erfahrung vorhanden ist.
+Bildung & Betreuung · Wohnen · Öffentliche Gebäude · Gewerbe
+Die Übersichtsseite zeigt je Projekt nur: echtes Projektfoto, Projektname, Gewerke, einen kurzen Teaser 
+und „Projekt ansehen“. Lange technische Daten gehören ausschließlich auf die Detailseite.
+6.1 Referenzübersicht nach Kategorien
+Bildung & Betreuung
+• KiTa Martinsried - Heizung · Sanitär
+• Kurt-Huber-Gymnasium Gräfelfing, Nordtrakt - Sanitär · Heizung
+• Kinderhaus Nonnenwaldstraße, Penzberg - Sanitär
+• Haus für Kinder Farnweg, München - Sanitär
+• Kindertagesstätte Schondorf am Ammersee - Heizung
+Wohnen
+• Wohnanlagen Solothurner Straße / Züricher Straße, München - Heizung · Sanitär
+• Neubau Mehrfamilienhaus Auenstraße, Hohenschäftlarn - Sanitär · Heizung · Lüftung
+• Loftneubau Franz-Joseph-Straße 14, München - Sanitär · Heizung · Lüftung
+• Wohnhaus Stollbergstraße, München - Lüftung
+• Wohnanlage Funkerstraße 4-10, München - Heizung · Sanitär
+• Wohnanlage Staltacher Straße / Waldfriedhofstraße / Etalstraße, München - Sanitär
+• Wohnhaus Kreuzweg 4a, Gauting - Sanitär · Heizung · Lüftung
+• Grammstraße 8 - Premium-/Luxuswohnungsbau; Detaildaten vor Veröffentlichung final ergänzen
+Öffentliche Gebäude
+• Rathaus Berg - Sanitär
+• Agentur für Arbeit Weilheim - Sanitär · Heizung · Lüftung
+• Salesianum München - Sanitär · Trockene Feuerlöschanlage
+• Amtsgericht Starnberg - Heizung
+• Finanzamt Starnberg - Heizung
+• Feuerwehrhaus Wolfratshausen - Heizung
+===== PAGE 12 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+• Finanzamt Landsberg am Lech - Sanitär · Heizung · Lüftung
+• Erinnerungsort Ehrenbürgstraße, München-Neuaubing - Sanitär
+• Hauptbahnhof Garmisch-Partenkirchen - Sanitär · Entwässerung
+• Bahnhofsgebäude Grafrath - Sanitär · Heizung
+Gewerbe
+• St. Elisabeth, Planegg - Heizung; zwei Grundwasser-Wärmepumpen in Kaskade, ergänzende Gas-
+Brennwerttechnik und Solarthermie
+• Ammerseehotel - Heizung · Sanitär
+• Parkhauserweiterung Gartencenter Seebauer, München - Sanitär · Heizung · Kälte
+6.2 Einheitliches Muster für Projektseiten
+1. Projektkopf Projektname, Projektart, Ort, ggf. Status, Gewerke, starkes Hauptbild.
+2. Kurzer Einstieg 2-4 Sätze: Aufgabe, Neubau oder Bestand, technisch/organisatorisch 
+relevante Besonderheit.
+3. Technische 
+Umsetzung
+Anlagen, Systeme, Leistungsdaten und Besonderheiten - nur das, was 
+für das Projekt wirklich relevant ist.
+4. Besondere 
+Anforderungen
+Nur falls vorhanden: laufender Betrieb, bewohnter Bestand, 
+Denkmalschutz, Bauabschnitte, kurze Abschaltungen, beengte 
+Einbringung, Hygiene, Schall- oder Brandschutz.
+5. Projektdaten Bauherr/Auftraggeber nur bei belastbarer Freigabe; Gewerke, 
+Projektart, Status und optional Ausführungszeitraum. Keine 
+Auftragswerte.
+6. Bilder 3-6 starke Projektbilder, lieber wenige gute als viele durchschnittliche.
+7. Abschluss Schlichter Link „Weitere Referenzen ansehen →“.
+Die Seiten müssen nicht alle gleich lang sein. Kleine Projekte bleiben kompakt; komplexe Projekte 
+dürfen ausführlicher erklärt werden.
+6.3 Musterreferenz: Amtsgericht Starnberg
+Modernisierung der Wärmeversorgung im Bestand mit zwei Pellet-Wärmeerzeugern à 135 kW, 
+insgesamt 270 kW. Ein besonderer Schwerpunkt liegt auf dem rund 8.100 Liter großen, am Standort 
+montierten/geschweißten Pufferspeicher sowie der schwierigen Einbringung in die vorhandenen 
+Technikräume.
+Die Seite soll zusätzlich Rückbau der Altanlage, Brennstoffversorgung, Abgasführung, 
+Druckhaltung/Entgasung, Anbindung der Rampenheizung sowie Inbetriebnahme und Dokumentation 
+===== PAGE 13 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+zeigen. Bildlich eignen sich Pellet-Doppelkesselanlage, Pufferspeicher, Hydraulik, Fördersystem, 
+Abgasanlage und Einbringung.
+6.4 Musterreferenz: Wohnanlagen Solothurner / Züricher Straße
+Diese Referenz steht vor allem für Organisation im bewohnten Bestand: neun Heizzentralen innerhalb 
+einer Sommerpause, Heizungs- und Sanitärarbeiten, enge Versorgungsfenster sowie eigene 
+Fernwärmeübergabestationen und Frischwassermodule. Im Mittelpunkt stehen nicht nur technische 
+Einzelkomponenten, sondern die koordinierte Abwicklung mehrerer Zentralen in engem Zeitrahmen.
+Bildlich ideal: alte Zentrale, vorbereitete Station aus eigener Fertigung, Einbringung/Montage, 
+Frischwassermodul, neue Verteilung/Hydraulik und fertige Zentrale. Eine Vorher-/Nachher-
+Gegenüberstellung ist ausdrücklich sinnvoll.
+===== PAGE 14 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+7. Arbeiten bei uns
+Die Seite heißt bewusst „Arbeiten bei uns“, nicht „Karriere“. Sie soll weder Familienunternehmen-
+Romantik noch typische Handwerks-Recruiting-Floskeln wie Vier-Tage-Woche, Obstkorb oder künstliche 
+Wohlfühlversprechen transportieren.
+Wir wachsen. Wir suchen Menschen, die Verantwortung übernehmen, 
+lernen und gemeinsam mit dem Unternehmen wachsen wollen.
+Das Unternehmen befindet sich im Wachstum. Zuständigkeiten und Strukturen entwickeln sich mit. Die 
+Seite darf deshalb nicht behaupten, dass bereits alles starr organisiert oder jede Rolle dauerhaft klar 
+abgegrenzt ist. Gesucht werden Menschen, die mit Veränderungen umgehen können, Verantwortung 
+übernehmen und bereit sind, Strukturen aktiv mitzugestalten.
+Der Ton darf eher an ein wachsendes Projektunternehmen bzw. ein Startup erinnern als an einen 
+traditionellen Familienbetrieb.
+Vorgeschlagener Einstieg
+Projektgeschäft ist Teamarbeit.
+Bei der Ackermann Gebäudetechnik GmbH & Co. KG arbeiten unterschiedliche Menschen gemeinsam 
+an anspruchsvollen Projekten der technischen Gebäudeausrüstung. Wir wachsen und entwickeln unsere 
+Abläufe laufend weiter. Deshalb suchen wir Menschen, die nicht nur fachlich mitarbeiten, sondern 
+Verantwortung übernehmen, lernen und gemeinsam mit dem Unternehmen wachsen wollen.
+Dabei zählt nicht nur fachliches Wissen. Genauso wichtig sind Eigenverantwortung, Verlässlichkeit, 
+Organisation und die Bereitschaft, gemeinsam Lösungen zu finden.
+Gesuchte Bereiche
+• Anlagenmechaniker SHK (m/w/d)
+• Bauleiter (m/w/d)
+• Projektleiter (m/w/d)
+• Konstrukteur (m/w/d)
+• Buchhaltung / kaufmännischer Bereich (m/w/d)
+Bewerbungsweg bewusst einfach: kurze E-Mail mit Angaben zur Person und zum gewünschten Bereich; 
+Lebenslauf/Unterlagen können direkt beigefügt werden. Kein Bewerbungsportal und kein Formular.
+Bewerbung bewerbung@ackermann-gebäudetechnik.de
+===== PAGE 15 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+Hinweis Umsetzung Technische Zustellbarkeit der Umlaut-Domain für E-Mail vor 
+Veröffentlichung prüfen; falls nötig ASCII-Adresse technisch 
+verwenden und sichtbar eindeutig kommunizieren.
+8. Kontakt
+Kontaktseite und Kontaktbereich bleiben rein funktional. Kein Formular, keine Lead-Maske, kein 
+Verkaufsargument.
+Ackermann 
+Gebäudetechnik GmbH 
+& Co. KG
+Lechnerstraße 2, 82067 Ebenhausen
+Telefon 08178 9982 600
+E-Mail info@ackermann-gebaeudetechnik.de
+Projektunterlagen Leistungsverzeichnisse, Pläne und Projektunterlagen können direkt 
+per E-Mail zugesendet werden.
+Service 24-Stunden-Notdienst für Vertragspartner
+Auf Mobilgeräten können kleine funktionale „Anrufen“-/„E-Mail“-Bedienelemente verwendet werden. Auf 
+Desktop genügt die direkte klickbare Darstellung der Kontaktdaten.
+===== PAGE 16 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+9. Bildsprache und visuelles Design
+Die visuelle Gestaltung soll näher an Architektur-, Ingenieur- und Projektunternehmen liegen als an einer 
+klassischen SHK-Handwerker-Website.
+Grundfarben Weiß dominiert. Schwarz für Typografie und Flächen. Rot aus dem 
+bestehenden Logo ausschließlich als Akzent.
+Typografie Modern, technisch, ruhig und sehr gut lesbar. Keine dekorative 
+Handwerker-Typografie.
+Fotografie Ausschließlich echte Projekt-, Anlagen-, Werkstatt- und 
+Baustellenbilder. Keine Stockfotos.
+Hero Viel Weißraum; idealerweise echte 3D-CAD-Konstruktion oder 
+reduzierte technische Liniengrafik statt klassischem Hero-Foto.
+Referenzen Große, hochwertige Fotos; technische Details und fertige Anlagen. 
+Menschen nur, wenn authentisch und nicht inszeniert.
+Icons Keine typischen Sanitär-/Heizungs-Icons als 
+Hauptgestaltungselement.
+Animation Zurückhaltend. Keine Effekte, die technische Seriosität oder 
+Ladegeschwindigkeit beeinträchtigen.
+Responsive Mobile Darstellung genauso klar und informationsorientiert wie 
+Desktop; Prozesse horizontal auf Desktop, vertikal auf Mobil.
+Nicht gewünscht
+• Stockbilder von Monteuren, Werkzeug, Handschlag oder lächelnden Teams.
+• Werbesprüche wie „Qualität aus Leidenschaft“, „Ihr starker Partner“ oder ähnliche austauschbare 
+Versprechen.
+• Große Call-to-Action-Flächen und aggressive Angebotsanfragen.
+• Unternehmenshistorie oder Jahreszahlen ohne echten Nutzen.
+• Mitarbeiterzahl als Marketingargument.
+• Übermäßige Hervorhebung einzelner Abschlüsse oder Personen; Ingenieur- und Meisterkompetenz 
+kann dezent erwähnt werden, Projektgeschäft bleibt aber Teamarbeit.
+• Überladene Navigation und separate Unterseiten für jedes Gewerk.
+===== PAGE 17 =====
+Ackermann Gebäudetechnik GmbH & Co. KG  |  Websitekonzept  |  August 2026
+10. Umsetzungsprinzipien für die Webagentur
+• Inhalte und technische Begriffe nicht in Marketing-Sprache umschreiben, ohne Rücksprache.
+• Firmennamen bei erster Nennung immer vollständig als „Ackermann Gebäudetechnik GmbH & Co. 
+KG“ schreiben; danach bevorzugt „wir“ statt verkürztem Firmennamen.
+• Die Website muss klar als Auftritt eines ausführenden Fachbetriebs erkennbar bleiben, nicht als 
+Planungsbüro.
+• Referenzen sind inhaltlich wichtiger als Behauptungen über Qualität.
+• Stationsbau als eigene fachliche Vertiefung behandeln; reine Stationsbau-Lieferreferenzen nicht mit 
+den großen Gesamtprojekten auf der Startseite vermischen.
+• Projektinformationen nur veröffentlichen, wenn fachlich und ggf. gegenüber Auftraggeber/Bauherr 
+freigegeben. Keine Auftragswerte.
+• Performance, saubere mobile Darstellung und einfache Pflege des Referenzbereichs haben Vorrang 
+vor gestalterischen Effekten.
+11. Offene Punkte vor Livegang
+Das Konzept ist inhaltlich abgeschlossen. Vor Veröffentlichung müssen nur noch Umsetzungsdetails und 
+Medien finalisiert werden:
+• Finale Auswahl und Freigabe der Projektfotos je Referenz.
+• Endgültige Projektdaten für Grammstraße 8 ergänzen, bevor ein technischer Teaser veröffentlicht 
+wird.
+• Prüfung, welche Auftraggeber/Bauherren namentlich auf Referenzseiten genannt werden dürfen.
+• Technische Prüfung der Bewerbungs-E-Mail mit Umlaut-Domain.
+• Impressum und Datenschutz juristisch bzw. durch den zuständigen Dienstleister finalisieren.
+• Finale Webfonts und exakte Rot-Farbwerte aus dem vorhandenen Corporate Design/Logo ableiten.
+Status: Konzept inhaltlich fertig und für die Übergabe an das 
+Webdesign-Büro geeignet.
