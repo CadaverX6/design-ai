@@ -11,11 +11,57 @@ Dies ist ein **Wireframe zur Abstimmung** — noch keine Produktivumsetzung.
 
 | Pfad | Inhalt |
 |---|---|
-| `wireframe.html` | Der Wireframe. Sechs Seiten, Desktop-/Mobil-Umschalter, Konzept- und Token-Anhang |
+| `site/` | **Die statische Website.** 33 Seiten, kein Build-Schritt, keine Abhängigkeiten |
+| `website-vorschau.html` | Dieselbe Website als eine einzige Datei — zum Weitergeben per Link oder Mail |
+| `wireframe.html` | Der vorausgegangene Wireframe samt Konzept- und Token-Anhang |
 | `DESIGN.md` | Das Design-System „Werkplan" im Repo-Format (9 Abschnitte) |
+| `build_site.py` | Generator für `site/` — Projektdaten stehen als Liste im Kopf der Datei |
+| `build_bundle.py` | Packt `site/` in die Einzeldatei-Vorschau |
 | `assets/station-iso.svg` | Isometrische Konstruktionszeichnung der Fernwärmeübergabestation (Hero) |
 | `assets/station-iso.py` | Generator für die Zeichnung — Geometrie ist parametrisch, nicht handgezeichnet |
 | `briefing/` | Original-Agenturbriefing als PDF und extrahierter Volltext |
+
+## Die Website ansehen
+
+`site/index.html` lässt sich direkt im Browser öffnen — es gibt keinen Build-Schritt und
+keine Abhängigkeiten. Zum Hochladen genügt es, den Ordner `site/` auf einen beliebigen
+Webspace zu kopieren.
+
+Lokal mit Server (empfohlen, verhält sich wie auf einem echten Host):
+
+```bash
+cd site && python3 -m http.server 8000
+```
+
+Die Einzeldatei `website-vorschau.html` enthält dieselbe Website inklusive Schriften und
+lässt sich ohne Server weitergeben.
+
+### Seitenbestand
+
+| Seite | Datei |
+|---|---|
+| Startseite | `site/index.html` |
+| Referenzübersicht | `site/referenzen.html` |
+| 26 Projektseiten | `site/referenzen/*.html` |
+| Stationsbau | `site/stationsbau.html` |
+| Arbeiten bei uns | `site/arbeiten-bei-uns.html` |
+| Kontakt | `site/kontakt.html` |
+| Impressum, Datenschutz | `site/impressum.html`, `site/datenschutz.html` |
+
+Alle 26 Projekte haben eine eigene Seite, damit in der Präsentation kein Verweis ins Leere
+läuft. Ausformuliert sind die beiden Musterreferenzen aus dem Briefing — Amtsgericht
+Starnberg und Solothurner / Züricher Straße. Die übrigen tragen dieselbe Struktur mit
+sichtbar markierten Lücken; diese Markierungen sind zugleich die Inhalts-Checkliste.
+
+### Technische Hinweise
+
+- Schriften sind **selbst gehostet** (IBM Plex, Subsets latin + latin-ext, 280 KB).
+  Es wird kein Drittanbieter-CDN aufgerufen.
+- Kein Kontaktformular, kein Tracking, keine externen Einbindungen.
+- Die Seiten tragen `noindex` — sie sollen vor der Freigabe nicht indexiert werden.
+  Vor dem Livegang entfernen.
+- Geprüft: alle internen Verweise auflösbar, kein Querscroll bei 1440, 390 und 320 px,
+  Tastaturbedienung und Fokusringe vorhanden.
 
 ## Konzept — „Werkplan"
 
