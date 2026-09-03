@@ -1,0 +1,389 @@
+/* ===================================================================
+   ACKERMANN GEBÄUDETECHNIK — Design-System „Werkplan"
+   Weißes Blatt, schwarze Typografie, Rot als einziger Akzent.
+   Radius 0 ausnahmslos. Keine Schatten außer der Bildkante.
+   =================================================================== */
+
+:root{
+  color-scheme: light;
+
+  --paper:#FFFFFF;
+  --paper-alt:#FAFAFA;
+  --ink-900:#111111;
+  --ink-800:#262626;
+  --ink-500:#6F6F6F;
+  --ink-300:#C6C6C6;
+  --ink-200:#E0E0E0;
+  --raster:#EDEDED;
+
+  /* PLATZHALTER — vor Go-Live aus dem vorhandenen Logo ableiten.
+     Stellvertreter: RAL 3020 Verkehrsrot. */
+  --ack-red:#CC0605;
+  --ack-red-deep:#A30504;
+
+  --radius:0;
+
+  --sans:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --sp-1:4px;  --sp-2:8px;  --sp-3:12px; --sp-4:16px; --sp-5:24px;
+  --sp-6:32px; --sp-7:48px; --sp-8:64px; --sp-9:96px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{-webkit-text-size-adjust:100%}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink-800);
+  font:400 16px/1.65 var(--sans);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+h1,h2,h3,h4{margin:0; color:var(--ink-900); font-weight:600; text-wrap:balance}
+h1{font-size:48px; line-height:1.10; letter-spacing:-0.02em; font-weight:500}
+h2{font-size:32px; line-height:1.15; letter-spacing:-0.015em; font-weight:500}
+h3{font-size:22px; line-height:1.25; letter-spacing:-0.01em}
+h4{font-size:18px; line-height:1.35}
+p{margin:0}
+img,svg{max-width:100%}
+
+/* ---- Sprungmarke ---- */
+.skip{
+  position:absolute; left:-9999px; top:0; z-index:100;
+  background:var(--paper); color:var(--ink-900);
+  padding:12px 16px; border:1px solid var(--ink-900);
+  font:500 14px/1 var(--sans);
+}
+.skip:focus{left:16px; top:16px}
+
+/* ---- Blatt und ambientes Raster ---- */
+.sheet{position:relative}
+.sheet::before{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+  max-width:1312px; margin:0 auto; left:0; right:0;
+  background:
+    linear-gradient(var(--raster),var(--raster)) 0 0/1px 100% no-repeat,
+    linear-gradient(var(--raster),var(--raster)) 448px 0/1px 100% no-repeat,
+    linear-gradient(var(--raster),var(--raster)) 896px 0/1px 100% no-repeat,
+    linear-gradient(var(--raster),var(--raster)) calc(100% - 1px) 0/1px 100% no-repeat;
+}
+.wrap{max-width:1312px; margin:0 auto; padding:0 24px; position:relative; z-index:1}
+
+/* ---- Typografische Rollen ---- */
+.lead{font-size:18px; line-height:1.60; color:var(--ink-800); max-width:640px; text-wrap:pretty}
+.prose{max-width:752px; font-size:16px; line-height:1.65; color:var(--ink-800); text-wrap:pretty; hyphens:auto}
+.prose p + p{margin-top:16px}
+.label{
+  font:600 12px/1.30 var(--sans); letter-spacing:0.06em;
+  text-transform:uppercase; color:var(--ink-500);
+}
+.idx{font:500 12px/1.30 var(--mono); letter-spacing:0.02em; color:var(--ink-500)}
+.data{font:500 13px/1.45 var(--mono); letter-spacing:0.01em; color:var(--ink-900); font-variant-numeric:tabular-nums}
+.cap{font:400 12px/1.50 var(--sans); color:var(--ink-500)}
+.small{font-size:14px; line-height:1.55}
+
+/* ---- Links ---- */
+a{color:inherit}
+.link{
+  font:500 14px/1.55 var(--sans); color:var(--ink-900);
+  text-decoration:none; display:inline-flex; gap:8px; align-items:baseline;
+}
+.link .arw{color:var(--ack-red); transition:transform 120ms cubic-bezier(.2,0,.2,1), color 120ms}
+.link:hover{text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px}
+.link:hover .arw{transform:translateX(3px); color:var(--ack-red-deep)}
+.link-plain .arw{color:var(--ink-900)}
+.prose a{color:var(--ink-900); text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px}
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--ack-red); outline-offset:2px}
+
+/* ---- Kopfzeile ---- */
+.site-head{position:relative; background:var(--paper); border-bottom:1px solid var(--ink-200)}
+.site-head .wrap{display:flex; align-items:center; gap:32px; min-height:72px}
+.brand{display:flex; align-items:baseline; gap:8px; text-decoration:none}
+.brand b{font:600 16px/1 var(--sans); letter-spacing:0.02em; color:var(--ink-900)}
+.brand i{font:400 12px/1 var(--sans); font-style:normal; color:var(--ink-500)}
+.brand .dot{width:9px; height:9px; background:var(--ack-red); display:inline-block; align-self:center}
+.site-nav{margin-left:auto; display:flex; gap:28px}
+.site-nav a{
+  font:500 14px/1 var(--sans); color:var(--ink-800); text-decoration:none;
+  padding:26px 0; position:relative;
+}
+.site-nav a[aria-current="page"]{color:var(--ink-900)}
+.site-nav a[aria-current="page"]::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px; background:var(--ack-red);
+}
+.site-nav a:not([aria-current])::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:var(--ink-900); opacity:0; transition:opacity 120ms;
+}
+.site-nav a:hover::after{opacity:1}
+
+/* ---- Mobile Navigation: weißes Vollbild-Blatt ---- */
+.nav-toggle{
+  display:none; margin-left:auto; background:none; border:0; cursor:pointer;
+  font:600 12px/1.3 var(--sans); letter-spacing:0.06em; text-transform:uppercase;
+  color:var(--ink-900); padding:12px 0; min-height:44px;
+}
+.nav-sheet{
+  position:fixed; inset:0; z-index:80; background:var(--paper);
+  padding:24px 16px; overflow-y:auto;
+  animation:fade 160ms cubic-bezier(.2,0,.2,1);
+}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.nav-sheet-head{display:flex; align-items:center; min-height:48px; margin-bottom:24px}
+.nav-close{
+  margin-left:auto; background:none; border:0; cursor:pointer;
+  font:600 12px/1.3 var(--sans); letter-spacing:0.06em; text-transform:uppercase;
+  color:var(--ink-900); padding:12px 0; min-height:44px;
+}
+.nav-sheet nav{display:flex; flex-direction:column}
+.nav-sheet nav a{
+  font:500 20px/1.3 var(--sans); color:var(--ink-900); text-decoration:none;
+  padding:20px 0; border-bottom:1px solid var(--ink-200);
+}
+.nav-sheet nav a:first-child{border-top:1px solid var(--ink-200)}
+.nav-sheet nav a[aria-current="page"]{color:var(--ink-900)}
+.nav-sheet nav a[aria-current="page"]::before{
+  content:""; display:inline-block; width:9px; height:9px;
+  background:var(--ack-red); margin-right:12px;
+}
+body.nav-open{overflow:hidden}
+
+/* ---- Hero / Titelblatt ---- */
+.hero{padding:96px 0}
+.hero .wrap{display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:32px; align-items:start}
+.hero h1{margin-top:24px}
+.hero .lead{margin-top:32px}
+.hero .link{margin-top:32px}
+.hero-r{padding-top:6px}
+.hero-r svg{width:100%; height:auto; max-height:420px; color:var(--ink-900); display:block}
+.hero-r .cap{margin-top:16px; display:block}
+
+/* ---- Abschnitte ---- */
+.sec{padding:96px 0}
+.sec.alt{background:var(--paper-alt)}
+.sec-head{border-top:1px solid var(--ink-900); padding-top:20px}
+.sec-head .kicker{display:flex; gap:10px; align-items:baseline; flex-wrap:wrap}
+.sec-head h2{margin-top:40px}
+.sec-body{margin-top:32px}
+
+/* ---- Seitenkopf einer Unterseite ---- */
+.pagehead{padding:56px 0 0}
+.pagehead h1{margin-top:24px; font-size:40px}
+.pagehead .lead{margin-top:32px}
+.pagehead .meta{margin-top:24px; display:flex; gap:24px; flex-wrap:wrap}
+/* Das Hauptbild spannt zwar über alle 12 Spalten, bleibt aber gedeckelt —
+   ungedeckelt sind 16:9 auf 1312 px über 700 px hoch. */
+.pagehead .ph{max-height:560px}
+
+/* ---- Referenzkarte: ein Positionsblatt ---- */
+.refgrid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:64px 32px}
+.refcard{display:flex; flex-direction:column; height:100%; text-decoration:none; color:inherit}
+.refcard .rule{display:block; height:1px; background:var(--ink-900); margin-top:16px; transition:height 120ms}
+.refcard .idx{display:block; margin-top:12px}
+.refcard h3{margin-top:8px}
+.refcard .gew{margin-top:8px; font-size:14px; line-height:1.55; color:var(--ink-500)}
+.refcard .teaser{margin-top:12px; font-size:14px; line-height:1.55; color:var(--ink-800)}
+.refcard .link{margin-top:auto; padding-top:16px; align-self:flex-start}
+.refcard:hover h3{text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px}
+.refcard:hover .rule{height:2px}
+
+/* ---- Bildplatzhalter: steht für ein echtes Projektfoto ---- */
+.ph{
+  position:relative; width:100%; background:var(--paper-alt);
+  box-shadow:inset 0 0 0 1px rgba(17,17,17,.10);
+  display:flex; align-items:flex-end; overflow:hidden;
+}
+.ph::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    linear-gradient(to top right, transparent calc(50% - .5px), var(--raster) 50%, transparent calc(50% + .5px)),
+    linear-gradient(to bottom right, transparent calc(50% - .5px), var(--raster) 50%, transparent calc(50% + .5px));
+}
+.ph[data-ratio="4:3"]{aspect-ratio:4/3}
+.ph[data-ratio="3:2"]{aspect-ratio:3/2}
+.ph[data-ratio="16:9"]{aspect-ratio:16/9}
+.ph-in{position:relative; padding:12px; width:100%}
+.ph-tag{
+  font:500 10px/1 var(--mono); letter-spacing:0.08em; text-transform:uppercase;
+  color:var(--ink-500); background:var(--paper); padding:4px 6px;
+  box-shadow:inset 0 0 0 1px var(--ink-200); display:inline-block;
+}
+.ph-txt{
+  display:block; margin-top:8px; font:400 11.5px/1.45 var(--sans); color:var(--ink-500);
+  background:var(--paper); padding:6px 7px; box-shadow:inset 0 0 0 1px var(--ink-200);
+  max-width:min(52ch, 100%);
+}
+figure{margin:0}
+figure .cap{margin-top:12px; display:block}
+.gallery{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px}
+
+/* ---- Leistungsliste ---- */
+.leist{border-top:1px solid var(--ink-200)}
+.leist-row{
+  padding:32px 0; border-bottom:1px solid var(--ink-200);
+  display:grid; grid-template-columns:minmax(0,3fr) minmax(0,7fr); gap:32px;
+}
+.leist-row h4{padding-top:2px}
+.begriffe{margin-top:16px; font:400 13px/1.6 var(--mono); color:var(--ink-500)}
+
+/* ---- Tragende Aussage: der eine rote Balken je Seite ---- */
+.statement{
+  border-left:3px solid var(--ack-red); padding-left:24px;
+  font-size:22px; line-height:1.35; letter-spacing:-0.01em;
+  font-weight:500; color:var(--ink-900); max-width:752px; text-wrap:pretty;
+}
+
+/* ---- Prozesskette als Maßstab ---- */
+.process{
+  list-style:none; margin:40px 0 0; padding:0 0 8px;
+  display:flex; border-bottom:1px solid var(--ink-300); position:relative;
+}
+.process li{flex:1 1 0; min-width:140px; position:relative; padding-right:16px}
+.process li::before{
+  content:""; position:absolute; left:0; bottom:-9px; width:1px; height:8px; background:var(--ink-300);
+}
+.process li + li::after{
+  content:"→"; position:absolute; left:-22px; bottom:-15px;
+  font:400 14px/1 var(--sans); color:var(--ink-500);
+  background:var(--paper); padding:3px 5px;
+}
+.sec.alt .process li + li::after{background:var(--paper-alt)}
+.p-label{display:block; min-height:40px; font:500 14px/1.35 var(--sans); color:var(--ink-900)}
+.p-idx{display:block; margin-top:8px; font:500 12px/1.30 var(--mono); color:var(--ink-500)}
+
+/* ---- Schriftfeld ---- */
+.schriftfeld{
+  border:1px solid var(--ink-900); background:var(--paper);
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+}
+.sf{padding:16px; border-right:1px solid var(--ink-200)}
+.sf:nth-child(4n){border-right:0}
+.sf-full{grid-column:1/-1; border-top:1px solid var(--ink-200); border-right:0}
+.sf .val{margin-top:8px; font-size:14px; line-height:1.5; color:var(--ink-900)}
+.sf .val a{color:var(--ink-900); text-decoration:none; border-bottom:1px solid var(--ink-200)}
+.sf .val a:hover{border-color:var(--ink-900)}
+.legal{margin-top:24px; font:400 12px/1.5 var(--sans); color:var(--ink-500); display:flex; gap:16px; flex-wrap:wrap}
+.legal a{text-decoration:none; border-bottom:1px solid var(--ink-200)}
+.legal a:hover{border-color:var(--ink-900)}
+
+/* ---- Datentabelle ---- */
+.spec{border-top:1px solid var(--ink-200); max-width:752px; margin:0}
+.spec div{
+  display:grid; grid-template-columns:220px minmax(0,1fr); gap:16px;
+  padding:16px 0; border-bottom:1px solid var(--ink-200);
+}
+.spec dt{margin:0}
+.spec dd{margin:0; font-size:15px; line-height:1.55; color:var(--ink-900)}
+.spec div:last-child{border-bottom:1px solid var(--ink-300)}
+
+/* ---- Stellenliste ---- */
+.roles{border-top:1px solid var(--ink-200); max-width:752px; padding:0; margin:0}
+.roles li{
+  list-style:none; padding:16px 0; border-bottom:1px solid var(--ink-200);
+  display:flex; gap:16px; align-items:baseline;
+}
+.roles li span:last-child{font-size:16px; line-height:1.5; color:var(--ink-900)}
+
+/* ---- Kategorieband auf der Referenzübersicht ---- */
+.katnav{display:flex; gap:24px; flex-wrap:wrap; margin-top:24px}
+.katnav a{font:500 14px/1.5 var(--sans); color:var(--ink-800); text-decoration:none; border-bottom:1px solid var(--ink-200)}
+.katnav a:hover{border-color:var(--ink-900); color:var(--ink-900)}
+
+/* ---- Platzhalter-Markierung ---- */
+mark.pl{
+  background:transparent; color:var(--ink-500); font-family:var(--mono);
+  font-size:.86em; box-shadow:inset 0 0 0 1px var(--ink-200); padding:1px 5px;
+  -webkit-box-decoration-break:clone; box-decoration-break:clone;
+}
+
+/* ---- Funktionale Bedienelemente: nur mobil, nie gefüllt, nie rot ---- */
+.mobile-actions{display:none; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px}
+.mobile-actions a{
+  height:48px; display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--ink-900); color:var(--ink-900); text-decoration:none;
+  font:500 14px/1 var(--sans); background:transparent;
+}
+
+/* ===================================================================
+   BREAKPOINTS
+   =================================================================== */
+@media (max-width:1055px){
+  .sheet::before{
+    background:
+      linear-gradient(var(--raster),var(--raster)) 0 0/1px 100% no-repeat,
+      linear-gradient(var(--raster),var(--raster)) 50% 0/1px 100% no-repeat,
+      linear-gradient(var(--raster),var(--raster)) calc(100% - 1px) 0/1px 100% no-repeat;
+  }
+  .sec,.hero{padding:64px 0}
+  .hero .wrap{grid-template-columns:1fr; gap:48px}
+  .hero-r svg{max-height:280px}
+  .refgrid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:48px 24px}
+  .gallery{grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px}
+  .schriftfeld{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sf:nth-child(4n){border-right:1px solid var(--ink-200)}
+  .sf:nth-child(2n){border-right:0}
+  .sf:nth-child(n+3){border-top:1px solid var(--ink-200)}
+}
+
+@media (max-width:671px){
+  .sheet::before{background:none}
+  .wrap{padding:0 16px}
+  .sec,.hero{padding:48px 0}
+  h1{font-size:32px; line-height:1.15; letter-spacing:-0.015em}
+  .pagehead h1{font-size:28px}
+  h2{font-size:26px; line-height:1.20; letter-spacing:-0.01em}
+  h3{font-size:20px}
+  .statement{font-size:19px}
+  .hero-r svg{max-height:200px}
+  .hero-r svg .iso-callouts{display:none}
+
+  .site-head .wrap{min-height:64px; gap:16px}
+  .site-nav{display:none}
+  .nav-toggle{display:block}
+
+  .refgrid{grid-template-columns:1fr; gap:48px}
+  .gallery{grid-template-columns:1fr; gap:32px}
+  .leist-row{grid-template-columns:1fr; gap:12px; padding:24px 0}
+
+  /* Prozesskette kippt in die Senkrechte, Striche zeigen nach links */
+  .process{display:block; border-bottom:0; border-left:1px solid var(--ink-300); padding:0}
+  .process li{
+    min-width:0; padding:0 0 0 24px; margin-bottom:24px;
+    display:flex; flex-direction:column;
+  }
+  .process li:last-child{margin-bottom:0}
+  .process li::before{left:-8px; bottom:auto; top:7px; width:8px; height:1px}
+  .process li + li::after{display:none}
+  .p-label{min-height:0; font-size:16px; line-height:1.4; order:2}
+  .p-idx{margin:0 0 4px}
+
+  /* Spec-Tabellen werden gestapelt — niemals Querscroll */
+  .spec div{grid-template-columns:1fr; gap:4px}
+
+  /* Schriftfeld verliert die seitlichen Rahmen */
+  .schriftfeld{grid-template-columns:1fr; border-left:0; border-right:0}
+  .sf{border-right:0 !important; border-top:1px solid var(--ink-200)}
+  .sf:first-child{border-top:0}
+
+  .mobile-actions{display:grid}
+}
+
+@media (max-width:389px){
+  .p-label{font-size:15px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms !important; transition-duration:.001ms !important}
+}
+
+@media print{
+  .site-head,.nav-toggle,.nav-sheet,.mobile-actions,.skip{display:none !important}
+  .sheet::before{display:none}
+  body{font-size:11pt}
+  .sec{padding:24pt 0; break-inside:avoid}
+}
