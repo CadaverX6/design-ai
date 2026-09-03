@@ -1,0 +1,1566 @@
+<title>Werkplan</title>
+<meta name="description" content="Wireframe zur Abstimmung — Ackermann Gebäudetechnik GmbH &amp; Co. KG">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* ===================================================================
+   ACKERMANN GEBÄUDETECHNIK — WIREFRAME „WERKPLAN"
+   Zwei getrennte Token-Ebenen:
+   1. --shell-*  Präsentationsrahmen (folgt dem Theme des Betrachters)
+   2. --paper / --ink-* / --ack-*  die Website selbst (immer weiß,
+      weil der Entwurf ein weißes Blatt ist)
+   =================================================================== */
+
+:root{
+  color-scheme: light dark;
+  --shell-bg:#F1F1F0; --shell-fg:#111111; --shell-muted:#63635E;
+  --shell-line:#D8D8D4; --shell-panel:#FFFFFF; --shell-sunken:#E7E7E4;
+
+  /* ---- Website-Tokens (fix, themenunabhängig) ---- */
+  --paper:#FFFFFF; --paper-alt:#FAFAFA;
+  --ink-900:#111111; --ink-800:#262626; --ink-500:#6F6F6F;
+  --ink-300:#C6C6C6; --ink-200:#E0E0E0; --raster:#EDEDED;
+  --ack-red:#CC0605;        /* PLATZHALTER — aus dem Logo ableiten */
+  --ack-red-deep:#A30504;   /* PLATZHALTER */
+  --radius:0;
+
+  --sans:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --shell-bg:#151513; --shell-fg:#ECECE7; --shell-muted:#9A9A93;
+    --shell-line:#33332F; --shell-panel:#1E1E1B; --shell-sunken:#0E0E0D;
+  }
+}
+:root[data-theme="dark"]{
+  --shell-bg:#151513; --shell-fg:#ECECE7; --shell-muted:#9A9A93;
+  --shell-line:#33332F; --shell-panel:#1E1E1B; --shell-sunken:#0E0E0D;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0; background:var(--shell-bg); color:var(--shell-fg);
+  font-family:var(--sans); -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+
+/* =================== PRÄSENTATIONSRAHMEN =================== */
+.chrome{
+  position:sticky; top:0; z-index:40;
+  background:var(--shell-panel); border-bottom:1px solid var(--shell-line);
+}
+.chrome-in{
+  max-width:1560px; margin:0 auto; padding:0 20px;
+  display:flex; align-items:center; gap:20px; flex-wrap:wrap; min-height:56px;
+}
+.chrome-id{display:flex; align-items:baseline; gap:10px; margin-right:auto}
+.chrome-id b{font-size:13px; font-weight:600; letter-spacing:-0.005em}
+.chrome-id span{font-size:11px; color:var(--shell-muted); font-family:var(--mono)}
+
+.tabs{display:flex; gap:2px; flex-wrap:wrap; padding:6px 0}
+.tab{
+  font:500 12px/1 var(--sans); padding:8px 11px; border:1px solid transparent;
+  background:none; color:var(--shell-muted); cursor:pointer; border-radius:0;
+}
+.tab:hover{color:var(--shell-fg)}
+.tab[aria-selected="true"]{
+  color:var(--shell-fg); border-color:var(--shell-line); background:var(--shell-bg);
+}
+.tab.tab-alt{font-family:var(--mono); font-size:11px}
+.tabs-sep{width:1px; background:var(--shell-line); margin:8px 8px}
+
+.vp{display:flex; gap:2px; padding:6px 0}
+.vp button{
+  font:500 11px/1 var(--mono); padding:8px 10px; cursor:pointer;
+  border:1px solid var(--shell-line); background:var(--shell-panel); color:var(--shell-muted);
+}
+.vp button[aria-pressed="true"]{background:var(--shell-fg); color:var(--shell-panel); border-color:var(--shell-fg)}
+
+.notice{
+  max-width:1560px; margin:0 auto; padding:10px 20px;
+  font:400 11.5px/1.5 var(--mono); color:var(--shell-muted);
+}
+.notice b{color:var(--shell-fg); font-weight:500}
+
+/* Bühne: container-type macht die Website-Breakpoints unabhängig vom Browserfenster,
+   sodass der Mobil-Umschalter echte Responsive-Regeln auslöst. */
+.stage-outer{padding:0 20px 56px; display:flex; justify-content:center}
+.stage{
+  container-type:inline-size;
+  width:100%; max-width:1400px;
+  background:var(--paper); color:var(--ink-800);
+  border:1px solid var(--shell-line);
+  transition:max-width 220ms cubic-bezier(.2,0,.2,1);
+}
+body[data-vp="mobile"] .stage{max-width:390px}
+@media (prefers-reduced-motion: reduce){.stage{transition:none}}
+
+/* =================== DIE WEBSITE =================== */
+.sheet{position:relative; background:var(--paper); color:var(--ink-800)}
+.sheet::before{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+  max-width:1312px; margin:0 auto; left:0; right:0;
+  background:
+    linear-gradient(var(--raster),var(--raster)) 0 0/1px 100% no-repeat,
+    linear-gradient(var(--raster),var(--raster)) 448px 0/1px 100% no-repeat,
+    linear-gradient(var(--raster),var(--raster)) 896px 0/1px 100% no-repeat,
+    linear-gradient(var(--raster),var(--raster)) calc(100% - 1px) 0/1px 100% no-repeat;
+}
+.wrap{max-width:1312px; margin:0 auto; padding:0 24px; position:relative; z-index:1}
+
+/* ---- Typografie ---- */
+.sheet h1,.sheet h2,.sheet h3,.sheet h4{margin:0; color:var(--ink-900); font-weight:600}
+.sheet h1{font-size:48px; line-height:1.10; letter-spacing:-0.02em; font-weight:500; text-wrap:balance}
+.sheet h2{font-size:32px; line-height:1.15; letter-spacing:-0.015em; font-weight:500; text-wrap:balance}
+.sheet h3{font-size:22px; line-height:1.25; letter-spacing:-0.01em}
+.sheet h4{font-size:18px; line-height:1.35}
+.sheet p{margin:0}
+.lead{font-size:18px; line-height:1.60; color:var(--ink-800); max-width:640px; text-wrap:pretty}
+.prose{max-width:752px; font-size:16px; line-height:1.65; color:var(--ink-800); text-wrap:pretty}
+.prose p + p{margin-top:16px}
+.label{
+  font:600 12px/1.30 var(--sans); letter-spacing:0.06em;
+  text-transform:uppercase; color:var(--ink-500);
+}
+.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+.idx{font:500 12px/1.30 var(--mono); letter-spacing:0.02em; color:var(--ink-500)}
+.data{font:500 13px/1.45 var(--mono); letter-spacing:0.01em; color:var(--ink-900); font-variant-numeric:tabular-nums}
+.cap{font:400 12px/1.50 var(--sans); color:var(--ink-500)}
+.small{font-size:14px; line-height:1.55}
+
+/* ---- Links ---- */
+.link{
+  font:500 14px/1.55 var(--sans); color:var(--ink-900);
+  text-decoration:none; display:inline-flex; gap:8px; align-items:baseline;
+}
+.link .arw{color:var(--ack-red); transition:transform 120ms cubic-bezier(.2,0,.2,1), color 120ms}
+.link:hover{text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px}
+.link:hover .arw{transform:translateX(3px); color:var(--ack-red-deep)}
+.link-plain .arw{color:var(--ink-900)}
+.sheet a:focus-visible,.tab:focus-visible,.vp button:focus-visible{
+  outline:2px solid var(--ack-red); outline-offset:2px;
+}
+@media (prefers-reduced-motion: reduce){.link .arw{transition:none}}
+
+/* ---- Kopfzeile der Website ---- */
+.site-head{
+  position:relative; background:var(--paper);
+  border-bottom:1px solid var(--ink-200);
+}
+.site-head .wrap{display:flex; align-items:center; gap:32px; min-height:72px}
+.brand{display:flex; align-items:baseline; gap:8px; text-decoration:none}
+.brand b{font:600 16px/1 var(--sans); letter-spacing:0.02em; color:var(--ink-900)}
+.brand i{font:400 12px/1 var(--sans); font-style:normal; color:var(--ink-500)}
+.brand .dot{width:9px; height:9px; background:var(--ack-red); display:inline-block}
+.site-nav{margin-left:auto; display:flex; gap:28px}
+.site-nav a{
+  font:500 14px/1 var(--sans); color:var(--ink-800); text-decoration:none;
+  padding:26px 0; position:relative;
+}
+.site-nav a[aria-current="page"]{color:var(--ink-900)}
+.site-nav a[aria-current="page"]::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px; background:var(--ack-red);
+}
+.site-nav a:not([aria-current])::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:var(--ink-900); opacity:0; transition:opacity 120ms;
+}
+.site-nav a:hover::after{opacity:1}
+.navbar-mobile{display:none}
+
+/* ---- Hero / Titelblatt ---- */
+.hero{padding:96px 0}
+.hero .wrap{display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:32px; align-items:start}
+.hero-l > * + *{margin-top:0}
+.hero h1{margin-top:24px}
+.hero .lead{margin-top:32px}
+.hero .link{margin-top:32px}
+.hero-r{padding-top:6px}
+.hero-r svg{width:100%; height:auto; max-height:420px; color:var(--ink-900); display:block}
+.hero-r .cap{margin-top:16px; display:block}
+
+/* ---- Abschnitte ---- */
+.sec{padding:96px 0}
+.sec.alt{background:var(--paper-alt)}
+.sec-head{border-top:1px solid var(--ink-900); padding-top:20px}
+.sec-head .kicker{display:flex; gap:10px; align-items:baseline}
+.sec-head h2{margin-top:40px}
+.sec-body{margin-top:32px}
+
+/* ---- Referenzkarten ---- */
+.refgrid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:64px 32px}
+.refcard{display:flex; flex-direction:column; height:100%; text-decoration:none; color:inherit}
+.refcard .rule{display:block; height:1px; background:var(--ink-900); margin-top:16px; transition:height 120ms}
+.refcard .idx{display:block; margin-top:12px}
+.refcard h3{margin-top:8px}
+.refcard .gew{margin-top:8px; font-size:14px; line-height:1.55; color:var(--ink-500)}
+.refcard .teaser{margin-top:12px; font-size:14px; line-height:1.55; color:var(--ink-800)}
+.refcard .link{margin-top:auto; padding-top:16px; align-self:flex-start}
+.refcard:hover h3{text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px}
+.refcard:hover .rule{height:2px}
+
+/* ---- Bildplatzhalter (steht für das echte Projektfoto) ---- */
+.ph{
+  position:relative; width:100%; background:var(--paper-alt);
+  box-shadow:inset 0 0 0 1px rgba(17,17,17,.10);
+  display:flex; align-items:flex-end; overflow:hidden;
+}
+.ph::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    linear-gradient(to top right, transparent calc(50% - .5px), var(--raster) 50%, transparent calc(50% + .5px)),
+    linear-gradient(to bottom right, transparent calc(50% - .5px), var(--raster) 50%, transparent calc(50% + .5px));
+}
+.ph[data-ratio="4:3"]{aspect-ratio:4/3}
+.ph[data-ratio="3:2"]{aspect-ratio:3/2}
+.ph[data-ratio="16:9"]{aspect-ratio:16/9}
+.ph[data-ratio="1:1"]{aspect-ratio:1/1}
+.ph-in{position:relative; padding:12px; width:100%}
+.ph-tag{
+  font:500 10px/1 var(--mono); letter-spacing:0.08em; text-transform:uppercase;
+  color:var(--ink-500); background:var(--paper); padding:4px 6px;
+  box-shadow:inset 0 0 0 1px var(--ink-200); display:inline-block;
+}
+.ph-txt{
+  display:block; margin-top:8px; font:400 11.5px/1.45 var(--sans); color:var(--ink-500);
+  background:var(--paper); padding:6px 7px; box-shadow:inset 0 0 0 1px var(--ink-200);
+  max-width:100%;
+}
+figure{margin:0}
+figure .cap{margin-top:12px; display:block}
+
+/* ---- Leistungsliste ---- */
+.leist{border-top:1px solid var(--ink-200)}
+.leist-row{
+  padding:32px 0; border-bottom:1px solid var(--ink-200);
+  display:grid; grid-template-columns:minmax(0,3fr) minmax(0,7fr); gap:32px;
+}
+.leist-row h4{padding-top:2px}
+.begriffe{margin-top:16px; font:400 13px/1.6 var(--mono); color:var(--ink-500)}
+
+/* ---- Aussage mit rotem Balken (ein Vorkommen pro Seite) ---- */
+.statement{
+  border-left:3px solid var(--ack-red); padding-left:24px;
+  font-size:22px; line-height:1.35; letter-spacing:-0.01em;
+  font-weight:500; color:var(--ink-900); max-width:752px; text-wrap:pretty;
+}
+
+/* ---- Prozesskette als Maßstab ---- */
+.process{
+  list-style:none; margin:40px 0 0; padding:0 0 8px;
+  display:flex; border-bottom:1px solid var(--ink-300); position:relative;
+}
+.process li{flex:1 1 0; min-width:140px; position:relative; padding-right:16px}
+.process li::before{
+  content:""; position:absolute; left:0; bottom:-9px; width:1px; height:8px; background:var(--ink-300);
+}
+.process li + li::after{
+  content:"→"; position:absolute; left:-22px; bottom:-15px;
+  font:400 14px/1 var(--sans); color:var(--ink-500);
+  background:var(--paper); padding:3px 5px;
+}
+.sec.alt .process li + li::after{background:var(--paper-alt)}
+.p-label{display:block; min-height:40px; font:500 14px/1.35 var(--sans); color:var(--ink-900)}
+.p-idx{display:block; margin-top:8px; font:500 12px/1.30 var(--mono); color:var(--ink-500)}
+
+/* ---- Schriftfeld (DIN-Schriftfeld als wiederkehrender Container) ---- */
+.schriftfeld{border:1px solid var(--ink-900); background:var(--paper);
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr))}
+.sf{padding:16px; border-right:1px solid var(--ink-200)}
+.sf:nth-child(4n){border-right:0}
+.sf-full{grid-column:1/-1; border-top:1px solid var(--ink-200); border-right:0}
+.sf .val{margin-top:8px; font-size:14px; line-height:1.5; color:var(--ink-900)}
+.sf .val a{color:var(--ink-900); text-decoration:none; border-bottom:1px solid var(--ink-200)}
+.sf .val a:hover{border-color:var(--ink-900)}
+.legal{margin-top:24px; font:400 12px/1.5 var(--sans); color:var(--ink-500); display:flex; gap:16px}
+.legal a{text-decoration:none; border-bottom:1px solid var(--ink-200)}
+
+/* ---- Datentabelle ---- */
+.spec{border-top:1px solid var(--ink-200); max-width:752px}
+.spec div{display:grid; grid-template-columns:220px minmax(0,1fr); gap:16px;
+  padding:16px 0; border-bottom:1px solid var(--ink-200)}
+.spec dt{margin:0}
+.spec dd{margin:0; font-size:15px; line-height:1.55; color:var(--ink-900)}
+.spec div:last-child{border-bottom:1px solid var(--ink-300)}
+
+/* ---- Referenz-Detail ---- */
+.projhead{padding:56px 0 0}
+.projhead h1{margin-top:24px; font-size:40px}
+.projhead .meta{margin-top:24px; display:flex; gap:24px; flex-wrap:wrap}
+.beforeafter{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px}
+.ba-head{border-top:1px solid var(--ink-900); padding-top:12px; margin-bottom:16px}
+.gallery{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px}
+
+/* ---- Stellen ---- */
+.roles{border-top:1px solid var(--ink-200); max-width:752px}
+.roles li{list-style:none; padding:16px 0; border-bottom:1px solid var(--ink-200);
+  display:flex; gap:16px; align-items:baseline}
+.roles{padding:0; margin:0}
+
+/* ---- Platzhalter-Markierung im Text ---- */
+mark.pl{
+  background:transparent; color:var(--ink-500); font-family:var(--mono);
+  font-size:.86em; box-shadow:inset 0 0 0 1px var(--ink-200); padding:1px 5px;
+  -webkit-box-decoration-break:clone; box-decoration-break:clone;
+}
+
+/* =================== CONTAINER-BREAKPOINTS =================== */
+@container (max-width:1055px){
+  .sheet::before{
+    background:
+      linear-gradient(var(--raster),var(--raster)) 0 0/1px 100% no-repeat,
+      linear-gradient(var(--raster),var(--raster)) 50% 0/1px 100% no-repeat,
+      linear-gradient(var(--raster),var(--raster)) calc(100% - 1px) 0/1px 100% no-repeat;
+  }
+  .sec,.hero{padding:64px 0}
+  .hero .wrap{grid-template-columns:1fr; gap:48px}
+  .hero-r svg{max-height:280px}
+  .refgrid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:48px 24px}
+  .gallery{grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px}
+  .schriftfeld{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sf:nth-child(4n){border-right:1px solid var(--ink-200)}
+  .sf:nth-child(2n){border-right:0}
+  .sf:nth-child(n+3){border-top:1px solid var(--ink-200)}
+}
+@container (max-width:671px){
+  .sheet::before{background:none}
+  .wrap{padding:0 16px}
+  .sec,.hero{padding:48px 0}
+  .sheet h1{font-size:32px; line-height:1.15; letter-spacing:-0.015em}
+  .projhead h1{font-size:28px}
+  .sheet h2{font-size:26px; line-height:1.20; letter-spacing:-0.01em}
+  .sheet h3{font-size:20px}
+  .statement{font-size:19px}
+  .hero-r svg{max-height:200px}
+  .hero-r svg .iso-callouts{display:none}
+
+  .site-head .wrap{min-height:64px}
+  .site-nav{display:none}
+  .navbar-mobile{display:block; margin-left:auto}
+  .navbar-mobile .label{font-size:11px}
+
+  .refgrid{grid-template-columns:1fr; gap:48px}
+  .gallery,.beforeafter{grid-template-columns:1fr; gap:32px}
+  .leist-row{grid-template-columns:1fr; gap:12px; padding:24px 0}
+
+  /* Prozesskette kippt in die Senkrechte, Striche zeigen nach links */
+  .process{display:block; border-bottom:0; border-left:1px solid var(--ink-300); padding:0}
+  .process li{min-width:0; padding:0 0 0 24px; margin-bottom:24px}
+  .process li:last-child{margin-bottom:0}
+  .process li::before{left:-8px; bottom:auto; top:7px; width:8px; height:1px}
+  .process li + li::after{display:none}
+  .p-label{min-height:0; font-size:16px; line-height:1.4; order:2}
+  .p-idx{margin:0 0 4px}
+  .process li{display:flex; flex-direction:column}
+
+  /* Spec-Tabellen werden zu gestapelten Definitionslisten, niemals Querscroll */
+  .spec div{grid-template-columns:1fr; gap:4px}
+
+  /* Schriftfeld verliert seitliche Rahmen, damit es nicht eng wirkt */
+  .schriftfeld{grid-template-columns:1fr; border-left:0; border-right:0}
+  .sf{border-right:0 !important; border-top:1px solid var(--ink-200)}
+  .sf:first-child{border-top:0}
+  .mobile-actions{display:grid !important}
+}
+
+/* Funktionale Bedienelemente — nur mobil, nie gefüllt, nie rot */
+.mobile-actions{display:none; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px}
+.mobile-actions a{
+  height:48px; display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--ink-900); color:var(--ink-900); text-decoration:none;
+  font:500 14px/1 var(--sans); background:transparent;
+}
+
+/* =================== KONZEPT-TAB =================== */
+.doc{max-width:1560px; margin:0 auto; padding:8px 20px 72px}
+.doc-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; margin-top:20px}
+.panel{background:var(--shell-panel); border:1px solid var(--shell-line); padding:22px 24px}
+.panel h3{margin:0 0 4px; font:600 14px/1.3 var(--sans)}
+.panel .label{color:var(--shell-muted)}
+.panel p{margin:12px 0 0; font-size:13.5px; line-height:1.65; color:var(--shell-muted); max-width:68ch}
+.panel p strong{color:var(--shell-fg); font-weight:500}
+.doc-lead{margin:20px 0 0; font-size:15px; line-height:1.65; max-width:74ch; color:var(--shell-fg)}
+.doc h2{font:500 24px/1.2 var(--sans); letter-spacing:-0.01em; margin:36px 0 0}
+
+.swatches{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:1px; background:var(--shell-line); border:1px solid var(--shell-line); margin-top:14px}
+.sw{background:var(--shell-panel); padding:12px}
+.sw i{display:block; height:36px; border:1px solid rgba(128,128,128,.28)}
+.sw b{display:block; margin-top:10px; font:500 11px/1.3 var(--mono)}
+.sw span{display:block; margin-top:3px; font:400 10.5px/1.4 var(--sans); color:var(--shell-muted)}
+
+.tbl{width:100%; border-collapse:collapse; margin-top:14px; font-size:12.5px}
+.tbl th,.tbl td{text-align:left; padding:9px 12px; border-bottom:1px solid var(--shell-line); vertical-align:top}
+.tbl th{font:600 11px/1.3 var(--sans); letter-spacing:.06em; text-transform:uppercase; color:var(--shell-muted)}
+.tbl td.m{font-family:var(--mono); white-space:nowrap; color:var(--shell-fg)}
+.tbl-scroll{overflow-x:auto}
+
+.checks{margin:14px 0 0; padding:0; list-style:none}
+.checks li{padding:10px 0 10px 22px; border-bottom:1px solid var(--shell-line); position:relative; font-size:13px; line-height:1.6; color:var(--shell-muted)}
+.checks li::before{content:"□"; position:absolute; left:0; top:9px; font-family:var(--mono); color:var(--shell-muted)}
+.checks li b{color:var(--shell-fg); font-weight:500}
+
+.moodgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; margin-top:14px}
+.mood{border:1px solid var(--shell-line); padding:14px; text-decoration:none; display:block; background:var(--shell-panel)}
+.mood:hover{border-color:var(--shell-fg)}
+.mood b{display:block; font:500 12px/1.3 var(--mono)}
+.mood span{display:block; margin-top:6px; font-size:12px; line-height:1.5; color:var(--shell-muted)}
+.mood em{display:block; margin-top:10px; font:400 11px/1 var(--mono); font-style:normal; color:var(--shell-muted)}
+
+[hidden]{display:none !important}
+.vh{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+</style>
+
+<header class="chrome">
+  <div class="chrome-in">
+    <div class="chrome-id">
+      <b>Ackermann Gebäudetechnik</b>
+      <span>Websitekonzept · Wireframe · 09/2026</span>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Seiten des Wireframes">
+      <button class="tab" role="tab" aria-selected="true" data-page="start">Startseite</button>
+      <button class="tab" role="tab" aria-selected="false" data-page="referenzen">Referenzen</button>
+      <button class="tab" role="tab" aria-selected="false" data-page="projekt">Referenz (Muster)</button>
+      <button class="tab" role="tab" aria-selected="false" data-page="stationsbau">Stationsbau</button>
+      <button class="tab" role="tab" aria-selected="false" data-page="arbeiten">Arbeiten bei uns</button>
+      <button class="tab" role="tab" aria-selected="false" data-page="kontakt">Kontakt</button>
+      <span class="tabs-sep" aria-hidden="true"></span>
+      <button class="tab tab-alt" role="tab" aria-selected="false" data-page="konzept">Konzept &amp; Tokens</button>
+    </nav>
+    <div class="vp" role="group" aria-label="Ansicht">
+      <button type="button" data-vp="desktop" aria-pressed="true">Desktop</button>
+      <button type="button" data-vp="mobile" aria-pressed="false">Mobil</button>
+    </div>
+  </div>
+</header>
+
+<p class="notice">
+  <b>Wireframe zur Abstimmung.</b> Alle Bildflächen sind Platzhalter und stehen für echte Projektfotos —
+  es werden keine Stockbilder verwendet. Rotwert und Webfont sind ebenfalls Platzhalter und werden aus dem
+  vorhandenen Corporate Design abgeleitet. Offene Punkte sind im Text als <mark class="pl">PLATZHALTER</mark> markiert.
+</p>
+
+<div data-pageview="start"><div class="stage-outer"><div class="stage"><div class="sheet">
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="#"><span class="dot" aria-hidden="true"></span><b>ACKERMANN</b><i>Gebäudetechnik</i></a>
+  <nav class="site-nav" aria-label="Hauptnavigation"><a href="#" aria-current="page">Startseite</a><a href="#">Referenzen</a><a href="#">Stationsbau</a><a href="#">Arbeiten bei uns</a><a href="#">Kontakt</a></nav>
+  <div class="navbar-mobile"><span class="label" role="button" tabindex="0" aria-expanded="false">Menü</span></div>
+</div></header>
+<section class="hero"><div class="wrap">
+  <div class="hero-l">
+    <span class="label">Ebenhausen · Technische Gebäudeausrüstung</span>
+    <h1>Ackermann Gebäudetechnik GmbH &amp; Co. KG</h1>
+    <p class="lead">Ausführender Fachbetrieb für Sanitär-, Heizungs-, Lüftungs- und Klimatechnik.
+      Technische Gebäudeausrüstung für Wohnungsbau, Gewerbe und öffentliche Auftraggeber.</p>
+    <a class="link" href="#">Referenzen ansehen <span class="arw" aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="hero-r">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-70.6 -101.7 341.9 249.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" role="img" aria-labelledby="stationTitle">
+<title id="stationTitle">Isometrische Konstruktionszeichnung einer Fernwärmeübergabestation: Wärmeübertrager, Umwälzpumpen, Pufferspeicher und Regelung auf einem im eigenen Betrieb gefertigten Rahmen.</title>
+<g>
+<path d="M-60.62,30.00 L0.00,-5.00 L138.56,75.00 L138.56,80.00 L77.94,115.00 L-60.62,35.00 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.45"><path d="M0.00,-5.00 L138.56,75.00 L77.94,110.00 L-60.62,30.00 Z"/><path d="M-60.62,35.00 L77.94,115.00 L138.56,80.00"/><path d="M77.94,115.00 L77.94,110.00"/><path d="M-60.62,35.00 L-60.62,30.00"/><path d="M138.56,80.00 L138.56,75.00"/></g>
+</g>
+<g>
+<path d="M-6.75,-55.90 L-3.64,-57.70 L124.53,16.30 L124.53,19.90 L121.42,21.70 L-6.75,-52.30 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M-3.64,-57.70 L124.53,16.30 L121.42,18.10 L-6.75,-55.90 Z"/><path d="M-6.75,-52.30 L121.42,21.70 L124.53,19.90"/><path d="M121.42,21.70 L121.42,18.10"/><path d="M-6.75,-52.30 L-6.75,-55.90"/><path d="M124.53,19.90 L124.53,16.30"/></g>
+</g>
+<g>
+<path d="M-8.49,-38.70 L8.83,-48.70 L11.95,-46.90 L11.95,-43.30 L-5.37,-33.30 L-8.49,-35.10 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M8.83,-48.70 L11.95,-46.90 L-5.37,-36.90 L-8.49,-38.70 Z"/><path d="M-8.49,-35.10 L-5.37,-33.30 L11.95,-43.30"/><path d="M-5.37,-33.30 L-5.37,-36.90"/><path d="M-8.49,-35.10 L-8.49,-38.70"/><path d="M11.95,-43.30 L11.95,-46.90"/></g>
+</g>
+<g>
+<path d="M-10.05,-36.00 L-6.93,-37.80 L-3.81,-36.00 L-3.81,-24.00 L-6.93,-22.20 L-10.05,-24.00 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M-6.93,-37.80 L-3.81,-36.00 L-6.93,-34.20 L-10.05,-36.00 Z"/><path d="M-10.05,-24.00 L-6.93,-22.20 L-3.81,-24.00"/><path d="M-6.93,-22.20 L-6.93,-34.20"/><path d="M-10.05,-24.00 L-10.05,-36.00"/><path d="M-3.81,-24.00 L-3.81,-36.00"/></g>
+</g>
+<g>
+<path d="M12.30,-24.70 L31.35,-35.70 L34.47,-33.90 L34.47,-30.30 L15.42,-19.30 L12.30,-21.10 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M31.35,-35.70 L34.47,-33.90 L15.42,-22.90 L12.30,-24.70 Z"/><path d="M12.30,-21.10 L15.42,-19.30 L34.47,-30.30"/><path d="M15.42,-19.30 L15.42,-22.90"/><path d="M12.30,-21.10 L12.30,-24.70"/><path d="M34.47,-30.30 L34.47,-33.90"/></g>
+</g>
+<g>
+<path d="M10.74,-22.00 L13.86,-23.80 L16.97,-22.00 L16.97,-0.00 L13.86,1.80 L10.74,-0.00 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M13.86,-23.80 L16.97,-22.00 L13.86,-20.20 L10.74,-22.00 Z"/><path d="M10.74,-0.00 L13.86,1.80 L16.97,-0.00"/><path d="M13.86,1.80 L13.86,-20.20"/><path d="M10.74,-0.00 L10.74,-22.00"/><path d="M16.97,-0.00 L16.97,-22.00"/></g>
+</g>
+<g>
+<path d="M62.87,-15.70 L67.55,-18.40 L72.23,-15.70 L72.23,-10.30 L67.55,-7.60 L62.87,-10.30 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M67.55,-18.40 L72.23,-15.70 L67.55,-13.00 L62.87,-15.70 Z"/><path d="M62.87,-10.30 L67.55,-7.60 L72.23,-10.30"/><path d="M67.55,-7.60 L67.55,-13.00"/><path d="M62.87,-10.30 L62.87,-15.70"/><path d="M72.23,-10.30 L72.23,-15.70"/></g>
+</g>
+<g>
+<path d="M63.14,-20.40 a4.41,2.55 0 1,0 8.82,0 a4.41,2.55 0 1,0 -8.82,0 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M67.55,-15.70 L67.55,-20.40"/><path d="M63.14,-20.40 a4.41,2.55 0 1,0 8.82,0 a4.41,2.55 0 1,0 -8.82,0"/></g>
+</g>
+<g>
+<path d="M102.19,26.00 L110.85,21.00 L124.71,29.00 L124.71,71.00 L116.05,76.00 L102.19,68.00 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="0.45" opacity="0.45"><path d="M105.66,70.00 L105.66,28.00"/><path d="M109.12,72.00 L109.12,30.00"/><path d="M112.58,74.00 L112.58,32.00"/></g>
+<g stroke-width="1.0"><path d="M110.85,21.00 L124.71,29.00 L116.05,34.00 L102.19,26.00 Z"/><path d="M102.19,68.00 L116.05,76.00 L124.71,71.00"/><path d="M116.05,76.00 L116.05,34.00"/><path d="M102.19,68.00 L102.19,26.00"/><path d="M124.71,71.00 L124.71,29.00"/></g>
+</g>
+<g>
+<path d="M-31.18,-19.00 L-12.12,-30.00 L3.46,-21.00 L3.46,25.00 L-15.59,36.00 L-31.18,27.00 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="0.45" opacity="0.45"><path d="M-29.44,28.00 L-29.44,-18.00"/><path d="M-27.71,29.00 L-27.71,-17.00"/><path d="M-25.98,30.00 L-25.98,-16.00"/><path d="M-24.25,31.00 L-24.25,-15.00"/><path d="M-22.52,32.00 L-22.52,-14.00"/><path d="M-20.78,33.00 L-20.78,-13.00"/><path d="M-19.05,34.00 L-19.05,-12.00"/><path d="M-17.32,35.00 L-17.32,-11.00"/><path d="M-0.35,27.20 L-0.35,-18.80"/><path d="M-4.16,29.40 L-4.16,-16.60"/><path d="M-7.97,31.60 L-7.97,-14.40"/><path d="M-11.78,33.80 L-11.78,-12.20"/></g>
+<g stroke-width="1.0"><path d="M-12.12,-30.00 L3.46,-21.00 L-15.59,-10.00 L-31.18,-19.00 Z"/><path d="M-31.18,27.00 L-15.59,36.00 L3.46,25.00"/><path d="M-15.59,36.00 L-15.59,-10.00"/><path d="M-31.18,27.00 L-31.18,-19.00"/><path d="M3.46,25.00 L3.46,-21.00"/></g>
+</g>
+<g>
+<path d="M-8.66,4.00 L8.66,-6.00 L22.52,2.00 L22.52,38.00 L5.20,48.00 L-8.66,40.00 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="0.45" opacity="0.45"><path d="M-6.93,41.00 L-6.93,5.00"/><path d="M-5.20,42.00 L-5.20,6.00"/><path d="M-3.46,43.00 L-3.46,7.00"/><path d="M-1.73,44.00 L-1.73,8.00"/><path d="M0.00,45.00 L0.00,9.00"/><path d="M1.73,46.00 L1.73,10.00"/><path d="M3.46,47.00 L3.46,11.00"/><path d="M18.19,40.50 L18.19,4.50"/><path d="M13.86,43.00 L13.86,7.00"/><path d="M9.53,45.50 L9.53,9.50"/></g>
+<g stroke-width="1.0"><path d="M8.66,-6.00 L22.52,2.00 L5.20,12.00 L-8.66,4.00 Z"/><path d="M-8.66,40.00 L5.20,48.00 L22.52,38.00"/><path d="M5.20,48.00 L5.20,12.00"/><path d="M-8.66,40.00 L-8.66,4.00"/><path d="M22.52,38.00 L22.52,2.00"/></g>
+</g>
+<g>
+<path d="M51.06,13.50 A20.82,12.02 0 0,1 92.70,13.50 L92.70,73.50 A20.82,12.02 0 0,1 51.06,73.50 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="0.45" opacity="0.45"><path d="M51.06,58.50 a20.82,12.02 0 0,0 41.64,0"/><path d="M51.06,43.50 a20.82,12.02 0 0,0 41.64,0"/><path d="M51.06,28.50 a20.82,12.02 0 0,0 41.64,0"/></g>
+<g stroke-width="1.0"><path d="M51.06,13.50 a20.82,12.02 0 1,0 41.64,0 a20.82,12.02 0 1,0 -41.64,0"/><path d="M51.06,73.50 a20.82,12.02 0 0,0 41.64,0"/><path d="M51.06,13.50 L51.06,73.50"/><path d="M92.70,13.50 L92.70,73.50"/></g>
+</g>
+<g>
+<path d="M61.49,9.50 L71.88,3.50 L82.27,9.50 L82.27,13.50 L71.88,19.50 L61.49,13.50 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M71.88,3.50 L82.27,9.50 L71.88,15.50 L61.49,9.50 Z"/><path d="M61.49,13.50 L71.88,19.50 L82.27,13.50"/><path d="M71.88,19.50 L71.88,15.50"/><path d="M61.49,13.50 L61.49,9.50"/><path d="M82.27,13.50 L82.27,9.50"/></g>
+</g>
+<g>
+<path d="M-50.06,19.10 L-46.94,17.30 L76.04,88.30 L76.04,91.90 L72.92,93.70 L-50.06,22.70 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M-46.94,17.30 L76.04,88.30 L72.92,90.10 L-50.06,19.10 Z"/><path d="M-50.06,22.70 L72.92,93.70 L76.04,91.90"/><path d="M72.92,93.70 L72.92,90.10"/><path d="M-50.06,22.70 L-50.06,19.10"/><path d="M76.04,91.90 L76.04,88.30"/></g>
+</g>
+<g>
+<path d="M-2.89,36.00 A8.08,4.67 0 0,1 13.28,36.00 L13.28,51.00 A8.08,4.67 0 0,1 -2.89,51.00 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M-2.89,36.00 a8.08,4.67 0 1,0 16.17,0 a8.08,4.67 0 1,0 -16.17,0"/><path d="M-2.89,51.00 a8.08,4.67 0 0,0 16.17,0"/><path d="M-2.89,36.00 L-2.89,51.00"/><path d="M13.28,36.00 L13.28,51.00"/></g>
+</g>
+<g>
+<path d="M-3.81,23.00 L5.20,17.80 L14.20,23.00 L14.20,36.00 L5.20,41.20 L-3.81,36.00 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M5.20,17.80 L14.20,23.00 L5.20,28.20 L-3.81,23.00 Z"/><path d="M-3.81,36.00 L5.20,41.20 L14.20,36.00"/><path d="M5.20,41.20 L5.20,28.20"/><path d="M-3.81,36.00 L-3.81,23.00"/><path d="M14.20,36.00 L14.20,23.00"/></g>
+</g>
+<g>
+<path d="M2.08,13.00 L5.20,11.20 L8.31,13.00 L8.31,23.00 L5.20,24.80 L2.08,23.00 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M5.20,11.20 L8.31,13.00 L5.20,14.80 L2.08,13.00 Z"/><path d="M2.08,23.00 L5.20,24.80 L8.31,23.00"/><path d="M5.20,24.80 L5.20,14.80"/><path d="M2.08,23.00 L2.08,13.00"/><path d="M8.31,23.00 L8.31,13.00"/></g>
+</g>
+<g>
+<path d="M16.17,47.00 A8.08,4.67 0 0,1 32.33,47.00 L32.33,62.00 A8.08,4.67 0 0,1 16.17,62.00 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M16.17,47.00 a8.08,4.67 0 1,0 16.17,0 a8.08,4.67 0 1,0 -16.17,0"/><path d="M16.17,62.00 a8.08,4.67 0 0,0 16.17,0"/><path d="M16.17,47.00 L16.17,62.00"/><path d="M32.33,47.00 L32.33,62.00"/></g>
+</g>
+<g>
+<path d="M15.24,34.00 L24.25,28.80 L33.26,34.00 L33.26,47.00 L24.25,52.20 L15.24,47.00 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M24.25,28.80 L33.26,34.00 L24.25,39.20 L15.24,34.00 Z"/><path d="M15.24,47.00 L24.25,52.20 L33.26,47.00"/><path d="M24.25,52.20 L24.25,39.20"/><path d="M15.24,47.00 L15.24,34.00"/><path d="M33.26,47.00 L33.26,34.00"/></g>
+</g>
+<g>
+<path d="M21.13,24.00 L24.25,22.20 L27.37,24.00 L27.37,34.00 L24.25,35.80 L21.13,34.00 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M24.25,22.20 L27.37,24.00 L24.25,25.80 L21.13,24.00 Z"/><path d="M21.13,34.00 L24.25,35.80 L27.37,34.00"/><path d="M24.25,35.80 L24.25,25.80"/><path d="M21.13,34.00 L21.13,24.00"/><path d="M27.37,34.00 L27.37,24.00"/></g>
+</g>
+<g>
+<path d="M-30.66,30.30 L-25.98,27.60 L-21.30,30.30 L-21.30,35.70 L-25.98,38.40 L-30.66,35.70 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M-25.98,27.60 L-21.30,30.30 L-25.98,33.00 L-30.66,30.30 Z"/><path d="M-30.66,35.70 L-25.98,38.40 L-21.30,35.70"/><path d="M-25.98,38.40 L-25.98,33.00"/><path d="M-30.66,35.70 L-30.66,30.30"/><path d="M-21.30,35.70 L-21.30,30.30"/></g>
+</g>
+<g>
+<path d="M-30.39,25.60 a4.41,2.55 0 1,0 8.82,0 a4.41,2.55 0 1,0 -8.82,0 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M-25.98,30.30 L-25.98,25.60"/><path d="M-30.39,25.60 a4.41,2.55 0 1,0 8.82,0 a4.41,2.55 0 1,0 -8.82,0"/></g>
+</g>
+<g>
+<path d="M40.36,71.30 L45.03,68.60 L49.71,71.30 L49.71,76.70 L45.03,79.40 L40.36,76.70 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M45.03,68.60 L49.71,71.30 L45.03,74.00 L40.36,71.30 Z"/><path d="M40.36,76.70 L45.03,79.40 L49.71,76.70"/><path d="M45.03,79.40 L45.03,74.00"/><path d="M40.36,76.70 L40.36,71.30"/><path d="M49.71,76.70 L49.71,71.30"/></g>
+</g>
+<g>
+<path d="M40.62,66.60 a4.41,2.55 0 1,0 8.82,0 a4.41,2.55 0 1,0 -8.82,0 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M45.03,71.30 L45.03,66.60"/><path d="M40.62,66.60 a4.41,2.55 0 1,0 8.82,0 a4.41,2.55 0 1,0 -8.82,0"/></g>
+</g>
+<g>
+<path d="M-50.06,-18.90 L-46.94,-20.70 L76.04,50.30 L76.04,53.90 L72.92,55.70 L-50.06,-15.30 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M-46.94,-20.70 L76.04,50.30 L72.92,52.10 L-50.06,-18.90 Z"/><path d="M-50.06,-15.30 L72.92,55.70 L76.04,53.90"/><path d="M72.92,55.70 L72.92,52.10"/><path d="M-50.06,-15.30 L-50.06,-18.90"/><path d="M76.04,53.90 L76.04,50.30"/></g>
+</g>
+<g>
+<path d="M33.43,29.30 L38.11,26.60 L42.78,29.30 L42.78,34.70 L38.11,37.40 L33.43,34.70 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M38.11,26.60 L42.78,29.30 L38.11,32.00 L33.43,29.30 Z"/><path d="M33.43,34.70 L38.11,37.40 L42.78,34.70"/><path d="M38.11,37.40 L38.11,32.00"/><path d="M33.43,34.70 L33.43,29.30"/><path d="M42.78,34.70 L42.78,29.30"/></g>
+</g>
+<g>
+<path d="M33.70,24.60 a4.41,2.55 0 1,0 8.82,0 a4.41,2.55 0 1,0 -8.82,0 Z" fill="var(--iso-ground, #fff)" stroke="none"/>
+<g stroke-width="1.0"><path d="M38.11,29.30 L38.11,24.60"/><path d="M33.70,24.60 a4.41,2.55 0 1,0 8.82,0 a4.41,2.55 0 1,0 -8.82,0"/></g>
+</g>
+<g class="iso-callouts" stroke-width="0.45" opacity="0.75">
+<path d="M-12.12,-21.00 L-12.12,-93.70 L151.56,-93.70"/>
+<path d="M24.25,34.00 L24.25,-84.70 L151.56,-84.70"/>
+<path d="M71.88,9.50 L71.88,-75.70 L151.56,-75.70"/>
+<path d="M113.45,27.50 L113.45,-66.70 L151.56,-66.70"/>
+<path d="M77.94,115.00 L77.94,130.00"/>
+</g>
+<g class="iso-callouts" fill="currentColor" stroke="none" font-size="7.4" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" letter-spacing="0.35" opacity="0.75">
+<text x="156.56" y="-91.04" text-anchor="start">Wärmeübertrager</text>
+<text x="156.56" y="-82.04" text-anchor="start">Umwälzpumpen</text>
+<text x="156.56" y="-73.04" text-anchor="start">Pufferspeicher</text>
+<text x="156.56" y="-64.04" text-anchor="start">Regelung</text>
+<text x="72.94" y="136.66" text-anchor="end">Rahmen — eigene Fertigung</text>
+</g></svg>
+    <span class="cap">Fernwärmeübergabestation · Eigene Konstruktion und Fertigung, Ebenhausen.
+      <mark class="pl">PLATZHALTER</mark> — später Austausch gegen einen Export aus der eigenen 3D-CAD.</span>
+  </div>
+</div></section>
+<section class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">01</span><span class="label">Ausgewählte Referenzen</span></div>
+    <h2>Ausgewählte Projekte</h2>
+  </div>
+  <div class="sec-body"><p class="lead" style="margin-bottom:40px">Drei Projekte aus unterschiedlichen Bereichen des Projektgeschäfts.</p>
+<div class="refgrid">
+<a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Neue Heizzentrale im bewohnten Bestand: vorgefertigte Station und Frischwassermodul, saubere Dämmung.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">01 — Wohnen</span>
+  <h3>Wohnanlagen Solothurner / Züricher Straße, München</h3>
+  <p class="gew">Heizung · Sanitär</p>
+  <p class="teaser">Neun Heizzentralen innerhalb einer Sommerpause. Heizungs- und Sanitärarbeiten im bewohnten Bestand, mit eigenen Fernwärmeübergabestationen und Frischwassermodulen.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a>
+<a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Technikzentrale im Gewerbebau: Wärmepumpen, Verteilung, Entwässerungstechnik.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">02 — Gewerbe</span>
+  <h3>Gartencenter Seebauer, München</h3>
+  <p class="gew">Sanitär · Heizung · Kälte</p>
+  <p class="teaser">Wärmepumpentechnik für Heizen und Kühlen, ergänzt um Sanitär- und Entwässerungstechnik im laufenden Gewerbebetrieb.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a>
+<a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Sehr saubere, architektonisch zurückhaltende Installation im Premium-Wohnungsbau.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">03 — Wohnen</span>
+  <h3>Grammstraße 8</h3>
+  <p class="gew"><mark class="pl">PLATZHALTER: Gewerke</mark></p>
+  <p class="teaser">Premium-/Luxuswohnungsbau. <mark class="pl">PLATZHALTER: technische Detailbeschreibung nach Vorlage der endgültigen Projektdaten.</mark></p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a>
+</div></div>
+</div></section>
+<section class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">02</span><span class="label">Leistungen</span></div>
+    <h2>Was wir ausführen</h2>
+  </div>
+  <div class="sec-body"><div class="leist"><div class="leist-row">
+  <h4>Sanitär</h4>
+  <div><p class="small" style="color:var(--ink-800)">Ausführung sanitärtechnischer Anlagen für Neubau und Bestand. Das umfasst Trinkwasserinstallationen, Entwässerungssysteme, Warmwasserbereitung sowie Sanierungen im laufenden Betrieb. Je nach Anforderung werden Frischwassermodule, Abscheider- und Hebeanlagen, Wasseraufbereitung und weitere Sonderlösungen integriert.</p>
+    <p class="begriffe">Trinkwasserinstallationen · Entwässerung · Warmwasserbereitung · Frischwassersysteme · Abscheider- und Hebeanlagen · Wasseraufbereitung und Kalkschutz · Sanitäreinrichtungen · Trinkwasserhygiene</p></div>
+</div><div class="leist-row">
+  <h4>Heizung</h4>
+  <div><p class="small" style="color:var(--ink-800)">Ausführung von Heizungsanlagen für Wohnungsbau, Gewerbe und öffentliche Gebäude. Dazu gehören neue Heizzentralen ebenso wie die Modernisierung bestehender Anlagen. Je nach Projekt kommen Wärmepumpen, Fernwärme, Pelletanlagen oder andere Wärmeerzeuger zum Einsatz; Wärmeverteilung, Hydraulik, Druckhaltung, Entgasung und fachgerechte Dämmung werden als Gesamtsystem betrachtet.</p>
+    <p class="begriffe">Wärmepumpenanlagen · Fernwärmeanlagen · Heizungszentralen · Wärmeverteilung einschließlich fachgerechter Dämmung · Fußbodenheizung und Heizflächen · Anlagenhydraulik und Speichertechnik · Druckhaltung und Entgasung · hydraulischer Abgleich · Anlagenoptimierung und Regelungstechnik</p></div>
+</div><div class="leist-row">
+  <h4>Lüftung</h4>
+  <div><p class="small" style="color:var(--ink-800)">Errichtung und Modernisierung von Lüftungsanlagen für Wohngebäude, Gewerbe und öffentliche Einrichtungen. Entscheidend ist eine sauber einregulierte Anlage mit den richtigen Luftmengen, die zum Gebäude und zur Nutzung passt.</p>
+    <p class="begriffe">zentrale und dezentrale Lüftungsanlagen · Wohnraumlüftung · Sanitärraumentlüftung · Zu- und Abluftsysteme · Luftleitungsnetze einschließlich fachgerechter Dämmung · Wärmerückgewinnung · Schall- und Brandschutzkomponenten · Einregulierung und Inbetriebnahme</p></div>
+</div><div class="leist-row">
+  <h4>Kälte</h4>
+  <div><p class="small" style="color:var(--ink-800)">Ausführung kältetechnischer Anlagen als Bestandteil der Gebäudetechnik. Je nach Projekt werden Systeme zur Kühlung von Räumen oder technischen Bereichen umgesetzt und mit Heizungs- und Lüftungsanlagen abgestimmt.</p>
+    <p class="begriffe">Raumkühlung · Kühlung technischer Bereiche · Abstimmung mit Heizung und Lüftung</p></div>
+</div><div class="leist-row">
+  <h4>Stationsbau</h4>
+  <div><p class="small" style="color:var(--ink-800)">Eigene Konstruktion und Fertigung von Fernwärmeübergabestationen, Frischwassermodulen sowie projektbezogenen Solar- und Hydraulikstationen. Dieser Bereich erhält als einziger Leistungsbereich eine eigene technische Unterseite.</p>
+    <p class="begriffe">Fernwärmeübergabestationen · Frischwassermodule · Solar- und Hydraulikstationen · Heizkreisverteiler · Pufferspeicher und Ladegruppen</p><p style="margin-top:16px"><a class="link" href="#">Stationsbau entdecken <span class="arw" aria-hidden="true">&rarr;</span></a></p></div>
+</div></div></div>
+</div></section>
+<section class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">03</span><span class="label">Arbeits- und Projektverständnis</span></div>
+    <h2>Wie wir Projekte abwickeln</h2>
+  </div>
+  <div class="sec-body">
+<p class="statement">Technik funktioniert dann am besten, wenn Planung, Organisation und Ausführung von Anfang an
+zusammengedacht werden.</p>
+<div class="prose" style="margin-top:32px">
+  <p>Technische Projekte funktionieren aus unserer Sicht dann am besten, wenn Informationen, Entscheidungen und
+  Verantwortlichkeiten früh zusammengeführt werden. Deshalb betrachten wir nicht nur die einzelne Montageleistung,
+  sondern den gesamten Ablauf eines Projekts.</p>
+  <p>Von der technischen Ausarbeitung über Werk- und Montageplanung, Bauleitung und Ausführung bis zur Inbetriebnahme
+  und anschließenden Wartung bleiben die technischen Zusammenhänge in einer Hand.</p>
+  <p>Gerade bei Sanierungen im Bestand ist eine saubere Vorbereitung entscheidend. Laufender Gebäudebetrieb, kurze
+  Versorgungsunterbrechungen, beengte Einbausituationen und Schnittstellen zu anderen Gewerken müssen frühzeitig
+  erkannt und organisiert werden.</p>
+  <p>Auch nach Abschluss des Projekts bleiben wir für unsere Vertragspartner Ansprechpartner — mit regelmäßiger
+  Wartung und bei Bedarf mit unserem 24-Stunden-Notdienst.</p>
+</div>
+<ol class="process"><li><span class="p-label">Technische Ausarbeitung</span><span class="p-idx">01</span></li><li><span class="p-label">Werk- und Montageplanung</span><span class="p-idx">02</span></li><li><span class="p-label">Bauleitung</span><span class="p-idx">03</span></li><li><span class="p-label">Ausführung</span><span class="p-idx">04</span></li><li><span class="p-label">Inbetriebnahme</span><span class="p-idx">05</span></li><li><span class="p-label">Wartung / Notdienst</span><span class="p-idx">06</span></li></ol></div>
+</div></section>
+<section class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">04</span><span class="label">Unternehmensverständnis</span></div>
+    <h2>Projektgeschäft ist Teamarbeit</h2>
+  </div>
+  <div class="sec-body">
+<div class="prose">
+  <p>Projektgeschäft ist Teamarbeit. Technische Gebäudeausrüstung entsteht dort, wo Erfahrung, Planung, Organisation,
+  Bauleitung, Montage und unterschiedliche Fachkompetenzen zuverlässig zusammenspielen.</p>
+  <p>Wir verstehen uns als technischer Umsetzungspartner und bringen unsere Erfahrung konstruktiv in die Zusammenarbeit
+  mit Planung und Bauherrschaft ein. Wenn wir Verbesserungspotenzial erkennen, sprechen wir es offen an und suchen
+  gemeinsam nach einer sinnvollen Lösung.</p>
+  <p>Auch mit Fehlern gehen wir transparent um. Entscheidend ist nicht, dass in komplexen Projekten niemals etwas
+  schiefläuft, sondern dass Probleme erkannt, Verantwortung übernommen und Lösungen konsequent umgesetzt werden.
+  Erkenntnisse sollen in die eigenen Abläufe zurückfließen.</p>
+  <p>Unsere Prozesse entwickeln wir kontinuierlich weiter. Ziel ist keine Selbstdarstellung als „perfekt“, sondern ein
+  Betrieb, der technisch, organisatorisch und wirtschaftlich jeden Tag ein Stück besser wird.</p>
+</div></div>
+</div></section>
+<footer class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">05</span><span class="label">Kontakt</span></div>
+    <h2>Kontakt und Unterlagen</h2>
+  </div>
+  <div class="sec-body">
+<div class="schriftfeld">
+  <div class="sf"><span class="label">Unternehmen</span>
+    <p class="val">Ackermann Gebäudetechnik<br>GmbH &amp; Co. KG<br>Lechnerstraße 2<br>82067 Ebenhausen</p></div>
+  <div class="sf"><span class="label">Telefon</span>
+    <p class="val data"><a href="tel:+4981789982600">08178 9982 600</a></p></div>
+  <div class="sf"><span class="label">E-Mail</span>
+    <p class="val"><a href="mailto:info@ackermann-gebaeudetechnik.de">info@ackermann-<wbr>gebaeudetechnik.de</a></p></div>
+  <div class="sf"><span class="label">Service</span>
+    <p class="val">24-Stunden-Notdienst für Vertragspartner</p></div>
+  <div class="sf sf-full"><span class="label">Unterlagen</span>
+    <p class="val">Leistungsverzeichnisse, Pläne und Projektunterlagen können direkt per E-Mail zugesendet werden.</p></div>
+</div>
+<div class="mobile-actions">
+  <a href="tel:+4981789982600">Anrufen</a>
+  <a href="mailto:info@ackermann-gebaeudetechnik.de">E-Mail</a>
+</div>
+<div class="legal"><a href="#">Impressum</a><a href="#">Datenschutz</a></div></div>
+</div></footer></div></div></div></div>
+<div data-pageview="referenzen" hidden><div class="stage-outer"><div class="stage"><div class="sheet">
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="#"><span class="dot" aria-hidden="true"></span><b>ACKERMANN</b><i>Gebäudetechnik</i></a>
+  <nav class="site-nav" aria-label="Hauptnavigation"><a href="#">Startseite</a><a href="#" aria-current="page">Referenzen</a><a href="#">Stationsbau</a><a href="#">Arbeiten bei uns</a><a href="#">Kontakt</a></nav>
+  <div class="navbar-mobile"><span class="label" role="button" tabindex="0" aria-expanded="false">Menü</span></div>
+</div></header>
+<section class="sec" style="padding-bottom:0"><div class="wrap">
+  <span class="label">Referenzen</span>
+  <h1 style="margin-top:24px">Projekte nach Projektumfeld</h1>
+  <p class="lead" style="margin-top:32px">Die Referenzen sind nach Projektumfeld sortiert, nicht nach Gewerk — so ist
+  schneller erkennbar, in welchen Gebäudetypen und Projektstrukturen Erfahrung vorhanden ist.</p>
+  <p class="cap" style="margin-top:24px; max-width:640px">Teaser-Texte sind auf Basis der vorliegenden Angaben
+  formuliert und vor Veröffentlichung fachlich freizugeben. Projekte ohne verwendbares Foto sollten zurückgestellt
+  statt mit Platzhalter veröffentlicht werden.</p>
+</div></section>
+<section class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">01</span><span class="label">Bildung &amp; Betreuung</span></div>
+    <h2>Bildung & Betreuung</h2>
+  </div>
+  <div class="sec-body"><div class="refgrid"><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Technikraum einer Kindertagesstätte.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">01 — Bildung & Betreuung</span>
+  <h3>KiTa Martinsried</h3>
+  <p class="gew">Heizung · Sanitär</p>
+  <p class="teaser">Heizungs- und Sanitärtechnik für eine Kindertagesstätte.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Sanitärinstallation im Schulgebäude.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">02 — Bildung & Betreuung</span>
+  <h3>Kurt-Huber-Gymnasium Gräfelfing, Nordtrakt</h3>
+  <p class="gew">Sanitär · Heizung</p>
+  <p class="teaser">Sanitär- und Heizungstechnik im Nordtrakt eines Gymnasiums.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Sanitärtechnik im Kinderhaus.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">03 — Bildung & Betreuung</span>
+  <h3>Kinderhaus Nonnenwaldstraße, Penzberg</h3>
+  <p class="gew">Sanitär</p>
+  <p class="teaser">Sanitärtechnik für ein Kinderhaus.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Sanitärinstallation, Rohbau oder fertige Anlage.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">04 — Bildung & Betreuung</span>
+  <h3>Haus für Kinder Farnweg, München</h3>
+  <p class="gew">Sanitär</p>
+  <p class="teaser">Sanitärtechnik für eine Kindertageseinrichtung.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Heizzentrale einer Kindertagesstätte.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">05 — Bildung & Betreuung</span>
+  <h3>Kindertagesstätte Schondorf am Ammersee</h3>
+  <p class="gew">Heizung</p>
+  <p class="teaser">Heizungstechnik für eine Kindertagesstätte.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a></div></div>
+</div></section>
+<section class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">02</span><span class="label">Wohnen</span></div>
+    <h2>Wohnen</h2>
+  </div>
+  <div class="sec-body"><div class="refgrid"><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Fertige Heizzentrale mit vorgefertigter Station und Frischwassermodul.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">06 — Wohnen</span>
+  <h3>Wohnanlagen Solothurner Straße / Züricher Straße, München</h3>
+  <p class="gew">Heizung · Sanitär</p>
+  <p class="teaser">Neun Heizzentralen innerhalb einer Sommerpause, im bewohnten Bestand. Eigene Fernwärmeübergabestationen und Frischwassermodule.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Verteilung und Hydraulik im Neubau.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">07 — Wohnen</span>
+  <h3>Neubau Mehrfamilienhaus Auenstraße, Hohenschäftlarn</h3>
+  <p class="gew">Sanitär · Heizung · Lüftung</p>
+  <p class="teaser">Sanitär, Heizung und Lüftung im Neubau eines Mehrfamilienhauses.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Technische Installation im Loftneubau.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">08 — Wohnen</span>
+  <h3>Loftneubau Franz-Joseph-Straße 14, München</h3>
+  <p class="gew">Sanitär · Heizung · Lüftung</p>
+  <p class="teaser">Sanitär, Heizung und Lüftung für einen Loftneubau.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Luftleitungsnetz mit fachgerechter Dämmung.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">09 — Wohnen</span>
+  <h3>Wohnhaus Stollbergstraße, München</h3>
+  <p class="gew">Lüftung</p>
+  <p class="teaser">Lüftungstechnik für ein Wohnhaus.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Heizzentrale der Wohnanlage.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">10 — Wohnen</span>
+  <h3>Wohnanlage Funkerstraße 4–10, München</h3>
+  <p class="gew">Heizung · Sanitär</p>
+  <p class="teaser">Heizungs- und Sanitärtechnik für eine Wohnanlage.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Trinkwasserinstallation im Bestand.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">11 — Wohnen</span>
+  <h3>Wohnanlage Staltacher Straße / Waldfriedhofstraße / Etalstraße, München</h3>
+  <p class="gew">Sanitär</p>
+  <p class="teaser">Sanitärtechnik über mehrere Standorte einer Wohnanlage.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Technikraum im Einfamilienhaus.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">12 — Wohnen</span>
+  <h3>Wohnhaus Kreuzweg 4a, Gauting</h3>
+  <p class="gew">Sanitär · Heizung · Lüftung</p>
+  <p class="teaser">Sanitär, Heizung und Lüftung für ein Wohnhaus.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Sehr saubere, zurückhaltende Installation im Premium-Wohnungsbau.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">13 — Wohnen</span>
+  <h3>Grammstraße 8</h3>
+  <p class="gew"><mark class="pl">PLATZHALTER: Gewerke</mark></p>
+  <p class="teaser">Premium-/Luxuswohnungsbau. <mark class="pl">PLATZHALTER: Detaildaten vor Veröffentlichung ergänzen.</mark></p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a></div></div>
+</div></section>
+<section class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">03</span><span class="label">Öffentliche Gebäude</span></div>
+    <h2>Öffentliche Gebäude</h2>
+  </div>
+  <div class="sec-body"><div class="refgrid"><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Sanitärinstallation im öffentlichen Bestand.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">14 — Öffentliche Gebäude</span>
+  <h3>Rathaus Berg</h3>
+  <p class="gew">Sanitär</p>
+  <p class="teaser">Sanitärtechnik im Rathaus.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Technikzentrale im Verwaltungsbau.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">15 — Öffentliche Gebäude</span>
+  <h3>Agentur für Arbeit Weilheim</h3>
+  <p class="gew">Sanitär · Heizung · Lüftung</p>
+  <p class="teaser">Sanitär, Heizung und Lüftung in einem Verwaltungsgebäude.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Steigleitung der trockenen Feuerlöschanlage.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">16 — Öffentliche Gebäude</span>
+  <h3>Salesianum München</h3>
+  <p class="gew">Sanitär · Trockene Feuerlöschanlage</p>
+  <p class="teaser">Sanitärtechnik und trockene Feuerlöschanlage.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Pellet-Doppelkesselanlage und Pufferspeicher im Bestandstechnikraum.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">17 — Öffentliche Gebäude</span>
+  <h3>Amtsgericht Starnberg</h3>
+  <p class="gew">Heizung</p>
+  <p class="teaser">Modernisierung der Wärmeversorgung im Bestand mit zwei Pellet-Wärmeerzeugern à 135 kW und einem vor Ort montierten Pufferspeicher.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Heizzentrale im Verwaltungsgebäude.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">18 — Öffentliche Gebäude</span>
+  <h3>Finanzamt Starnberg</h3>
+  <p class="gew">Heizung</p>
+  <p class="teaser">Heizungstechnik in einem Finanzamt.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Heizzentrale des Feuerwehrhauses.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">19 — Öffentliche Gebäude</span>
+  <h3>Feuerwehrhaus Wolfratshausen</h3>
+  <p class="gew">Heizung</p>
+  <p class="teaser">Heizungstechnik für ein Feuerwehrhaus.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Lüftungs- und Heizungstechnik im Verwaltungsbau.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">20 — Öffentliche Gebäude</span>
+  <h3>Finanzamt Landsberg am Lech</h3>
+  <p class="gew">Sanitär · Heizung · Lüftung</p>
+  <p class="teaser">Sanitär, Heizung und Lüftung in einem Finanzamt.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Sanitärinstallation im denkmalgeschützten Bestand.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">21 — Öffentliche Gebäude</span>
+  <h3>Erinnerungsort Ehrenbürgstraße, München-Neuaubing</h3>
+  <p class="gew">Sanitär</p>
+  <p class="teaser">Sanitärtechnik an einem Erinnerungsort.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Entwässerungstechnik im Bahnhofsgebäude.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">22 — Öffentliche Gebäude</span>
+  <h3>Hauptbahnhof Garmisch-Partenkirchen</h3>
+  <p class="gew">Sanitär · Entwässerung</p>
+  <p class="teaser">Sanitär- und Entwässerungstechnik im Bahnhofsgebäude.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Technikraum im Bahnhofsgebäude.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">23 — Öffentliche Gebäude</span>
+  <h3>Bahnhofsgebäude Grafrath</h3>
+  <p class="gew">Sanitär · Heizung</p>
+  <p class="teaser">Sanitär- und Heizungstechnik im Bahnhofsgebäude.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a></div></div>
+</div></section>
+<section class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">04</span><span class="label">Gewerbe</span></div>
+    <h2>Gewerbe</h2>
+  </div>
+  <div class="sec-body"><div class="refgrid"><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Wärmepumpenkaskade mit ergänzender Brennwerttechnik.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">24 — Gewerbe</span>
+  <h3>St. Elisabeth, Planegg</h3>
+  <p class="gew">Heizung</p>
+  <p class="teaser">Zwei Grundwasser-Wärmepumpen in Kaskade, ergänzende Gas-Brennwerttechnik und Solarthermie.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Heizzentrale des Hotels.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">25 — Gewerbe</span>
+  <h3>Ammerseehotel</h3>
+  <p class="gew">Heizung · Sanitär</p>
+  <p class="teaser">Heizungs- und Sanitärtechnik für ein Hotel.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a><a class="refcard" href="#">
+  <div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Technik der Parkhauserweiterung.</span></div></div>
+  <span class="rule"></span>
+  <span class="idx">26 — Gewerbe</span>
+  <h3>Parkhauserweiterung Gartencenter Seebauer, München</h3>
+  <p class="gew">Sanitär · Heizung · Kälte</p>
+  <p class="teaser">Sanitär, Heizung und Kälte im Rahmen der Parkhauserweiterung.</p>
+  <span class="link link-plain">Projekt ansehen <span class="arw" aria-hidden="true">&rarr;</span></span>
+</a></div></div>
+</div></section>
+<footer class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">05</span><span class="label">Kontakt</span></div>
+    <h2>Kontakt und Unterlagen</h2>
+  </div>
+  <div class="sec-body">
+<div class="schriftfeld">
+  <div class="sf"><span class="label">Unternehmen</span>
+    <p class="val">Ackermann Gebäudetechnik<br>GmbH &amp; Co. KG<br>Lechnerstraße 2<br>82067 Ebenhausen</p></div>
+  <div class="sf"><span class="label">Telefon</span>
+    <p class="val data"><a href="tel:+4981789982600">08178 9982 600</a></p></div>
+  <div class="sf"><span class="label">E-Mail</span>
+    <p class="val"><a href="mailto:info@ackermann-gebaeudetechnik.de">info@ackermann-<wbr>gebaeudetechnik.de</a></p></div>
+  <div class="sf"><span class="label">Service</span>
+    <p class="val">24-Stunden-Notdienst für Vertragspartner</p></div>
+  <div class="sf sf-full"><span class="label">Unterlagen</span>
+    <p class="val">Leistungsverzeichnisse, Pläne und Projektunterlagen können direkt per E-Mail zugesendet werden.</p></div>
+</div>
+<div class="mobile-actions">
+  <a href="tel:+4981789982600">Anrufen</a>
+  <a href="mailto:info@ackermann-gebaeudetechnik.de">E-Mail</a>
+</div>
+<div class="legal"><a href="#">Impressum</a><a href="#">Datenschutz</a></div></div>
+</div></footer></div></div></div></div>
+<div data-pageview="projekt" hidden><div class="stage-outer"><div class="stage"><div class="sheet">
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="#"><span class="dot" aria-hidden="true"></span><b>ACKERMANN</b><i>Gebäudetechnik</i></a>
+  <nav class="site-nav" aria-label="Hauptnavigation"><a href="#">Startseite</a><a href="#" aria-current="page">Referenzen</a><a href="#">Stationsbau</a><a href="#">Arbeiten bei uns</a><a href="#">Kontakt</a></nav>
+  <div class="navbar-mobile"><span class="label" role="button" tabindex="0" aria-expanded="false">Menü</span></div>
+</div></header>
+<section class="projhead"><div class="wrap">
+  <span class="label">Öffentliche Gebäude · Bestand</span>
+  <h1>Amtsgericht Starnberg</h1>
+  <div class="meta">
+    <span class="data">Heizung</span>
+    <span class="data">Starnberg</span>
+    <span class="data">Modernisierung im Bestand</span>
+  </div>
+  <div style="margin-top:40px"><div class="ph" data-ratio="16:9"><div class="ph-in"><span class="ph-tag">Hauptbild · 16:9</span><span class="ph-txt">Pellet-Doppelkesselanlage und der vor Ort montierte Pufferspeicher im beengten Bestandstechnikraum.</span></div></div></div>
+  <span class="cap" style="display:block; margin-top:12px">Pellet-Doppelkesselanlage, 2 × 135 kW, mit vor Ort montiertem Pufferspeicher.</span>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">01</span><span class="label">Aufgabe</span></div>
+    <h2>Modernisierung der Wärmeversorgung im laufenden Bestand</h2>
+  </div>
+  <div class="sec-body">
+<div class="prose">
+  <p>Die Wärmeversorgung des Amtsgerichts Starnberg wurde im Bestand modernisiert. Eingesetzt wurden zwei
+  Pellet-Wärmeerzeuger mit je 135 kW, zusammen 270 kW. Ein besonderer Schwerpunkt lag auf dem rund 8.100 Liter großen
+  Pufferspeicher, der am Standort montiert und geschweißt wurde, sowie auf der Einbringung in die vorhandenen
+  Technikräume.</p>
+</div></div>
+</div></section>
+<section class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">02</span><span class="label">Technische Umsetzung</span></div>
+    <h2>Anlagen und Systeme</h2>
+  </div>
+  <div class="sec-body">
+<div class="prose">
+  <p>Zum Leistungsumfang gehörten der Rückbau der Altanlage, die Brennstoffversorgung mit Fördersystem, die
+  Abgasführung, Druckhaltung und Entgasung sowie die Anbindung der Rampenheizung. Abschließend erfolgten
+  Inbetriebnahme und Dokumentation.</p>
+</div>
+<dl class="spec"><div><dt class="label">Wärmeerzeuger</dt><dd>2 × Pellet-Wärmeerzeuger à 135 kW</dd></div><div><dt class="label">Gesamtleistung</dt><dd><span class="data">270 kW</span></dd></div><div><dt class="label">Pufferspeicher</dt><dd><span class="data">ca. 8.100 Liter</span> — am Standort montiert und geschweißt</dd></div><div><dt class="label">Weitere Anlagenteile</dt><dd>Brennstoffversorgung und Fördersystem · Abgasanlage · Druckhaltung und Entgasung · Anbindung Rampenheizung</dd></div><div><dt class="label">Abschluss</dt><dd>Inbetriebnahme und technische Dokumentation</dd></div></dl></div>
+</div></section>
+<section class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">03</span><span class="label">Besondere Anforderungen</span></div>
+    <h2>Einbringung und laufender Betrieb</h2>
+  </div>
+  <div class="sec-body">
+<p class="statement">Der Pufferspeicher konnte nicht als Ganzes eingebracht werden — er wurde in den vorhandenen
+Technikräumen montiert und geschweißt.</p>
+<div class="prose" style="margin-top:32px">
+  <p>Die vorhandenen Technikräume gaben die Rahmenbedingungen vor: begrenzte Einbringwege, beengte Einbausituation und
+  ein Gebäude im laufenden Betrieb. Rückbau, Einbringung und Montage mussten entsprechend abschnittsweise organisiert
+  werden.</p>
+</div></div>
+</div></section>
+<section class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">04</span><span class="label">Projektdaten</span></div>
+    <h2>Projektdaten</h2>
+  </div>
+  <div class="sec-body">
+<div class="schriftfeld">
+  <div class="sf"><span class="label">Projektart</span><p class="val">Modernisierung im Bestand</p></div>
+  <div class="sf"><span class="label">Gewerke</span><p class="val">Heizung</p></div>
+  <div class="sf"><span class="label">Ort</span><p class="val">Starnberg</p></div>
+  <div class="sf"><span class="label">Status</span><p class="val">Abgeschlossen</p></div>
+  <div class="sf sf-full"><span class="label">Auftraggeber</span>
+    <p class="val"><mark class="pl">PLATZHALTER</mark> — Nennung nur bei belastbarer Freigabe. Keine Auftragswerte.</p></div>
+</div></div>
+</div></section>
+<section class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">05</span><span class="label">Bilder</span></div>
+    <h2>Bilder zum Projekt</h2>
+  </div>
+  <div class="sec-body">
+<div class="gallery">
+  <figure><div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Pellet-Doppelkesselanlage, beide Kessel im Bild.</span></div></div><span class="cap">Pellet-Doppelkesselanlage, 2 × 135 kW.</span></figure>
+  <figure><div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Vor Ort geschweißter Pufferspeicher, rund 8.100 Liter.</span></div></div><span class="cap">Pufferspeicher, am Standort montiert.</span></figure>
+  <figure><div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Projektfoto · 4:3</span><span class="ph-txt">Hydraulik, Druckhaltung und Entgasung.</span></div></div><span class="cap">Hydraulik und Druckhaltung.</span></figure>
+</div>
+<p style="margin-top:40px"><a class="link" href="#">Weitere Referenzen ansehen <span class="arw" aria-hidden="true">&rarr;</span></a></p>
+</div>
+</div></section>
+<footer class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">06</span><span class="label">Kontakt</span></div>
+    <h2>Kontakt und Unterlagen</h2>
+  </div>
+  <div class="sec-body">
+<div class="schriftfeld">
+  <div class="sf"><span class="label">Unternehmen</span>
+    <p class="val">Ackermann Gebäudetechnik<br>GmbH &amp; Co. KG<br>Lechnerstraße 2<br>82067 Ebenhausen</p></div>
+  <div class="sf"><span class="label">Telefon</span>
+    <p class="val data"><a href="tel:+4981789982600">08178 9982 600</a></p></div>
+  <div class="sf"><span class="label">E-Mail</span>
+    <p class="val"><a href="mailto:info@ackermann-gebaeudetechnik.de">info@ackermann-<wbr>gebaeudetechnik.de</a></p></div>
+  <div class="sf"><span class="label">Service</span>
+    <p class="val">24-Stunden-Notdienst für Vertragspartner</p></div>
+  <div class="sf sf-full"><span class="label">Unterlagen</span>
+    <p class="val">Leistungsverzeichnisse, Pläne und Projektunterlagen können direkt per E-Mail zugesendet werden.</p></div>
+</div>
+<div class="mobile-actions">
+  <a href="tel:+4981789982600">Anrufen</a>
+  <a href="mailto:info@ackermann-gebaeudetechnik.de">E-Mail</a>
+</div>
+<div class="legal"><a href="#">Impressum</a><a href="#">Datenschutz</a></div></div>
+</div></footer></div></div></div></div>
+<div data-pageview="stationsbau" hidden><div class="stage-outer"><div class="stage"><div class="sheet">
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="#"><span class="dot" aria-hidden="true"></span><b>ACKERMANN</b><i>Gebäudetechnik</i></a>
+  <nav class="site-nav" aria-label="Hauptnavigation"><a href="#">Startseite</a><a href="#">Referenzen</a><a href="#" aria-current="page">Stationsbau</a><a href="#">Arbeiten bei uns</a><a href="#">Kontakt</a></nav>
+  <div class="navbar-mobile"><span class="label" role="button" tabindex="0" aria-expanded="false">Menü</span></div>
+</div></header>
+<section class="projhead"><div class="wrap">
+  <span class="label">Stationsbau</span>
+  <h1>Eigene Konstruktion und Fertigung</h1>
+  <p class="lead" style="margin-top:32px">Die Ackermann Gebäudetechnik GmbH &amp; Co. KG entwickelt und fertigt eigene
+  Fernwärmeübergabestationen, Frischwassermodule sowie Solar- und Hydraulikstationen. Die Station wird als Teil des
+  gesamten Gebäudesystems betrachtet — von den technischen Grundlagen über Auslegung und Konstruktion bis zur
+  Fertigung, Montage, Einregulierung und späteren Wartung.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">01</span><span class="label">Grundlagen</span></div>
+    <h2>Die richtige Auslegung beginnt mit den richtigen Grundlagen</h2>
+  </div>
+  <div class="sec-body">
+<div class="prose">
+  <p>Ob eine Anlage später zuverlässig und energieeffizient funktioniert, entscheidet sich bereits bei der technischen
+  Auslegung. Grundlage sind belastbare Informationen über die tatsächlichen Anforderungen des Gebäudes. Im Bestand
+  können dazu Verbrauchswerte, vorhandene Anlagendaten, Betriebszustände und die tatsächliche Nutzung gehören. Im
+  Neubau bilden die ermittelten Leistungs- und Nutzungsanforderungen die Grundlage.</p>
+  <p>Auch eine hochwertig gefertigte Anlage kann ihre Aufgabe nicht optimal erfüllen, wenn einzelne Komponenten
+  aufgrund unzutreffender oder unvollständiger Grundlagen falsch dimensioniert wurden.</p>
+</div></div>
+</div></section>
+<section class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">02</span><span class="label">Konstruktion</span></div>
+    <h2>Konstruktion in 3D</h2>
+  </div>
+  <div class="sec-body">
+<div class="prose">
+  <p>Die Stationen werden mit branchenspezifischer 3D-CAD-Software konstruiert. Gerade im Bestand gibt der vorhandene
+  Heizraum die Rahmenbedingungen vor. Bereits in der Konstruktion werden Einbringwege, vorhandene Rohrleitungen, Wand-,
+  Decken- und Bodensituationen, unterschiedliche Aufstellhöhen, Platzverhältnisse sowie die notwendige Zugänglichkeit
+  zu allen Komponenten berücksichtigt.</p>
+  <p>Ebenso wichtig sind Wartungsfreundlichkeit und die Möglichkeit, die erforderlichen Dämmstandards fachgerecht
+  umzusetzen. Konflikte sollen konstruktiv gelöst werden, bevor sie erst auf der Baustelle sichtbar werden.</p>
+</div>
+<div style="margin-top:40px"><figure><div class="ph" data-ratio="16:9"><div class="ph-in"><span class="ph-tag">Bildschirmfoto / Export · 16:9</span><span class="ph-txt">Ansicht aus der eigenen 3D-CAD-Konstruktion einer Station im Bestandsheizraum.</span></div></div><span class="cap">Konstruktion einer Fernwärmeübergabestation im vorhandenen Heizraum.</span></figure></div>
+</div>
+</div></section>
+<section class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">03</span><span class="label">Fertigung</span></div>
+    <h2>Eigene Fertigung</h2>
+  </div>
+  <div class="sec-body">
+<p class="statement">Die Station wird nicht extern gefertigt und anschließend lediglich angeliefert: Wir konstruieren
+sie selbst, fertigen sie bei uns und bauen sie anschließend mit dem eigenen Team vor Ort auf.</p>
+<div class="prose" style="margin-top:32px">
+  <p>Nach der Konstruktion werden die Stationen im eigenen Betrieb gefertigt. Konstruktion, Fertigung und spätere
+  Montage bleiben eng miteinander verbunden. Die Fertigung erfolgt nach definiertem Baumuster mit CE-Kennzeichnung,
+  durch entsprechend geprüfte Schweißer und mit der dazugehörigen technischen Dokumentation.</p>
+</div>
+<div style="margin-top:40px">
+  <div class="schriftfeld">
+    <div class="sf"><span class="label">Baumuster</span><p class="val">Fertigung nach definiertem Baumuster</p></div>
+    <div class="sf"><span class="label">Kennzeichnung</span><p class="val">CE-Kennzeichnung</p></div>
+    <div class="sf"><span class="label">Ausführung</span><p class="val">Geprüfte Schweißer</p></div>
+    <div class="sf"><span class="label">Nachweis</span><p class="val">Technische Dokumentation</p></div>
+  </div>
+</div>
+<ol class="process"><li><span class="p-label">Konstruktion</span><span class="p-idx">01</span></li><li><span class="p-label">Fertigung</span><span class="p-idx">02</span></li><li><span class="p-label">Qualitätskontrolle</span><span class="p-idx">03</span></li><li><span class="p-label">Dokumentation</span><span class="p-idx">04</span></li><li><span class="p-label">Montage</span><span class="p-idx">05</span></li><li><span class="p-label">Einregulierung</span><span class="p-idx">06</span></li><li><span class="p-label">Inbetriebnahme</span><span class="p-idx">07</span></li></ol>
+<div style="margin-top:56px" class="gallery">
+  <figure><div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Werkstattfoto · 4:3</span><span class="ph-txt">Rahmen einer Station in der eigenen Fertigung, Rohrleitungen im Aufbau.</span></div></div><span class="cap">Fertigung im eigenen Betrieb.</span></figure>
+  <figure><div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Produktfoto · 4:3</span><span class="ph-txt">Fertiges Frischwassermodul: Wärmeübertrager, Pumpen, Armaturen, Dämmung.</span></div></div><span class="cap">Frischwassermodul aus eigener Fertigung.</span></figure>
+  <figure><div class="ph" data-ratio="4:3"><div class="ph-in"><span class="ph-tag">Baustellenfoto · 4:3</span><span class="ph-txt">Einbringung und Aufstellung der Station vor Ort.</span></div></div><span class="cap">Montage vor Ort durch das eigene Team.</span></figure>
+</div>
+</div>
+</div></section>
+<section class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">04</span><span class="label">Sonderlösungen</span></div>
+    <h2>Sonderlösungen und hydraulische Baugruppen</h2>
+  </div>
+  <div class="sec-body">
+<div class="prose">
+  <p>Neben Fernwärmeübergabestationen und Frischwassermodulen werden projektbezogene Solar- und Hydraulikstationen,
+  Heizkreisverteiler, Pufferspeicher und Ladegruppen gefertigt. Entscheidend ist nicht das einzelne Bauteil, sondern
+  die Funktion, die die Anlage später im Gebäude zuverlässig erfüllen muss.</p>
+</div></div>
+</div></section>
+<section class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">05</span><span class="label">Betrieb</span></div>
+    <h2>Einregulierung, Inbetriebnahme und Wartung</h2>
+  </div>
+  <div class="sec-body">
+<div class="prose">
+  <p>Eine Anlage ist erst dann fertig, wenn sie im Betrieb funktioniert. Bei Einregulierung und Inbetriebnahme wird das
+  Zusammenspiel von Hydraulik, Regelung und Komponenten geprüft und auf den vorgesehenen Betrieb abgestimmt. Der
+  Anspruch ist eine Anlage, die zuverlässig, energieeffizient und wirtschaftlich funktioniert.</p>
+  <p>Auch nach der Inbetriebnahme bleibt die technische Betreuung möglich. Regelmäßige Wartung, Fehlersuche und
+  Optimierung werden durch die vorhandene Konstruktion und Dokumentation unterstützt. Für Vertragspartner steht
+  zusätzlich der 24-Stunden-Notdienst zur Verfügung.</p>
+</div></div>
+</div></section>
+<section class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">06</span><span class="label">Stationsbau in der Praxis</span></div>
+    <h2>Gefertigt und geliefert</h2>
+  </div>
+  <div class="sec-body">
+<div class="prose" style="margin-bottom:40px">
+  <p>Die Ackermann Gebäudetechnik GmbH &amp; Co. KG fertigt und liefert projektbezogene Fernwärmeübergabestationen,
+  Frischwassersysteme und hydraulische Baugruppen für unterschiedliche Auftraggeber und Einbausituationen.</p>
+</div>
+<dl class="spec"><div><dt class="label">Neubau Wohnanlage München · ca. 200 WE</dt><dd>Fernwärmeübergabestation <span class="data">650 kW</span>, zwei Frischwassermodule und Heizkreisverteiler.</dd></div><div><dt class="label">Wohnanlage München · 155 WE</dt><dd>Fernwärmeübergabestation <span class="data">370 kW</span> und Frischwassersystem.</dd></div><div><dt class="label">Wohnanlage München · 152 WE</dt><dd>Fernwärmeübergabestation <span class="data">550 kW</span>, Trinkwassererwärmung <span class="data">350 kW</span>.</dd></div></dl>
+<p class="cap" style="margin-top:24px; max-width:640px">Auf dieser Seite werden ausschließlich reine Fertigungs- und
+Lieferreferenzen gezeigt — keine Projekte, bei denen wir gleichzeitig als ausführender Installateur tätig waren.</p>
+</div>
+</div></section>
+<footer class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">07</span><span class="label">Kontakt</span></div>
+    <h2>Kontakt und Unterlagen</h2>
+  </div>
+  <div class="sec-body">
+<div class="schriftfeld">
+  <div class="sf"><span class="label">Unternehmen</span>
+    <p class="val">Ackermann Gebäudetechnik<br>GmbH &amp; Co. KG<br>Lechnerstraße 2<br>82067 Ebenhausen</p></div>
+  <div class="sf"><span class="label">Telefon</span>
+    <p class="val data"><a href="tel:+4981789982600">08178 9982 600</a></p></div>
+  <div class="sf"><span class="label">E-Mail</span>
+    <p class="val"><a href="mailto:info@ackermann-gebaeudetechnik.de">info@ackermann-<wbr>gebaeudetechnik.de</a></p></div>
+  <div class="sf"><span class="label">Service</span>
+    <p class="val">24-Stunden-Notdienst für Vertragspartner</p></div>
+  <div class="sf sf-full"><span class="label">Unterlagen</span>
+    <p class="val">Leistungsverzeichnisse, Pläne und Projektunterlagen können direkt per E-Mail zugesendet werden.</p></div>
+</div>
+<div class="mobile-actions">
+  <a href="tel:+4981789982600">Anrufen</a>
+  <a href="mailto:info@ackermann-gebaeudetechnik.de">E-Mail</a>
+</div>
+<div class="legal"><a href="#">Impressum</a><a href="#">Datenschutz</a></div></div>
+</div></footer></div></div></div></div>
+<div data-pageview="arbeiten" hidden><div class="stage-outer"><div class="stage"><div class="sheet">
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="#"><span class="dot" aria-hidden="true"></span><b>ACKERMANN</b><i>Gebäudetechnik</i></a>
+  <nav class="site-nav" aria-label="Hauptnavigation"><a href="#">Startseite</a><a href="#">Referenzen</a><a href="#">Stationsbau</a><a href="#" aria-current="page">Arbeiten bei uns</a><a href="#">Kontakt</a></nav>
+  <div class="navbar-mobile"><span class="label" role="button" tabindex="0" aria-expanded="false">Menü</span></div>
+</div></header>
+<section class="projhead"><div class="wrap">
+  <span class="label">Arbeiten bei uns</span>
+  <h1>Projektgeschäft ist Teamarbeit.</h1>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">01</span><span class="label">Wer wir suchen</span></div>
+    <h2>Wir wachsen</h2>
+  </div>
+  <div class="sec-body">
+<p class="statement">Wir wachsen. Wir suchen Menschen, die Verantwortung übernehmen, lernen und gemeinsam mit dem
+Unternehmen wachsen wollen.</p>
+<div class="prose" style="margin-top:32px">
+  <p>Bei der Ackermann Gebäudetechnik GmbH &amp; Co. KG arbeiten unterschiedliche Menschen gemeinsam an
+  anspruchsvollen Projekten der technischen Gebäudeausrüstung. Wir wachsen und entwickeln unsere Abläufe laufend
+  weiter. Deshalb suchen wir Menschen, die nicht nur fachlich mitarbeiten, sondern Verantwortung übernehmen, lernen und
+  gemeinsam mit dem Unternehmen wachsen wollen.</p>
+  <p>Dabei zählt nicht nur fachliches Wissen. Genauso wichtig sind Eigenverantwortung, Verlässlichkeit, Organisation
+  und die Bereitschaft, gemeinsam Lösungen zu finden.</p>
+  <p>Das Unternehmen befindet sich im Wachstum. Zuständigkeiten und Strukturen entwickeln sich mit. Gesucht werden
+  Menschen, die mit Veränderungen umgehen können, Verantwortung übernehmen und bereit sind, Strukturen aktiv
+  mitzugestalten.</p>
+</div></div>
+</div></section>
+<section class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">02</span><span class="label">Gesuchte Bereiche</span></div>
+    <h2>Gesuchte Bereiche</h2>
+  </div>
+  <div class="sec-body"><ul class="roles"><li><span class="idx">01</span><span style="font-size:16px; line-height:1.5; color:var(--ink-900)">Anlagenmechaniker SHK (m/w/d)</span></li><li><span class="idx">02</span><span style="font-size:16px; line-height:1.5; color:var(--ink-900)">Bauleiter (m/w/d)</span></li><li><span class="idx">03</span><span style="font-size:16px; line-height:1.5; color:var(--ink-900)">Projektleiter (m/w/d)</span></li><li><span class="idx">04</span><span style="font-size:16px; line-height:1.5; color:var(--ink-900)">Konstrukteur (m/w/d)</span></li><li><span class="idx">05</span><span style="font-size:16px; line-height:1.5; color:var(--ink-900)">Buchhaltung / kaufmännischer Bereich (m/w/d)</span></li></ul></div>
+</div></section>
+<section class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">03</span><span class="label">Bewerbung</span></div>
+    <h2>Der Weg zu uns</h2>
+  </div>
+  <div class="sec-body">
+<div class="prose">
+  <p>Der Bewerbungsweg ist bewusst einfach: eine kurze E-Mail mit Angaben zur Person und zum gewünschten Bereich.
+  Lebenslauf und Unterlagen können direkt beigefügt werden. Es gibt kein Bewerbungsportal und kein Formular.</p>
+</div>
+<div style="margin-top:40px">
+  <div class="schriftfeld">
+    <div class="sf sf-full" style="border-top:0"><span class="label">Bewerbung</span>
+      <p class="val"><a href="mailto:bewerbung@ackermann-gebaeudetechnik.de">bewerbung@ackermann-gebäudetechnik.de</a></p>
+      <p class="cap" style="margin-top:12px">Hinweis Umsetzung: Technische Zustellbarkeit der Umlaut-Domain vor
+      Veröffentlichung prüfen; falls nötig ASCII-Adresse technisch verwenden und sichtbar eindeutig kommunizieren.
+      <mark class="pl">OFFEN</mark></p>
+    </div>
+  </div>
+</div>
+<div class="mobile-actions">
+  <a href="tel:+4981789982600">Anrufen</a>
+  <a href="mailto:bewerbung@ackermann-gebaeudetechnik.de">E-Mail</a>
+</div></div>
+</div></section>
+<footer class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">04</span><span class="label">Kontakt</span></div>
+    <h2>Kontakt und Unterlagen</h2>
+  </div>
+  <div class="sec-body">
+<div class="schriftfeld">
+  <div class="sf"><span class="label">Unternehmen</span>
+    <p class="val">Ackermann Gebäudetechnik<br>GmbH &amp; Co. KG<br>Lechnerstraße 2<br>82067 Ebenhausen</p></div>
+  <div class="sf"><span class="label">Telefon</span>
+    <p class="val data"><a href="tel:+4981789982600">08178 9982 600</a></p></div>
+  <div class="sf"><span class="label">E-Mail</span>
+    <p class="val"><a href="mailto:info@ackermann-gebaeudetechnik.de">info@ackermann-<wbr>gebaeudetechnik.de</a></p></div>
+  <div class="sf"><span class="label">Service</span>
+    <p class="val">24-Stunden-Notdienst für Vertragspartner</p></div>
+  <div class="sf sf-full"><span class="label">Unterlagen</span>
+    <p class="val">Leistungsverzeichnisse, Pläne und Projektunterlagen können direkt per E-Mail zugesendet werden.</p></div>
+</div>
+<div class="mobile-actions">
+  <a href="tel:+4981789982600">Anrufen</a>
+  <a href="mailto:info@ackermann-gebaeudetechnik.de">E-Mail</a>
+</div>
+<div class="legal"><a href="#">Impressum</a><a href="#">Datenschutz</a></div></div>
+</div></footer></div></div></div></div>
+<div data-pageview="kontakt" hidden><div class="stage-outer"><div class="stage"><div class="sheet">
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="#"><span class="dot" aria-hidden="true"></span><b>ACKERMANN</b><i>Gebäudetechnik</i></a>
+  <nav class="site-nav" aria-label="Hauptnavigation"><a href="#">Startseite</a><a href="#">Referenzen</a><a href="#">Stationsbau</a><a href="#">Arbeiten bei uns</a><a href="#" aria-current="page">Kontakt</a></nav>
+  <div class="navbar-mobile"><span class="label" role="button" tabindex="0" aria-expanded="false">Menü</span></div>
+</div></header>
+<section class="projhead"><div class="wrap">
+  <span class="label">Kontakt</span>
+  <h1>Kontakt</h1>
+  <p class="lead" style="margin-top:32px">Kontaktseite und Kontaktbereich bleiben rein funktional. Kein Formular,
+  keine Lead-Maske, kein Verkaufsargument.</p>
+</div></section>
+
+<footer class="sec"><div class="wrap">
+  <div class="sec-head">
+    <div class="kicker"><span class="idx">01</span><span class="label">Kontaktdaten</span></div>
+    <h2>Ackermann Gebäudetechnik GmbH &amp; Co. KG</h2>
+  </div>
+  <div class="sec-body">
+<div class="schriftfeld">
+  <div class="sf"><span class="label">Unternehmen</span>
+    <p class="val">Ackermann Gebäudetechnik<br>GmbH &amp; Co. KG<br>Lechnerstraße 2<br>82067 Ebenhausen</p></div>
+  <div class="sf"><span class="label">Telefon</span>
+    <p class="val data"><a href="tel:+4981789982600">08178 9982 600</a></p></div>
+  <div class="sf"><span class="label">E-Mail</span>
+    <p class="val"><a href="mailto:info@ackermann-gebaeudetechnik.de">info@ackermann-<wbr>gebaeudetechnik.de</a></p></div>
+  <div class="sf"><span class="label">Service</span>
+    <p class="val">24-Stunden-Notdienst für Vertragspartner</p></div>
+  <div class="sf sf-full"><span class="label">Unterlagen</span>
+    <p class="val">Leistungsverzeichnisse, Pläne und Projektunterlagen können direkt per E-Mail zugesendet werden.</p></div>
+</div>
+<div class="mobile-actions">
+  <a href="tel:+4981789982600">Anrufen</a>
+  <a href="mailto:info@ackermann-gebaeudetechnik.de">E-Mail</a>
+</div>
+<div class="legal"><a href="#">Impressum</a><a href="#">Datenschutz</a></div></div>
+</div></footer></div></div></div></div>
+<div data-pageview="konzept" hidden><div class="doc">
+  <h2>Werkplan</h2>
+  <p class="doc-lead">Die Website übernimmt die visuelle Grammatik, der die Zielgruppe ohnehin täglich begegnet:
+  Werkpläne, Anlagenschemata, Leistungsverzeichnisse mit Positionsnummern, Schriftfelder. Diese Dokumentkultur ist
+  bereits ruhig, bereits nummeriert, bereits im Raster — und sie signalisiert Kompetenz ohne ein einziges Adjektiv.
+  Genau das ist „langweilig gut“ in der Umsetzung: Die Seite ist langweilig in dem Sinn, in dem eine korrekt gezeichnete
+  Werkstattzeichnung langweilig ist. Nichts wird über Stimmung entschieden, alles liegt im Raster, jede Zahl ist
+  beschriftet, und derselbe Block wiederholt sich auf jeder Projektseite identisch.</p>
+
+  <div class="doc-grid">
+    <div class="panel">
+      <span class="label">Haltung</span>
+      <h3>Ausführender Fachbetrieb, kein Planungsbüro</h3>
+      <p>Der Name ist Positionierung: Werk- und Montageplanung ist das, was ein ausführender Fachbetrieb auf dem Weg
+      zur Montage produziert. Es ist die Zeichnung der ausführenden Seite, nie der Entwurf des Planungsbüros.</p>
+    </div>
+    <div class="panel">
+      <span class="label">Signature</span>
+      <h3>Das Schriftfeld</h3>
+      <p>Das Schriftfeld nach DIN-Vorbild ist der wiederkehrende Container der Seite. Es erscheint an genau drei
+      Stellen: als <strong>Footer und Kontaktblock</strong>, als <strong>Projektdaten</strong> auf jeder Referenzseite
+      und als <strong>Fertigungsnachweis</strong> im Stationsbau. Es fügt weder Farbe noch Form hinzu — nur Haarlinien
+      und Beschriftungen — verwandelt aber die zwei schwächsten Momente einer B2B-Seite, Footer und Datentabelle, in
+      die zwei glaubwürdigsten.</p>
+    </div>
+    <div class="panel">
+      <span class="label">Raster</span>
+      <h3>80 / 32</h3>
+      <p>12 Spalten, Container 1312 px: (1312 − 11 × 32) / 12 = <strong>80 px Spalte, 32 px Bundsteg</strong>. Zwölf
+      statt sechzehn Spalten, weil sich das sauber in die dreispaltige Referenzzeile (je 4 Spalten) und die
+      sechsgliedrige Prozesskette (je 2 Spalten) teilt. Vier 1-px-Hilfslinien in <span class="tbl"
+      style="display:none"></span>#EDEDED laufen hinter dem Inhalt — genug, damit das Blatt lesbar wird, zu wenig, um
+      als Debug-Overlay zu wirken.</p>
+    </div>
+  </div>
+
+  <h2>Farbtokens</h2>
+  <p class="doc-lead">Weiß dominiert, Schwarz trägt Typografie und Linien, Rot ist der eine farbige Stift des Plotters.
+  <strong>Alle Rotwerte sind Platzhalter</strong> und müssen vor Go-Live aus dem vorhandenen Logo abgeleitet werden;
+  der Stellvertreter ist RAL 3020 Verkehrsrot, damit Kontrast und Gewicht bereits realistisch sind.</p>
+  <div class="swatches">
+    <div class="sw"><i style="background:#FFFFFF"></i><b>--paper #FFFFFF</b><span>Grundfläche, ≥ 75 % jeder Ansicht</span></div>
+    <div class="sw"><i style="background:#FAFAFA"></i><b>--paper-alt #FAFAFA</b><span>Einziges Alternativband, max. 2 pro Seite, nie benachbart</span></div>
+    <div class="sw"><i style="background:#111111"></i><b>--ink-900 #111111</b><span>Überschriften, Abschnittslinien, Schriftfeldrahmen</span></div>
+    <div class="sw"><i style="background:#262626"></i><b>--ink-800 #262626</b><span>Fließtext</span></div>
+    <div class="sw"><i style="background:#6F6F6F"></i><b>--ink-500 #6F6F6F</b><span>Labels, Gewerke, Bildunterschriften, Indizes</span></div>
+    <div class="sw"><i style="background:#C6C6C6"></i><b>--ink-300 #C6C6C6</b><span>Strukturlinie: Prozessbasis, Tabellenabschluss</span></div>
+    <div class="sw"><i style="background:#E0E0E0"></i><b>--ink-200 #E0E0E0</b><span>Standard-Haarlinie</span></div>
+    <div class="sw"><i style="background:#EDEDED"></i><b>--raster #EDEDED</b><span>Nur die vier Rasterlinien</span></div>
+    <div class="sw"><i style="background:#CC0605"></i><b>--ack-red #CC0605</b><span>PLATZHALTER — aus dem Logo ableiten</span></div>
+    <div class="sw"><i style="background:#A30504"></i><b>--ack-red-deep #A30504</b><span>PLATZHALTER — Hover / Aktiv</span></div>
+  </div>
+
+  <h2>Rot-Budget</h2>
+  <p class="doc-lead">Maximal <strong>ein rotes Element pro Ansicht</strong>, gemessen bei 1440 × 900 und 390 × 844.
+  Gezählt wird der <strong>scrollende Inhalt</strong>. Ausgenommen ist der Kopfbereich — Logo und aktive
+  Navigationsmarkierung — denn beide sind dauerhaft sichtbar und würden das Budget sonst auf jeder Ansicht
+  aufbrauchen, bevor der Inhalt beginnt. Das Logo ist ohnehin die Quelle der Farbe, nicht ihre Verwendung.
+  Erlaubt sind genau vier Platzierungen:</p>
+  <div class="tbl-scroll"><table class="tbl">
+    <thead><tr><th>Platzierung</th><th>Regel</th></tr></thead>
+    <tbody>
+      <tr><td class="m">Aktives Navigationselement</td><td>2 px rote Linie an der Unterkante des Headers, nur die aktuelle Seite. Hover auf inaktiven Elementen ist schwarz, nicht rot.</td></tr>
+      <tr><td class="m">Pfeilglyphe →</td><td>Nur auf einzeln vorkommenden Navigationslinks („Referenzen ansehen“, „Stationsbau entdecken“). Das Wort bleibt schwarz. <strong>Ausgenommen: „Projekt ansehen →“ in Referenzkarten bleibt schwarz</strong> — drei Karten pro Zeile ergäben sonst drei rote Pfeile in einer Ansicht.</td></tr>
+      <tr><td class="m">Ein 3-px-Balken je Seite</td><td>Vor der einen tragenden Aussage der Seite. Die Zuordnung ist festgelegt, nicht redaktionell frei. Referenzübersicht und Kontakt: gar keiner.</td></tr>
+      <tr><td class="m">Fokusring</td><td><span class="m">outline: 2px solid</span> auf jedem interaktiven Element. Zählt nicht gegen das Budget.</td></tr>
+      <tr><td class="m">Abnahme</td><td>Vor Go-Live jede Seite in beiden Referenzansichten aufnehmen und zählen: im Inhaltsbereich höchstens ein rotes Element. Mehr ist ein Fehler, keine Geschmacksfrage.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="doc-lead" style="margin-top:14px">Ausgeschlossen, ohne Ausnahme: gefüllte Buttons jeder Art, rote
+  Flächen oder Verläufe, Rot in Überschriften, Fließtext, Prozesskette, Datentabellen oder Schriftfeld, Rot beim
+  Karten-Hover, rote Rahmen an Bildern. Braucht ein neues Element Rot, nimmt es das Budget einer bestehenden
+  Verwendung — das Budget wird nie erweitert.</p>
+
+  <h2>Typografie</h2>
+  <p class="doc-lead">IBM Plex Sans für alles, IBM Plex Mono für jede Zahl, die eine Messung ist — kW, Liter, WE, DN,
+  Telefonnummern, Indizes. Beide sind quelloffen. <strong>Maximal fünf Stile pro Seite.</strong> Tracking nie enger als
+  −0,02 em: deutsche Komposita wie <span class="m">Fernwärmeübergabestation</span> fallen darunter zu Farbe zusammen.</p>
+  <div class="tbl-scroll"><table class="tbl">
+    <thead><tr><th>Stil</th><th>Desktop</th><th>Mobil</th><th>Verwendung</th></tr></thead>
+    <tbody>
+      <tr><td class="m">H1</td><td class="m">48 / 1.10 / −0.02em / 500</td><td class="m">32 / 1.15</td><td>Seitentitel, einmal je Seite</td></tr>
+      <tr><td class="m">H2</td><td class="m">32 / 1.15 / −0.015em / 500</td><td class="m">26 / 1.20</td><td>Abschnittsüberschrift</td></tr>
+      <tr><td class="m">H3</td><td class="m">22 / 1.25 / −0.01em / 600</td><td class="m">20</td><td>Referenzkarte, Aussageblock</td></tr>
+      <tr><td class="m">Lead</td><td class="m">18 / 1.60 / 400</td><td class="m">18</td><td>Genau ein Absatz je Seite, max. 640 px</td></tr>
+      <tr><td class="m">Body</td><td class="m">16 / 1.65 / 400</td><td class="m">16</td><td>Fließtext, Satzbreite 752 px</td></tr>
+      <tr><td class="m">Label</td><td class="m">12 / 1.30 / +0.06em / 600</td><td class="m">12</td><td>Der einzige Versalstil der Seite, max. vier Wörter</td></tr>
+      <tr><td class="m">Mono Daten</td><td class="m">13 / 1.45 / 500</td><td class="m">13</td><td>tabular-nums, alle Messwerte</td></tr>
+      <tr><td class="m">Mono Index</td><td class="m">12 / 1.30 / 500</td><td class="m">12</td><td>Abschnitts- und Positionsnummern</td></tr>
+      <tr><td class="m">Caption</td><td class="m">12 / 1.50 / 400</td><td class="m">12</td><td>Jedes Foto trägt genau eine</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Bildsprache — Referenzstudien</h2>
+  <p class="doc-lead">Die folgenden Studien sind <strong>KI-generiert und ausschließlich als Bildbriefing gedacht</strong>:
+  Sie zeigen Lichtstimmung, Farbzurückhaltung und Motivwahl, die die Fotografie treffen soll. Sie gehören
+  ausdrücklich <strong>nicht</strong> auf die Website — das Briefing verlangt ausschließlich echte Projekt-, Anlagen-,
+  Werkstatt- und Baustellenbilder. Die Studien lassen sich im Browser öffnen.</p>
+  <div class="moodgrid">
+    <a class="mood" href="https://www.magnific.com/app/creation/lJ6utaSgv9" target="_blank" rel="noopener">
+      <b>01 — Technische Darstellung</b>
+      <span>Konstruktive Darstellung einer Fernwärmeübergabestation, reine Linien auf Weiß, kein Foto.</span>
+      <em>Studie öffnen ↗</em></a>
+    <a class="mood" href="https://www.magnific.com/app/creation/3zVlKw6REY" target="_blank" rel="noopener">
+      <b>02 — Heizzentrale im Bestand</b>
+      <span>Vorgefertigte Station und Frischwassermodul, kühles Tageslicht, geringe Sättigung, niemand im Bild.</span>
+      <em>Studie öffnen ↗</em></a>
+    <a class="mood" href="https://www.magnific.com/app/creation/Doa3OYjpcl" target="_blank" rel="noopener">
+      <b>03 — Gewerbe</b>
+      <span>Wärmepumpentechnik für Heizen und Kühlen im Gewerbebau, nüchtern und ungestellt.</span>
+      <em>Studie öffnen ↗</em></a>
+    <a class="mood" href="https://www.magnific.com/app/creation/gOiQmLiSXO" target="_blank" rel="noopener">
+      <b>04 — Premium-Wohnungsbau</b>
+      <span>Sehr saubere, architektonisch zurückhaltende Installation. Präzision statt Dekoration.</span>
+      <em>Studie öffnen ↗</em></a>
+  </div>
+  <p class="doc-lead" style="margin-top:14px">Fotografische Regel für die echte Produktion: neutraler Weißabgleich,
+  die Eigenfarben der Anlage bleiben stehen (verzinkter Stahl, rot grundierte Leitung, schwarze Dämmung, gelbe
+  Gasleitung). Keine Filter, kein Duoton, kein Verlauf über dem Bild. Menschen nur, wenn authentisch und nicht
+  inszeniert. Lieber sechzehn starke Referenzen als sechsundzwanzig gemischte.</p>
+
+  <h2>Offene Punkte vor Livegang</h2>
+  <ul class="checks">
+    <li><b>Rotwert aus dem Logo ableiten.</b> Danach Kontrast auf Weiß prüfen (Pfeilglyphe muss ≥ 4,5:1 halten),
+      <span class="m">--ack-red-deep</span> bei etwa −20 % Helligkeit neu ableiten und beide Referenzansichten neu
+      abnehmen.</li>
+    <li><b>Webfont final entscheiden.</b> IBM Plex ist gesetzt, aber ersetzbar. Für die Produktion müssen die Fonts
+      <b>selbst gehostet</b> werden (woff2, Subsets latin + latin-ext) — ein Aufruf des Google-CDN ist ein vermeidbarer
+      Datenschutz-Befund. Im Wireframe werden sie zur Vorschau noch vom CDN geladen.</li>
+    <li><b>Projektfotos je Referenz auswählen und freigeben.</b> Dieses Layout gibt der Fotografie keine Deckung —
+      kein Verlauf, kein Filter, kein Stimmungsschnitt. Ein uneinheitlicher Bildbestand fällt sofort auf.</li>
+    <li><b>Grammstraße 8:</b> endgültige Projektdaten ergänzen, bevor ein technischer Teaser veröffentlicht wird.</li>
+    <li><b>Nennung der Auftraggeber</b> je Referenzseite prüfen. Keine Auftragswerte.</li>
+    <li><b>Bewerbungs-E-Mail mit Umlaut-Domain</b> technisch auf Zustellbarkeit prüfen.</li>
+    <li><b>Impressum und Datenschutz</b> juristisch finalisieren.</li>
+    <li><b>3D-CAD-Export für den Hero.</b> Die aktuelle Zeichnung ist als Interim gebaut und funktioniert eigenständig.
+      Ein späterer CAD-Export ersetzt sie im bestehenden Slot — Bedingung: keine Schattierung, keine Farbe, keine
+      Verläufe, ≤ 400 Pfadsegmente.</li>
+    <li><b>Abnahme des Rot-Budgets.</b> Vor Go-Live jede Seite in beiden Referenzansichten aufnehmen und zählen. Mehr
+      als ein rotes Element neben dem Logo ist ein Fehler, keine Geschmacksfrage.</li>
+  </ul>
+
+  <h2>Was dieser Wireframe bewusst nicht enthält</h2>
+  <div class="doc-grid">
+    <div class="panel">
+      <span class="label">Keine Verkaufsmechanik</span>
+      <h3>Kein CTA, kein Formular</h3>
+      <p>Kein Kontaktformular, keine Lead-Maske, keine großflächige Handlungsaufforderung. Der Kontaktabschluss ist
+      das Schriftfeld mit Telefon, E-Mail und Adresse. Mobil erscheinen zwei funktionale Bedienelemente „Anrufen“ und
+      „E-Mail“ — mit 1 px schwarzem Rahmen, transparent, nie gefüllt und nie rot. Es sind Bedienelemente, keine CTAs.</p>
+    </div>
+    <div class="panel">
+      <span class="label">Keine Floskeln</span>
+      <h3>Keine Qualitätsversprechen</h3>
+      <p>Keine Werbesprüche, keine Unternehmenshistorie ohne Nutzen, keine Mitarbeiterzahl als Argument, keine
+      Hervorhebung einzelner Abschlüsse. Die Referenzen sind der Beleg; Behauptungen über Qualität ersetzen sie nicht.</p>
+    </div>
+    <div class="panel">
+      <span class="label">Keine Effekte</span>
+      <h3>Zurückhaltende Bewegung</h3>
+      <p>Nur zwei Regungen: Der Pfeil eines Navigationslinks wandert beim Hover 3 px nach rechts (120 ms), und die
+      Positionslinie einer Referenzkarte verdickt sich von 1 px auf 2 px. Nichts hebt ab, nichts skaliert, nichts
+      zoomt. <span class="m">prefers-reduced-motion</span> wird respektiert.</p>
+    </div>
+    <div class="panel">
+      <span class="label">Keine Unterseiten je Gewerk</span>
+      <h3>Fünf Seiten</h3>
+      <p>Startseite · Referenzen · Stationsbau · Arbeiten bei uns · Kontakt. Sanitär, Heizung, Lüftung und Kälte werden
+      auf der Startseite erklärt. Nur der Stationsbau bekommt wegen seiner technischen Tiefe eine eigene Seite. Eine
+      eigenständige Unternehmensseite ist erst sinnvoll, wenn es zusätzliche echte Inhalte gibt.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+  var pages = document.querySelectorAll('[data-pageview]');
+  var tabs  = document.querySelectorAll('.tab');
+  function show(id){
+    pages.forEach(function(p){ p.hidden = (p.dataset.pageview !== id); });
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', String(t.dataset.page === id)); });
+    window.scrollTo({top:0, behavior:'instant'});
+  }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ show(t.dataset.page); }); });
+
+  var vpButtons = document.querySelectorAll('.vp button');
+  vpButtons.forEach(function(b){
+    b.addEventListener('click', function(){
+      document.body.dataset.vp = b.dataset.vp;
+      vpButtons.forEach(function(o){ o.setAttribute('aria-pressed', String(o === b)); });
+    });
+  });
+  document.body.dataset.vp = 'desktop';
+})();
+</script>
