@@ -7,7 +7,53 @@ import re
 import unicodedata
 
 SITE = "/home/user/design-ai/ackermann-website/site"
-STATION_SVG = open(f"{SITE}/assets/station-iso.svg").read()
+ASSETS = "/home/user/design-ai/ackermann-website/assets"
+
+_MARK = open(f"{SITE}/assets/logo-mark.svg").read()
+_MARK = re.sub(r"<!--.*?-->", "", _MARK, flags=re.S)
+MARK = _MARK.replace('<svg ', '<svg class="brand-mark" aria-hidden="true" focusable="false" ', 1) \
+            .replace(' role="img" aria-label="Ackermann Gebäudetechnik"', '')
+
+BRAND = (f'{MARK}<span class="brand-word"><b>ACKERMANN</b><i>GEBÄUDETECHNIK</i></span>')
+LOCKUP = (f'{MARK}<span class="brand-word"><b>ACKERMANN</b><i>GEBÄUDETECHNIK</i>'
+          f'<small>GmbH &amp; Co. KG</small><small>Ingenieur- und Meisterbetrieb</small></span>')
+
+
+def drawing(key):
+    """Inline SVG of a construction drawing; falls back to the station until a drawing lands."""
+    path = f"{ASSETS}/drawings/{key}.svg"
+    if not os.path.exists(path):
+        path = f"{ASSETS}/drawings/station.svg"
+    return open(path).read()
+
+
+STATION_SVG = drawing("station")
+
+DRAWING_TAG = "Konstruktionsdarstellung · Projektfoto folgt"
+
+
+def fig(key, caption, ratio=None, tag=DRAWING_TAG):
+    r = f' data-ratio="{ratio}"' if ratio else ""
+    meta = (f'<div class="fig-meta"><span class="cap">{caption}</span>'
+            f'<span class="tag">{tag}</span></div>') if (caption or tag) else ""
+    return f'<figure><div class="fig"{r}>{drawing(key)}</div>{meta}</figure>'
+
+
+def drawing_for(p):
+    """Which drawing stands in for a project's photograph."""
+    special = {
+        "amtsgericht-starnberg": "pellet",
+        "wohnanlagen-solothurner-strasse-zuericher-strasse-muenchen": "heizraum",
+        "parkhauserweiterung-gartencenter-seebauer-muenchen": "kaelte",
+        "st-elisabeth-planegg": "kaelte",
+        "grammstrasse-8": "sanitaer",
+        "wohnhaus-stollbergstrasse-muenchen": "lueftung",
+    }
+    if p["slug"] in special:
+        return special[p["slug"]]
+    first = re.sub(r"<[^>]+>", "", p["gewerke"]).split("·")[0].strip()
+    return {"Heizung": "heizzentrale", "Sanitär": "sanitaer", "Lüftung": "lueftung",
+            "Kälte": "kaelte"}.get(first, "station")
 
 NAV = [
     ("Startseite", "index.html"),
@@ -50,9 +96,7 @@ def doc(title, desc, body, current, depth=0):
 
 <header class="site-head">
   <div class="wrap">
-    <a class="brand" href="{up}index.html">
-      <span class="dot" aria-hidden="true"></span><b>ACKERMANN</b><i>Gebäudetechnik</i>
-    </a>
+    <a class="brand" href="{up}index.html">{BRAND}</a>
     <nav class="site-nav" aria-label="Hauptnavigation">{''.join(nav_desktop)}</nav>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">Menü</button>
   </div>
@@ -60,9 +104,7 @@ def doc(title, desc, body, current, depth=0):
 
 <div class="nav-sheet" id="mobile-nav" hidden>
   <div class="nav-sheet-head">
-    <a class="brand" href="{up}index.html">
-      <span class="dot" aria-hidden="true"></span><b>ACKERMANN</b><i>Gebäudetechnik</i>
-    </a>
+    <a class="brand" href="{up}index.html">{BRAND}</a>
     <button class="nav-close" type="button">Menü schließen</button>
   </div>
   <nav aria-label="Hauptnavigation, mobil">{''.join(nav_mobile)}</nav>
@@ -102,9 +144,9 @@ def figure(ratio, tag, what, caption):
     return f'<figure>{ph(ratio, tag, what)}<span class="cap">{caption}</span></figure>'
 
 
-def refcard(idx, kat, titel, gewerke, teaser, motiv, href):
+def refcard(idx, kat, titel, gewerke, teaser, motiv, href, key="station"):
     return f"""<a class="refcard" href="{href}">
-  {ph("4:3", "Projektfoto", motiv)}
+  <div class="fig" data-ratio="4:3">{drawing(key)}</div>
   <span class="rule"></span>
   <span class="idx">{idx} — {kat}</span>
   <h3>{titel}</h3>
@@ -127,6 +169,7 @@ def spec(rows):
 
 def kontakt_sf(up=""):
     return f"""
+<div class="lockup" style="margin-bottom:32px">{LOCKUP}</div>
 <div class="schriftfeld">
   <div class="sf"><span class="label">Unternehmen</span>
     <p class="val">Ackermann Gebäudetechnik<br>GmbH &amp; Co. KG<br>Lechnerstraße 2<br>82067 Ebenhausen</p></div>
@@ -314,10 +357,18 @@ def home_cards():
     for i, s in enumerate(HOME_SLUGS, 1):
         p = BY_SLUG[s]
         cards.append(refcard(f"{i:02d}", p["kat"], p["titel"], p["gewerke"], p["teaser"],
-                             p["motiv"], f'referenzen/{p["slug"]}.html'))
+                             p["motiv"], f'referenzen/{p["slug"]}.html', drawing_for(p)))
     return ('<p class="lead" style="margin-bottom:40px">Drei Projekte aus unterschiedlichen Bereichen '
             'des Projektgeschäfts.</p>\n<div class="refgrid">' + "".join(cards) + "</div>")
 
+
+LEIST_DRAWING = {"Sanitär": "sanitaer", "Heizung": "heizzentrale", "Lüftung": "lueftung",
+                 "Kälte": "kaelte", "Stationsbau": "frischwassermodul"}
+LEIST_CAPTION = {"Sanitär": "Trinkwasserinstallation mit Frischwassermodul und Steigstrang.",
+                 "Heizung": "Heizzentrale: Wärmeerzeuger, Pufferspeicher, Verteiler.",
+                 "Lüftung": "Lüftungsgerät mit Wärmerückgewinnung und Kanalnetz.",
+                 "Kälte": "Wärmepumpen in Kaskade für Heizen und Kühlen.",
+                 "Stationsbau": "Frischwassermodul aus eigener Fertigung."}
 
 LEISTUNGEN = [
     ("Sanitär",
@@ -367,6 +418,7 @@ def leistungen_html():
   <h4>{titel}</h4>
   <div><p class="small" style="color:var(--ink-800)">{text}</p>
     <p class="begriffe">{begriffe}</p>{extra}</div>
+  {fig(LEIST_DRAWING[titel], LEIST_CAPTION[titel], ratio="4:3", tag="")}
 </div>""")
     return f'<div class="leist">{"".join(rows)}</div>'
 
@@ -441,7 +493,7 @@ def referenzen_page():
         for p_ in items:
             p = next(x for x in PROJEKTE if x["titel"] == p_[0])
             cards.append(refcard(p["idx"], p["kat"], p["titel"], p["gewerke"], p["teaser"],
-                                 p["motiv"], f'referenzen/{p["slug"]}.html'))
+                                 p["motiv"], f'referenzen/{p["slug"]}.html', drawing_for(p)))
         parts.append(sec(f"{i:02d}", kat, kat, f'<div class="refgrid">{"".join(cards)}</div>',
                          alt=(i % 2 == 0), anchor=slug(kat)))
     parts.append(sec("05", "Kontakt", "Kontakt und Unterlagen", kontakt_sf(), tag="footer"))
@@ -471,8 +523,7 @@ def projekt_page(p):
     <span class="data">{p["ort"]}</span>
     <span class="data">{p["art"]}</span>
   </div>
-  <div style="margin-top:40px">{ph("16:9", "Hauptbild", p["motiv"])}</div>
-  <span class="cap" style="display:block; margin-top:12px">{p["caption"]}</span>
+  <div style="margin-top:40px">{fig(drawing_for(p), p["caption"], ratio="16:9")}</div>
 </div></section>
 """ + sec("01", "Aufgabe", "Aufgabe und Rahmenbedingungen",
           f'<div class="prose"><p>{einstieg}</p></div>') \
@@ -509,20 +560,16 @@ engen Versorgungsfenstern.</p>
 </div>"""
 
     bilder = f"""
-<div class="gallery">
-  {figure("4:3", "Projektfoto", p["motiv"], p["motiv"])}
-  {figure("4:3", "Projektfoto", "Zweites Motiv aus demselben Projekt.",
-          '<mark class="pl">PLATZHALTER: Bildunterschrift</mark>')}
-  {figure("4:3", "Projektfoto", "Drittes Motiv aus demselben Projekt.",
-          '<mark class="pl">PLATZHALTER: Bildunterschrift</mark>')}
-</div>
+{fig(drawing_for(p), p["motiv"], tag="Anlagenschema · Projektfotos folgen nach Freigabe")}
+<p class="cap" style="margin-top:24px; max-width:640px">Projektfotos werden nach Auswahl und Freigabe
+ergänzt — drei bis sechs starke Bilder, lieber wenige gute als viele durchschnittliche.</p>
 <p style="margin-top:40px"><a class="link" href="../referenzen.html">Weitere Referenzen ansehen
 <span class="arw" aria-hidden="true">&rarr;</span></a></p>"""
 
     nxt = "04" if p["slug"] not in ("amtsgericht-starnberg",
                                     "wohnanlagen-solothurner-strasse-zuericher-strasse-muenchen") else "04"
     body += sec(nxt, "Projektdaten", "Projektdaten", projektdaten)
-    body += sec(f"{int(nxt)+1:02d}", "Bilder", "Bilder zum Projekt", bilder)
+    body += sec(f"{int(nxt)+1:02d}", "Anlage", "Anlage und Bilder", bilder)
     body += sec(f"{int(nxt)+2:02d}", "Kontakt", "Kontakt und Unterlagen", kontakt_sf("../"), tag="footer")
     return body
 
@@ -558,9 +605,9 @@ STATIONSBAU = """
   fachgerecht umzusetzen. Konflikte sollen konstruktiv gelöst werden, bevor sie erst auf der Baustelle
   sichtbar werden.</p>
 </div>
-<div style="margin-top:40px">{figure("16:9", "Export aus der 3D-CAD",
-  "Ansicht aus der eigenen Konstruktion einer Station im Bestandsheizraum.",
-  "Konstruktion einer Fernwärmeübergabestation im vorhandenen Heizraum.")}</div>
+<div style="margin-top:40px">{fig("heizraum",
+  "Konstruktion einer Fernwärmeübergabestation im vorhandenen Heizraum — Einbringweg und Zugänglichkeit sind Teil der Konstruktion.",
+  tag="Konstruktionsdarstellung · CAD-Export folgt")}</div>
 """, alt=True) + sec("03", "Fertigung", "Eigene Fertigung", f"""
 <p class="statement">Die Station wird nicht extern gefertigt und anschließend lediglich angeliefert: Wir
 konstruieren sie selbst, fertigen sie bei uns und bauen sie anschließend mit dem eigenen Team vor Ort auf.</p>
@@ -581,12 +628,9 @@ konstruieren sie selbst, fertigen sie bei uns und bauen sie anschließend mit de
 """ + process(["Konstruktion", "Fertigung", "Qualitätskontrolle", "Dokumentation", "Montage",
                "Einregulierung", "Inbetriebnahme"]) + f"""
 <div style="margin-top:56px" class="gallery">
-  {figure("4:3", "Werkstattfoto", "Rahmen einer Station in der eigenen Fertigung, Rohrleitungen im Aufbau.",
-          "Fertigung im eigenen Betrieb.")}
-  {figure("4:3", "Produktfoto", "Fertiges Frischwassermodul: Wärmeübertrager, Pumpen, Armaturen, Dämmung.",
-          "Frischwassermodul aus eigener Fertigung.")}
-  {figure("4:3", "Baustellenfoto", "Einbringung und Aufstellung der Station vor Ort.",
-          "Montage vor Ort durch das eigene Team.")}
+  {fig("fertigung", "Rahmen einer Station in der eigenen Fertigung.", ratio="4:3", tag="Werkstattfoto folgt")}
+  {fig("frischwassermodul", "Frischwassermodul aus eigener Fertigung.", ratio="4:3", tag="Produktfoto folgt")}
+  {fig("station", "Fernwärmeübergabestation, montagefertig.", ratio="4:3", tag="Baustellenfoto folgt")}
 </div>
 """) + sec("04", "Sonderlösungen", "Sonderlösungen und hydraulische Baugruppen", """
 <div class="prose">
@@ -648,7 +692,9 @@ mit dem Unternehmen wachsen wollen.</p>
   <p>Das Unternehmen befindet sich im Wachstum. Zuständigkeiten und Strukturen entwickeln sich mit. Gesucht
   werden Menschen, die mit Veränderungen umgehen können, Verantwortung übernehmen und bereit sind,
   Strukturen aktiv mitzugestalten.</p>
-</div>""") + sec("02", "Gesuchte Bereiche", "Gesuchte Bereiche",
+</div>
+<div style="margin-top:48px">{fig("fertigung", "Konstruktion, Fertigung und Montage bleiben im Haus — und in einer Hand.", tag="Werkstattfoto folgt")}</div>
+""") + sec("02", "Gesuchte Bereiche", "Gesuchte Bereiche",
                  '<ul class="roles">' + "".join(
                      f'<li><span class="idx">{i:02d}</span><span>{r}</span></li>'
                      for i, r in enumerate(ROLLEN, 1)) + "</ul>", alt=True) \

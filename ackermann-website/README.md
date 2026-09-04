@@ -92,10 +92,10 @@ werden zur Vorschau vom Google-CDN geladen — **für die Produktion sind sie se
 
 Bewusst offen gelassen und im Wireframe als `PLATZHALTER` markiert:
 
-- **Rotwert** — aus dem vorhandenen Logo ableiten. Stellvertreter ist RAL 3020 Verkehrsrot
+- **Rotwert** — `#E2001A`, aus der gelieferten Bildmarke abgelesen; gegen die Vektordatei abgleichen
 - **Webfont** — IBM Plex ist gesetzt, aber 1:1 austauschbar
-- **Alle Bildflächen** — stehen für echte Projekt-, Anlagen-, Werkstatt- und Baustellenfotos.
-  Es werden ausdrücklich keine Stockbilder verwendet
+- **Alle Bildflächen** — tragen Konstruktionszeichnungen aus `assets/iso.py`, bis echte Projekt-,
+  Anlagen-, Werkstatt- und Baustellenfotos vorliegen. Es werden ausdrücklich keine Stockbilder verwendet
 - **Grammstraße 8** — endgültige Projektdaten vor Veröffentlichung ergänzen
 - **Nennung der Auftraggeber** je Referenzseite prüfen. Keine Auftragswerte
 - **Bewerbungs-E-Mail** mit Umlaut-Domain technisch auf Zustellbarkeit prüfen

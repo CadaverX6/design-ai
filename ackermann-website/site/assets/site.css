@@ -16,10 +16,20 @@
   --ink-200:#E0E0E0;
   --raster:#EDEDED;
 
-  /* PLATZHALTER — vor Go-Live aus dem vorhandenen Logo ableiten.
-     Stellvertreter: RAL 3020 Verkehrsrot. */
-  --ack-red:#CC0605;
-  --ack-red-deep:#A30504;
+  /* Aus dem gelieferten Logo abgelesen — gegen die Vektordatei des Logos
+     abgleichen, sobald sie vorliegt. */
+  --ack-red:#E2001A;
+  --ack-red-deep:#B50015;
+
+  /* Leitungsfarben der Konstruktionszeichnungen (Anlagenschema-Konvention).
+     Sie sind Inhalt der Figuren, kein Gestaltungsakzent der Seite. */
+  --pipe-vl:var(--ack-red);
+  --pipe-rl:#5B7A94;
+  --pipe-kw:#3F8F6B;
+  --pipe-ww:var(--ack-red);
+  --pipe-luft:#8A8A8A;
+  --pipe-gas:#C9A400;
+  --iso-ground:var(--paper);
 
   --radius:0;
 
@@ -103,10 +113,19 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--ack-red); outline-o
 /* ---- Kopfzeile ---- */
 .site-head{position:relative; background:var(--paper); border-bottom:1px solid var(--ink-200)}
 .site-head .wrap{display:flex; align-items:center; gap:32px; min-height:72px}
-.brand{display:flex; align-items:baseline; gap:8px; text-decoration:none}
-.brand b{font:600 16px/1 var(--sans); letter-spacing:0.02em; color:var(--ink-900)}
-.brand i{font:400 12px/1 var(--sans); font-style:normal; color:var(--ink-500)}
-.brand .dot{width:9px; height:9px; background:var(--ack-red); display:inline-block; align-self:center}
+.brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--ink-900)}
+.brand-mark{width:30px; height:30px; flex:none; display:block}
+.brand-word{display:flex; flex-direction:column; gap:3px; line-height:1}
+.brand-word b{font:600 15px/1 var(--sans); letter-spacing:0.16em; font-style:oblique 12deg; color:var(--ink-900)}
+.brand-word i{font:500 9px/1 var(--sans); letter-spacing:0.34em; font-style:normal; color:var(--ink-900)}
+/* Vollständige Wort-Bild-Marke im Schriftfeld */
+.lockup{display:flex; align-items:center; gap:16px; text-decoration:none; color:var(--ink-900)}
+.lockup .brand-mark{width:56px; height:56px}
+.lockup .brand-word{gap:5px}
+.lockup .brand-word b{font-size:24px; letter-spacing:0.14em}
+.lockup .brand-word i{font-size:12.5px; letter-spacing:0.3em}
+.lockup .brand-word small{font:400 11px/1.3 var(--sans); letter-spacing:0.02em; color:var(--ink-800); text-align:right}
+.lockup .brand-word small + small{letter-spacing:0.08em; text-transform:uppercase; font-size:10px}
 .site-nav{margin-left:auto; display:flex; gap:28px}
 .site-nav a{
   font:500 14px/1 var(--sans); color:var(--ink-800); text-decoration:none;
@@ -160,6 +179,7 @@ body.nav-open{overflow:hidden}
 .hero .lead{margin-top:32px}
 .hero .link{margin-top:32px}
 .hero-r{padding-top:6px}
+.hero-r .fig{padding:20px 24px}
 .hero-r svg{width:100%; height:auto; max-height:420px; color:var(--ink-900); display:block}
 .hero-r .cap{margin-top:16px; display:block}
 
@@ -220,14 +240,34 @@ body.nav-open{overflow:hidden}
 }
 figure{margin:0}
 figure .cap{margin-top:12px; display:block}
+
+/* ---- Konstruktionszeichnung als Figur ---- */
+.fig{
+  background:var(--paper); box-shadow:inset 0 0 0 1px var(--ink-200);
+  padding:24px 28px; display:flex; align-items:center; justify-content:center;
+}
+.fig svg{width:100%; height:auto; display:block; color:var(--ink-900)}
+.fig[data-ratio="4:3"]{aspect-ratio:4/3}
+.fig[data-ratio="16:9"]{aspect-ratio:16/9}
+.fig[data-ratio="3:2"]{aspect-ratio:3/2}
+.fig[data-ratio] svg{width:100%; height:100%}   /* viewBox letterboxes inside the ratio box */
+.sec.alt .fig{background:var(--paper)}
+.fig-meta{display:flex; justify-content:space-between; gap:16px; align-items:baseline; margin-top:12px}
+.fig-meta .tag{font:500 10px/1 var(--mono); letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-500); white-space:nowrap}
+.refcard .fig{padding:16px 18px; background:var(--paper-alt); box-shadow:inset 0 0 0 1px rgba(17,17,17,.10)}
+.refcard .fig svg .iso-callouts,.refcard .fig svg .iso-legend{display:none}
+.refcard:hover .fig{box-shadow:inset 0 0 0 1px rgba(17,17,17,.22)}
 .gallery{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px}
 
 /* ---- Leistungsliste ---- */
 .leist{border-top:1px solid var(--ink-200)}
 .leist-row{
   padding:32px 0; border-bottom:1px solid var(--ink-200);
-  display:grid; grid-template-columns:minmax(0,3fr) minmax(0,7fr); gap:32px;
+  display:grid; grid-template-columns:minmax(0,3fr) minmax(0,5fr) minmax(0,4fr); gap:32px;
+  align-items:start;
 }
+.leist-row .fig{padding:16px 18px}
+.leist-row .fig svg .iso-legend{display:none}
 .leist-row h4{padding-top:2px}
 .begriffe{margin-top:16px; font:400 13px/1.6 var(--mono); color:var(--ink-500)}
 
@@ -324,6 +364,8 @@ mark.pl{
   .hero-r svg{max-height:280px}
   .refgrid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:48px 24px}
   .gallery{grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px}
+  .leist-row{grid-template-columns:minmax(0,3fr) minmax(0,7fr)}
+  .leist-row .fig{grid-column:2}
   .schriftfeld{grid-template-columns:repeat(2,minmax(0,1fr))}
   .sf:nth-child(4n){border-right:1px solid var(--ink-200)}
   .sf:nth-child(2n){border-right:0}
@@ -348,7 +390,10 @@ mark.pl{
 
   .refgrid{grid-template-columns:1fr; gap:48px}
   .gallery{grid-template-columns:1fr; gap:32px}
-  .leist-row{grid-template-columns:1fr; gap:12px; padding:24px 0}
+  .leist-row{grid-template-columns:1fr; gap:16px; padding:24px 0}
+  .leist-row .fig{order:3}
+  .lockup .brand-mark{width:44px; height:44px}
+  .lockup .brand-word b{font-size:19px}
 
   /* Prozesskette kippt in die Senkrechte, Striche zeigen nach links */
   .process{display:block; border-bottom:0; border-left:1px solid var(--ink-300); padding:0}

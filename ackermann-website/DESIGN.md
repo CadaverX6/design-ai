@@ -51,14 +51,29 @@ Mittlere Dichte mit hartem Deckel. Abschnittsabstand maximal 96 px — nichts au
 
 Diese drei dürfen nicht getauscht werden — der Grauwert *ist* die Aussage.
 
-### Brand Accent — sämtlich Platzhalter
+### Brand Accent — aus dem Logo abgelesen
 
 | Token | Hex | Role |
 |-------|-----|------|
-| `--ack-red` | `#CC0605` | **PLATZHALTER** (RAL 3020 Verkehrsrot). Aus dem Logo ableiten |
-| `--ack-red-deep` | `#A30504` | **PLATZHALTER**. Hover/Aktiv des Pfeils |
+| `--ack-red` | `#E2001A` | Logo-Rot, aus der gelieferten Bildmarke abgelesen. Gegen die Vektordatei abgleichen |
+| `--ack-red-deep` | `#B50015` | Hover/Aktiv des Pfeils, ≈ −20 % Helligkeit |
 
-Der Stellvertreter ist so gewählt, dass Kontrast und Gewicht bereits realistisch sind. Beim Ableiten des echten Wertes: Kontrast auf Weiß prüfen (Pfeilglyphe ≥ 4,5:1), `--ack-red-deep` bei etwa −20 % Helligkeit neu bilden.
+Kontrast der Pfeilglyphe auf Weiß: 5,0:1 (AA). Liegt die Vektordatei des Logos vor, den Wert dort auslesen und beide Tokens ersetzen — mehr ist nicht zu tun.
+
+### Leitungsfarben in Zeichnungen — Inhalt, kein Akzent
+
+Die Konstruktionszeichnungen folgen der Anlagenschema-Konvention. Diese Farben sind *Inhalt der Figur* wie die Eigenfarbe einer Rohrleitung auf einem Foto; sie zählen nicht gegen das Rot-Budget der Seite.
+
+| Token | Hex | Bedeutung |
+|-------|-----|-----------|
+| `--pipe-vl` | `var(--ack-red)` | Heizung Vorlauf |
+| `--pipe-rl` | `#5B7A94` | Heizung Rücklauf |
+| `--pipe-kw` | `#3F8F6B` | Kaltwasser / Trinkwasser |
+| `--pipe-ww` | `var(--ack-red)` | Warmwasser |
+| `--pipe-luft` | `#8A8A8A` | Luft |
+| `--pipe-gas` | `#C9A400` | Gas |
+
+Jede Zeichnung trägt automatisch eine Legende der verwendeten Arten. Außerhalb der Figuren erscheinen diese Farben nirgends.
 
 ---
 
@@ -133,6 +148,14 @@ Keine Kreise, keine Icons, keine Fortschrittsbalken, keine Farbe, keine Animatio
 
 ### Abschnittskopf — der Taktgeber
 Immer vier Teile in dieser Reihenfolge: (1) 1 px `#111111` über die volle Breite, (2) 20 px darunter Mono-Index + Label auf einer Zeile (`01 — AUSGEWÄHLTE REFERENZEN`), (3) 40 px darunter die H2, (4) 32 px darunter der Inhalt. Abschnitte sind fortlaufend nummeriert wie LV-Positionen. Dieser eine wiederkehrende Kopf macht eine lange Seite ohne jedes dekorative Mittel scanbar.
+
+### Figur — die Konstruktionszeichnung an Stelle des Fotos
+Bis die echten Projektfotos vorliegen, tragen alle Bildflächen isometrische Konstruktionszeichnungen aus einer gemeinsamen Bibliothek (`assets/iso.py`): gleiche Projektion, gleiche Strichstärken, Beschriftung in Mono, Leitungsfarben nach Anlagenschema. Die Zeichnung sitzt in einem `.fig`-Rahmen — weißes Blatt, 1 px `#E0E0E0` Kante, 24/28 px Innenabstand — und trägt darunter Bildunterschrift links und ein Mono-Etikett rechts, das ehrlich sagt, was folgt: *Konstruktionsdarstellung · Projektfoto folgt*. In Referenzkarten werden Ausleger und Legende ausgeblendet, die Zeichnung steht dort ruhig auf `#FAFAFA`.
+
+Das ist kein Notbehelf, sondern die im Briefing bevorzugte Bildsprache (»reduzierte technische Grafik«). Ein späteres Foto ersetzt die Figur im selben Rahmen.
+
+### Bildmarke
+Rotes Quadrat mit weißem A, nach dem gelieferten Logo als SVG nachgezeichnet (`site/assets/logo-mark.svg`). Im Kopf 30 px mit »ACKERMANN / GEBÄUDETECHNIK«, im Schriftfeld die vollständige Wort-Bild-Marke mit »GmbH & Co. KG« und »Ingenieur- und Meisterbetrieb«. Vor Go-Live durch die Original-Vektordatei ersetzen.
 
 ### Bedienelemente
 Es gibt keine Buttons. Mobil erscheinen zwei funktionale Elemente „Anrufen" und „E-Mail": 48 px hoch, 1 px `#111111` Rahmen, Radius 0, transparent, schwarzes Label, kein Icon. Nie gefüllt, nie rot.
@@ -250,7 +273,8 @@ Alle Touch-Ziele ≥ 44 px. `overflow-x: hidden` ist ein Fehlerdetektor, kein Pl
 Grund       weiß #FFFFFF, ein Alternativband #FAFAFA (max. 2/Seite, nie benachbart)
 Text        #111111 Überschriften · #262626 Fließtext · #6F6F6F Labels
 Linien      #111111 Erklärung · #C6C6C6 Struktur · #E0E0E0 Trennung · #EDEDED Raster
-Akzent      #CC0605 PLATZHALTER — max. 1 pro Ansicht im Inhalt
+Akzent      #E2001A Logo-Rot — max. 1 pro Ansicht im Inhalt
+Leitungen   nur in Zeichnungen: VL rot · RL #5B7A94 · KW #3F8F6B · Luft #8A8A8A
 Schrift     IBM Plex Sans · IBM Plex Mono für jede Messung, tabular-nums
 Raster      12 Spalten, 80/32, Container 1312, Fließtext 752
 Radius      0 ausnahmslos
@@ -289,7 +313,7 @@ Wiederkehrender Container ist ein DIN-Schriftfeld: 1px schwarzer Rahmen, innen
 durch 1px #E0E0E0 in beschriftete Zellen geteilt, undurchsichtig. Es dient als
 Footer/Kontakt, als Projektdaten und als Fertigungsnachweis.
 
-Rot #CC0605 höchstens einmal pro Ansicht im Inhalt: aktive Navigation, der
+Rot #E2001A höchstens einmal pro Ansicht im Inhalt: aktive Navigation, der
 Pfeil eines einzeln vorkommenden Links, oder ein 3px-Balken vor der tragenden
 Aussage der Seite. Sonst nirgends.
 
@@ -301,4 +325,4 @@ kein Verkaufsdruck. Referenzen belegen, Behauptungen nicht.
 
 ## Herkunft
 
-Abgeleitet aus dem Agenturbriefing „Websitekonzept Ackermann Gebäudetechnik GmbH & Co. KG", Stand August 2026 (siehe `briefing/`). Farbwerte für Rot und die finale Webfont-Wahl sind ausdrücklich als Platzhalter markiert und vor Livegang aus dem vorhandenen Corporate Design abzuleiten.
+Abgeleitet aus dem Agenturbriefing „Websitekonzept Ackermann Gebäudetechnik GmbH & Co. KG", Stand August 2026 (siehe `briefing/`). Das Rot ist aus der gelieferten Bildmarke abgelesen und gegen die Vektordatei abzugleichen; die Webfont-Wahl ist gesetzt, aber austauschbar.
