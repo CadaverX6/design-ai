@@ -17,6 +17,9 @@ Dies ist ein **Wireframe zur Abstimmung** — noch keine Produktivumsetzung.
 | `DESIGN.md` | Das Design-System „Werkplan" im Repo-Format (9 Abschnitte) |
 | `build_site.py` | Generator für `site/` — Projektdaten stehen als Liste im Kopf der Datei |
 | `build_bundle.py` | Packt `site/` in die Einzeldatei-Vorschau |
+| `assets/iso.py`, `assets/scenes/`, `assets/drawings/` | Zeichenbibliothek, Szenen und die daraus erzeugten Konstruktionszeichnungen |
+| `site/assets/icons/MANIFEST.md` | Ausgewähltes Magnific-Stock-Icon-Set mit Slot-Dateinamen und Download-Weg |
+| `assets/icons_fallback.py` | Rückfall-Icons, bis die Stock-Dateien liegen |
 | `assets/station-iso.svg` | Isometrische Konstruktionszeichnung der Fernwärmeübergabestation (Hero) |
 | `assets/station-iso.py` | Generator für die Zeichnung — Geometrie ist parametrisch, nicht handgezeichnet |
 | `briefing/` | Original-Agenturbriefing als PDF und extrahierter Volltext |

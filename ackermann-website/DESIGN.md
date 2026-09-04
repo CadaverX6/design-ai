@@ -157,6 +157,9 @@ Das ist kein Notbehelf, sondern die im Briefing bevorzugte Bildsprache (»reduzi
 ### Bildmarke
 Rotes Quadrat mit weißem A, nach dem gelieferten Logo als SVG nachgezeichnet (`site/assets/logo-mark.svg`). Im Kopf 30 px mit »ACKERMANN / GEBÄUDETECHNIK«, im Schriftfeld die vollständige Wort-Bild-Marke mit »GmbH & Co. KG« und »Ingenieur- und Meisterbetrieb«. Vor Go-Live durch die Original-Vektordatei ersetzen.
 
+### Icons — sekundäre Marker aus dem Magnific-Stock
+Zehn Icons, in zwei Autoren-Sets gehalten (HVAC-Set für die Gewerke, Interface-Set für Kontakt), stehen als **sekundäre Marker**: 28 px vor Leistungstiteln, 16 px in Schriftfeld-Zellen, 20 px an den mobilen Bedienelementen und im Projektkopf. Einfarbig `--ink-900`/`--ink-500`, nie rot, nie hinterlegt, nie in Prozesskette oder Navigation — das Briefing schließt Gewerke-Icons als *Hauptgestaltungselement* aus, und so bleibt es. Auswahl, Slots und Download-Weg stehen in `site/assets/icons/MANIFEST.md`; bis eine Stock-Datei liegt, steht ein Rückfall-Icon in der Strichsprache der Zeichnungen an ihrer Stelle.
+
 ### Bedienelemente
 Es gibt keine Buttons. Mobil erscheinen zwei funktionale Elemente „Anrufen" und „E-Mail": 48 px hoch, 1 px `#111111` Rahmen, Radius 0, transparent, schwarzes Label, kein Icon. Nie gefüllt, nie rot.
 

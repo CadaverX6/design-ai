@@ -29,6 +29,42 @@ def drawing(key):
 
 STATION_SVG = drawing("station")
 
+import sys
+sys.path.insert(0, ASSETS)
+from icons_fallback import ICONS as FALLBACK_ICONS   # noqa: E402
+
+ICON_DIR = f"{SITE}/assets/icons"
+
+
+def _normalize_stock_svg(svg):
+    """Bring a downloaded stock icon into the site's colour system."""
+    svg = re.sub(r"<\?xml[^>]*\?>", "", svg)
+    svg = re.sub(r"<!--.*?-->", "", svg, flags=re.S)
+    svg = re.sub(r"<!DOCTYPE[^>]*>", "", svg)
+    head, rest = svg.split(">", 1)
+    head = re.sub(r'\s(width|height)="[^"]*"', "", head)
+    svg = head + ">" + rest
+    svg = re.sub(r'fill="(?!none)[^"]*"', 'fill="currentColor"', svg)
+    svg = re.sub(r"fill:\s*(?!none)[^;\"}]+", "fill:currentColor", svg)
+    svg = re.sub(r'stroke="(?!none)[^"]*"', 'stroke="currentColor"', svg)
+    svg = re.sub(r"stroke:\s*(?!none)[^;\"}]+", "stroke:currentColor", svg)
+    return svg.replace("<svg ", '<svg aria-hidden="true" focusable="false" ', 1).strip()
+
+
+def icon(slot, size=""):
+    """Stock icon from site/assets/icons/<slot>.svg when present, else the fallback."""
+    path = f"{ICON_DIR}/{slot}.svg"
+    if os.path.exists(path):
+        svg, src = _normalize_stock_svg(open(path).read()), "stock"
+    else:
+        svg, src = FALLBACK_ICONS[slot], "fallback"
+    cls = "ico" + (f" {size}" if size else "")
+    return f'<span class="{cls}" data-icon="{slot}" data-src="{src}">{svg}</span>'
+
+
+TRADE_ICON = {"Heizung": "heizung", "Sanitär": "sanitaer", "Lüftung": "lueftung",
+              "Kälte": "kaelte", "Stationsbau": "stationsbau"}
+
 DRAWING_TAG = "Konstruktionsdarstellung · Projektfoto folgt"
 
 
@@ -171,20 +207,20 @@ def kontakt_sf(up=""):
     return f"""
 <div class="lockup" style="margin-bottom:32px">{LOCKUP}</div>
 <div class="schriftfeld">
-  <div class="sf"><span class="label">Unternehmen</span>
+  <div class="sf"><span class="label">{icon("standort", "ico-sm")}Unternehmen</span>
     <p class="val">Ackermann Gebäudetechnik<br>GmbH &amp; Co. KG<br>Lechnerstraße 2<br>82067 Ebenhausen</p></div>
-  <div class="sf"><span class="label">Telefon</span>
+  <div class="sf"><span class="label">{icon("telefon", "ico-sm")}Telefon</span>
     <p class="val data"><a href="tel:+4981789982600">08178 9982 600</a></p></div>
-  <div class="sf"><span class="label">E-Mail</span>
+  <div class="sf"><span class="label">{icon("email", "ico-sm")}E-Mail</span>
     <p class="val"><a href="mailto:info@ackermann-gebaeudetechnik.de">info@ackermann-<wbr>gebaeudetechnik.de</a></p></div>
-  <div class="sf"><span class="label">Service</span>
+  <div class="sf"><span class="label">{icon("service24", "ico-sm")}Service</span>
     <p class="val">24-Stunden-Notdienst für Vertragspartner</p></div>
-  <div class="sf sf-full"><span class="label">Unterlagen</span>
+  <div class="sf sf-full"><span class="label">{icon("unterlagen", "ico-sm")}Unterlagen</span>
     <p class="val">Leistungsverzeichnisse, Pläne und Projektunterlagen können direkt per E-Mail zugesendet werden.</p></div>
 </div>
 <div class="mobile-actions">
-  <a href="tel:+4981789982600">Anrufen</a>
-  <a href="mailto:info@ackermann-gebaeudetechnik.de">E-Mail</a>
+  <a href="tel:+4981789982600">{icon("telefon")}Anrufen</a>
+  <a href="mailto:info@ackermann-gebaeudetechnik.de">{icon("email")}E-Mail</a>
 </div>
 <div class="legal"><a href="{up}impressum.html">Impressum</a><a href="{up}datenschutz.html">Datenschutz</a></div>"""
 
@@ -415,7 +451,7 @@ def leistungen_html():
             extra = (f'<p style="margin-top:16px"><a class="link" href="{link[1]}">{link[0]} '
                      f'<span class="arw" aria-hidden="true">&rarr;</span></a></p>')
         rows.append(f"""<div class="leist-row">
-  <h4>{titel}</h4>
+  <h4>{icon(TRADE_ICON[titel], "ico-lg")}{titel}</h4>
   <div><p class="small" style="color:var(--ink-800)">{text}</p>
     <p class="begriffe">{begriffe}</p>{extra}</div>
   {fig(LEIST_DRAWING[titel], LEIST_CAPTION[titel], ratio="4:3", tag="")}
@@ -519,8 +555,8 @@ def projekt_page(p):
   <span class="label">{p["kat"]} · {p["art"]}</span>
   <h1>{p["titel"]}</h1>
   <div class="meta">
-    <span class="data">{p["gewerke"]}</span>
-    <span class="data">{p["ort"]}</span>
+    <span class="data">{icon(TRADE_ICON.get(re.sub(r"<[^>]+>", "", p["gewerke"]).split("·")[0].strip(), "stationsbau"), "ico-sm")}{p["gewerke"]}</span>
+    <span class="data">{icon("standort", "ico-sm")}{p["ort"]}</span>
     <span class="data">{p["art"]}</span>
   </div>
   <div style="margin-top:40px">{fig(drawing_for(p), p["caption"], ratio="16:9")}</div>
@@ -698,7 +734,7 @@ mit dem Unternehmen wachsen wollen.</p>
                  '<ul class="roles">' + "".join(
                      f'<li><span class="idx">{i:02d}</span><span>{r}</span></li>'
                      for i, r in enumerate(ROLLEN, 1)) + "</ul>", alt=True) \
-    + sec("03", "Bewerbung", "Der Weg zu uns", """
+    + sec("03", "Bewerbung", "Der Weg zu uns", f"""
 <div class="prose">
   <p>Der Bewerbungsweg ist bewusst einfach: eine kurze E-Mail mit Angaben zur Person und zum gewünschten
   Bereich. Lebenslauf und Unterlagen können direkt beigefügt werden. Es gibt kein Bewerbungsportal und kein
@@ -715,8 +751,8 @@ mit dem Unternehmen wachsen wollen.</p>
   </div>
 </div>
 <div class="mobile-actions">
-  <a href="tel:+4981789982600">Anrufen</a>
-  <a href="mailto:bewerbung@ackermann-gebaeudetechnik.de">E-Mail</a>
+  <a href="tel:+4981789982600">{icon("telefon")}Anrufen</a>
+  <a href="mailto:bewerbung@ackermann-gebaeudetechnik.de">{icon("email")}E-Mail</a>
 </div>""") + sec("04", "Kontakt", "Kontakt und Unterlagen", kontakt_sf(), tag="footer")
 
 
