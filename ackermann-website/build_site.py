@@ -157,8 +157,8 @@ def doc(title, desc, body, current, depth=0):
 """
 
 
-def sec(idx, label, h2, body, alt=False, tag="section", anchor=""):
-    band = " alt" if alt else ""
+def sec(idx, label, h2, body, alt=False, tag="section", anchor="", dark=False):
+    band = " dark" if dark else (" alt" if alt else "")
     ida = f' id="{anchor}"' if anchor else ""
     return f"""
 <{tag} class="sec{band}"{ida}><div class="wrap">
@@ -448,14 +448,16 @@ def leistungen_html():
     for titel, text, begriffe, link in LEISTUNGEN:
         extra = ""
         if link:
-            extra = (f'<p style="margin-top:16px"><a class="link" href="{link[1]}">{link[0]} '
+            extra = (f'<p style="margin-top:20px"><a class="link" href="{link[1]}">{link[0]} '
                      f'<span class="arw" aria-hidden="true">&rarr;</span></a></p>')
-        rows.append(f"""<div class="leist-row">
-  <h4>{icon(TRADE_ICON[titel], "ico-lg")}{titel}</h4>
-  <div><p class="small" style="color:var(--ink-800)">{text}</p>
-    <p class="begriffe">{begriffe}</p>{extra}</div>
-  {fig(LEIST_DRAWING[titel], LEIST_CAPTION[titel], ratio="4:3", tag="")}
-</div>""")
+        head = (f'<h4>{icon(TRADE_ICON[titel], "ico-lg")}{titel}</h4>'
+                f'<p class="small">{text}</p><p class="begriffe">{begriffe}</p>{extra}')
+        figure_html = fig(LEIST_DRAWING[titel], LEIST_CAPTION[titel], ratio="4:3", tag="")
+        if link:
+            rows.append(f'<div class="leist-row wide"><div>{head}</div>{figure_html}</div>')
+        else:
+            rows.append(f'<div class="leist-row">{figure_html}'
+                        f'<div style="margin-top:26px">{head}</div></div>')
     return f'<div class="leist">{"".join(rows)}</div>'
 
 
@@ -466,12 +468,26 @@ HOME = f"""
     <h1>Ackermann Gebäudetechnik GmbH &amp; Co. KG</h1>
     <p class="lead">Ausführender Fachbetrieb für Sanitär-, Heizungs-, Lüftungs- und Klimatechnik.
       Technische Gebäudeausrüstung für Wohnungsbau, Gewerbe und öffentliche Auftraggeber.</p>
-    <a class="link" href="referenzen.html">Referenzen ansehen <span class="arw" aria-hidden="true">&rarr;</span></a>
+    <div class="hero-actions">
+      <a class="link" href="referenzen.html">Referenzen ansehen <span class="arw" aria-hidden="true">&rarr;</span></a>
+      <a class="link" href="stationsbau.html">Stationsbau <span class="arw" aria-hidden="true">&rarr;</span></a>
+    </div>
   </div>
-  <div class="hero-r">
+  <div class="hero-fig">
     {STATION_SVG}
     <span class="cap">Fernwärmeübergabestation · Eigene Konstruktion und Fertigung, Ebenhausen.</span>
   </div>
+</div></section>
+
+<section class="facts"><div class="wrap">
+  <div class="fact">{icon("heizung", "ico-lg")}<b>Vier Gewerke in einer Hand</b>
+    <span>Sanitär, Heizung, Lüftung und Kälte werden gemeinsam geplant und ausgeführt.</span></div>
+  <div class="fact">{icon("stationsbau", "ico-lg")}<b>Eigene Konstruktion und Fertigung</b>
+    <span>Fernwärmeübergabestationen und Frischwassermodule entstehen im eigenen Betrieb.</span></div>
+  <div class="fact">{icon("sanitaer", "ico-lg")}<b>Neubau und bewohnter Bestand</b>
+    <span>Sanierung im laufenden Betrieb, mit kurzen Versorgungsfenstern.</span></div>
+  <div class="fact">{icon("service24", "ico-lg")}<b>24-Stunden-Notdienst</b>
+    <span>Für Vertragspartner, über die Inbetriebnahme hinaus.</span></div>
 </div></section>
 """ + sec("01", "Ausgewählte Referenzen", "Ausgewählte Projekte", home_cards()) \
     + sec("02", "Leistungen", "Was wir ausführen", leistungen_html(), alt=True) \
@@ -504,8 +520,8 @@ Anfang an zusammengedacht werden.</p>
   umgesetzt werden. Erkenntnisse sollen in die eigenen Abläufe zurückfließen.</p>
   <p>Unsere Prozesse entwickeln wir kontinuierlich weiter. Ziel ist keine Selbstdarstellung als „perfekt“,
   sondern ein Betrieb, der technisch, organisatorisch und wirtschaftlich jeden Tag ein Stück besser wird.</p>
-</div>""", alt=True) \
-    + sec("05", "Kontakt", "Kontakt und Unterlagen", kontakt_sf(), tag="footer")
+</div>""", dark=True) \
+    + sec("05", "Kontakt", "Kontakt und Unterlagen", kontakt_sf(), tag="footer", dark=True)
 
 
 # =====================================================================
@@ -532,7 +548,7 @@ def referenzen_page():
                                  p["motiv"], f'referenzen/{p["slug"]}.html', drawing_for(p)))
         parts.append(sec(f"{i:02d}", kat, kat, f'<div class="refgrid">{"".join(cards)}</div>',
                          alt=(i % 2 == 0), anchor=slug(kat)))
-    parts.append(sec("05", "Kontakt", "Kontakt und Unterlagen", kontakt_sf(), tag="footer"))
+    parts.append(sec("05", "Kontakt", "Kontakt und Unterlagen", kontakt_sf(), tag="footer", dark=True))
     return "".join(parts)
 
 
@@ -606,7 +622,7 @@ ergänzt — drei bis sechs starke Bilder, lieber wenige gute als viele durchsch
                                     "wohnanlagen-solothurner-strasse-zuericher-strasse-muenchen") else "04"
     body += sec(nxt, "Projektdaten", "Projektdaten", projektdaten)
     body += sec(f"{int(nxt)+1:02d}", "Anlage", "Anlage und Bilder", bilder)
-    body += sec(f"{int(nxt)+2:02d}", "Kontakt", "Kontakt und Unterlagen", kontakt_sf("../"), tag="footer")
+    body += sec(f"{int(nxt)+2:02d}", "Kontakt", "Kontakt und Unterlagen", kontakt_sf("../"), tag="footer", dark=True)
     return body
 
 
@@ -701,7 +717,7 @@ konstruieren sie selbst, fertigen sie bei uns und bauen sie anschließend mit de
 <p class="cap" style="margin-top:24px; max-width:640px">Auf dieser Seite werden ausschließlich reine
 Fertigungs- und Lieferreferenzen gezeigt — keine Projekte, bei denen wir gleichzeitig als ausführender
 Installateur tätig waren.</p>
-""") + sec("07", "Kontakt", "Kontakt und Unterlagen", kontakt_sf(), tag="footer")
+""") + sec("07", "Kontakt", "Kontakt und Unterlagen", kontakt_sf(), tag="footer", dark=True)
 
 
 # =====================================================================
@@ -753,7 +769,7 @@ mit dem Unternehmen wachsen wollen.</p>
 <div class="mobile-actions">
   <a href="tel:+4981789982600">{icon("telefon")}Anrufen</a>
   <a href="mailto:bewerbung@ackermann-gebaeudetechnik.de">{icon("email")}E-Mail</a>
-</div>""") + sec("04", "Kontakt", "Kontakt und Unterlagen", kontakt_sf(), tag="footer")
+</div>""") + sec("04", "Kontakt", "Kontakt und Unterlagen", kontakt_sf(), tag="footer", dark=True)
 
 
 KONTAKT = """
@@ -763,7 +779,7 @@ KONTAKT = """
   <p class="lead">Leistungsverzeichnisse, Pläne und Projektunterlagen können direkt per E-Mail zugesendet
   werden.</p>
 </div></section>
-""" + sec("01", "Kontaktdaten", "Ackermann Gebäudetechnik GmbH &amp; Co. KG", kontakt_sf(), tag="footer")
+""" + sec("01", "Kontaktdaten", "Ackermann Gebäudetechnik GmbH &amp; Co. KG", kontakt_sf(), tag="footer", dark=True)
 
 
 def rechtsseite(titel, text):
@@ -774,7 +790,7 @@ def rechtsseite(titel, text):
 </div></section>
 """ + sec("01", titel, titel, f"""
 <div class="prose"><p>{text}</p></div>
-""") + sec("02", "Kontakt", "Kontakt und Unterlagen", kontakt_sf(), tag="footer")
+""") + sec("02", "Kontakt", "Kontakt und Unterlagen", kontakt_sf(), tag="footer", dark=True)
 
 
 # =====================================================================

@@ -41,6 +41,20 @@ PIPE_COLORS = {
 LEGEND_NAMES = {"vl": "Vorlauf", "rl": "Rücklauf", "kw": "Kaltwasser",
                 "ww": "Warmwasser", "luft": "Luft", "gas": "Gas"}
 
+# Flächentöne je Orientierung: oben hell, links mittel, rechts dunkel.
+# Damit lesen die Körper als Volumen statt als Drahtgitter.
+TONES = {
+    "n":    ("--iso-top",    "#F2F2EF", "--iso-left",    "#E2E2DE", "--iso-right",    "#D0D0CB"),
+    "vl":   ("--iso-vl-t",   "#FBDDE0", "--iso-vl-l",    "#F4BFC4", "--iso-vl-r",     "#EBA3AA"),
+    "ww":   ("--iso-vl-t",   "#FBDDE0", "--iso-vl-l",    "#F4BFC4", "--iso-vl-r",     "#EBA3AA"),
+    "rl":   ("--iso-rl-t",   "#E7EEF4", "--iso-rl-l",    "#D1DFEA", "--iso-rl-r",     "#B9CDDD"),
+    "kw":   ("--iso-kw-t",   "#E3F1EA", "--iso-kw-l",    "#CBE4D7", "--iso-kw-r",     "#B0D3C1"),
+    "luft": ("--iso-luft-t", "#EFEFEF", "--iso-luft-l",  "#E0E0E0", "--iso-luft-r",   "#CFCFCF"),
+    "gas":  ("--iso-gas-t",  "#F7EFD2", "--iso-gas-l",   "#EDE0B4", "--iso-gas-r",    "#E0CE92"),
+    # Akzentkörper: die Hauptkomponente einer Zeichnung darf dunkler stehen
+    "dark": ("--iso-dk-t",   "#C9C9C3", "--iso-dk-l",    "#B4B4AE", "--iso-dk-r",     "#9E9E98"),
+}
+
 
 def prj(x, y, z):
     return ((x - y) * C30, (x + y) * S30 - z)
@@ -80,11 +94,12 @@ def _hull(points):
 
 
 class _Part:
-    __slots__ = ("sil", "edge")
+    __slots__ = ("sil", "edge", "faces")
 
     def __init__(self):
         self.sil = []
         self.edge = []       # (cls, kind, path)
+        self.faces = []      # (tone, orientation, path)
 
 
 class Scene:
@@ -116,8 +131,11 @@ class Scene:
         P = prj
         p = self._new()
         sil = [P(x, y1, z1), P(x, y, z1), P(x1, y, z1), P(x1, y, z), P(x1, y1, z), P(x, y1, z)]
-        p.sil.append(_closed(sil))
         self._track(sil)
+        tone = kind if kind in TONES else "n"
+        p.faces.append((tone, "top",   _closed([P(x, y, z1), P(x1, y, z1), P(x1, y1, z1), P(x, y1, z1)])))
+        p.faces.append((tone, "left",  _closed([P(x, y1, z), P(x1, y1, z), P(x1, y1, z1), P(x, y1, z1)])))
+        p.faces.append((tone, "right", _closed([P(x1, y, z), P(x1, y1, z), P(x1, y1, z1), P(x1, y, z1)])))
         cls = "heavy" if heavy else "ln"
         p.edge.append((cls, kind, _closed([P(x, y, z1), P(x1, y, z1), P(x1, y1, z1), P(x, y1, z1)])))
         p.edge.append((cls, kind, _open([P(x, y1, z), P(x1, y1, z), P(x1, y, z)])))
@@ -139,9 +157,16 @@ class Scene:
         sx, top = prj(cx, cy, z0 + h)
         _, bot = prj(cx, cy, z0)
         p = self._new()
-        p.sil.append(
+        tone = kind if kind in TONES else "n"
+        p.faces.append((tone, "left",
             f"M{sx - rx:.2f},{top:.2f} A{rx:.2f},{ry:.2f} 0 0,1 {sx + rx:.2f},{top:.2f} "
-            f"L{sx + rx:.2f},{bot:.2f} A{rx:.2f},{ry:.2f} 0 0,1 {sx - rx:.2f},{bot:.2f} Z")
+            f"L{sx + rx:.2f},{bot:.2f} A{rx:.2f},{ry:.2f} 0 0,1 {sx - rx:.2f},{bot:.2f} Z"))
+        p.faces.append((tone, "right",
+            f"M{sx:.2f},{top + ry:.2f} A{rx:.2f},{ry:.2f} 0 0,0 {sx + rx:.2f},{top:.2f} "
+            f"L{sx + rx:.2f},{bot:.2f} A{rx:.2f},{ry:.2f} 0 0,1 {sx:.2f},{bot + ry:.2f} Z"))
+        p.faces.append((tone, "top",
+            f"M{sx - rx:.2f},{top:.2f} a{rx:.2f},{ry:.2f} 0 1,0 {2 * rx:.2f},0 "
+            f"a{rx:.2f},{ry:.2f} 0 1,0 {-2 * rx:.2f},0 Z"))
         p.edge.append(("ln", kind,
                        f"M{sx - rx:.2f},{top:.2f} a{rx:.2f},{ry:.2f} 0 1,0 {2 * rx:.2f},0 "
                        f"a{rx:.2f},{ry:.2f} 0 1,0 {-2 * rx:.2f},0"))
@@ -175,7 +200,9 @@ class Scene:
         far, near = ring(start), ring(start + length)
         p = self._new()
         hull = _hull(far + near)
-        p.sil.append(_closed(hull))
+        tone = kind if kind in TONES else "n"
+        p.faces.append((tone, "left", _closed(hull)))
+        p.faces.append((tone, "top", _closed(near)))
         self._track(hull)
         # near cap complete, far cap only its visible upper half (−45° … 135°)
         p.edge.append(("ln", kind, _closed(near)))
@@ -237,7 +264,7 @@ class Scene:
         hx, hy = prj(x, y, z + 7.4)
         ell = (f"M{hx - rx:.2f},{hy:.2f} a{rx:.2f},{ry:.2f} 0 1,0 {2 * rx:.2f},0 "
                f"a{rx:.2f},{ry:.2f} 0 1,0 {-2 * rx:.2f},0")
-        p.sil.append(ell + " Z")
+        p.faces.append(("n", "top", ell + " Z"))
         p.edge.append(("ln", "n", ell))
         self._track([(hx - rx, hy - ry), (hx + rx, hy + ry)])
 
@@ -318,6 +345,10 @@ class Scene:
         for k, v in PIPE_COLORS.items():
             if v:
                 style.append(f".{klass} .k-{k}{{stroke:var({v[0]},{v[1]})}}")
+        for k, t in TONES.items():
+            style.append(f".{klass} .f-{k}-top{{fill:var({t[0]},{t[1]})}}")
+            style.append(f".{klass} .f-{k}-left{{fill:var({t[2]},{t[3]})}}")
+            style.append(f".{klass} .f-{k}-right{{fill:var({t[4]},{t[5]})}}")
 
         out = [
             f'<svg xmlns="http://www.w3.org/2000/svg" class="{klass}" '
@@ -330,6 +361,8 @@ class Scene:
             out.append("<g>")
             for s in p.sil:
                 out.append(f'<path d="{s}" fill="var(--iso-ground,#fff)" stroke="none"/>')
+            for tone, orient, d in p.faces:
+                out.append(f'<path d="{d}" class="f-{tone}-{orient}" stroke="none"/>')
             groups = {}
             for cls, kind, d in p.edge:
                 groups.setdefault((cls, kind), []).append(d)
